@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <title>Sajem Tan phonotactics validator</title>
+  </head>
+  <body>
+    <p>Type a word in below to test:</p>
+    <input type="text" id="word"></input>
+    <button id="click">Check</button>
+    <p id="result"></p>
+    <script>
+var root_v = "([aeiy]|[eou]l|uh)";
+var suf_v = "([ou]|[ae]h)";
+var start_c = "([cdfgjkmnstvxz]|[sz]l|[stz]h|[fv][mn]|[sz][hl]?n|thn)";
+var suf_c = "([cdfgjkmnstvxz]|[sz]l|[stz]h)";
+var end_c = "[ckmnt]";
+
+var ok_root = function(s) {
+	var m = new RegExp('^(' + start_c + root_v + ')*' + start_c + root_v + end_c + '$');
+	return s.match(m);
+}
+
+var ok_suf = function(s) {
+	var m = new RegExp('^' + suf_c + '?' + suf_v + end_c + '?$');
+  return s.match(m);
+}
+
+var ok_word = function(s) {
+	var m = new RegExp('^((' + start_c + root_v + ')*' + start_c + root_v + end_c + ')+(' + suf_c + '?' + suf_v + end_c + '?)*$');
+  return s.match(m);
+}
+
+var main = function() {
+	var w = document.getElementById('word').value;
+  var out = document.getElementById('result');
+  if (ok_root(w)) {
+  	out.innerHTML = w + " is a phonotactically valid root";
+    return;
+  } else if (ok_suf(w)) {
+  	out.innerHTML = w + " is a phonotactically valid suffix or particle";
+    return;
+  } else if (ok_word(w)) {
+  	out.innerHTML = w + " is a phonotactically valid word"
+  } else {
+  	out.innerHTML = w + " is not phonotactically valid in Common Honey";
+    return;
+  }
+}
+
+document.getElementById('click').addEventListener("click", main);
+    </script>
+  </body>
+</html>
