@@ -1,0 +1,96 @@
+<html>
+  <!--
+Lorem Ipsum and random sentence generator for Sajem Tan
+created by Daniel Swanson, all use permitted
+Recommended use: download, open with webbrowser, click the buttons
+  -->
+  <head>
+    <title>Sajem Tan lorem ipsum / random sentence generator</title>
+  </head>
+  <body>
+    <p id="out"></p>
+    <button onclick="disp(true);">Generate nonsense text</button>
+    <button onclick="disp(false);">Generate random text</button>
+    <script>
+      var loremmap = {
+        "para": [[" ", "sen", "para"], [" ", "sen"]],
+        "sen": [[" ", "word", "sen"], ["", "word", "."]],
+        "word": [["", "root", "word"], "root", ["", "word", "suf"]],
+        "suf": [["", "consonant", "suf-vowel", "coda"], ["", "consonant", "suf-vowel"], ["", "suf-vowel"], ["", "suf-vowel", "coda"]],
+        "root": [["", "syl", "root"], ["", "syl", "end"], "end"],
+        "syl": [["", "consonant", "root-vowel"], ["", "fricative", "nasal", "root-vowel"]],
+        "fricative": ["f", "v", "s", "z", "sl", "zl", "sh", "zh", "th"],
+        "nasal": ["m", "n"],
+        "end": [["", "syl", "coda"]],
+        "consonant": ["c", "t", "k", "m", "n", "f", "s", "zh", "zl", "x", "j", "th", "v", "z", "sh", "d", "g", "sl"],
+        "coda": ["c", "t", "k", "m", "n"],
+        "root-vowel": ["ol", "e", "el", "i", "a", "ul", "uh", "y"],
+        "suf-vowel": ["o", "ah", "eh", "u"],
+      };
+      var senmap = {
+        para: [["<br>", "sen", "para"], ["<br>", "sen"]],
+        sen: [[" ", "VP", "NP"], [" ", "NP", "VP", "NP"], [" ", "VP", "NP", "obl"], [" ", "NP", "VP", "NP", "obl"]],
+        VP: ["verb"],
+        verb: [["", "verb-no-inf", "aspect"]],
+        "verb-no-inf": ["verb-root"],
+        NP: ["sNP", "pronoun", [" ", "NP", "conj", "NP"]],
+        conj: ["keh"],
+        sNP: [[" ", "adj", "sNP"], "noun"],
+        adj: [["", "noun", "noun>adj"], "adj-root", [" ", "adv", "adj"]],
+        adv: ["adv-root"],
+        pronoun: ["pronoun-root", ["", "pronoun", "noun>noun"]],
+        "pronoun-root": ["seh", "theh", "thu", "vo", "vu", "zeh", "zhu", "zlo", "zo"],
+        noun: [["", "verb-no-inf", "verb>noun"], ["", "noun", "noun>noun"], "noun-root", ["", "noun-root", "noun"]],
+        "noun-root": ["culjim", "din", "divolm", "femek", "gajin", "gamyk", "jafin", "jaxin", "kizhult", "kolthic", "muhc", "shelsheln", "snym", "sulslem", "tan", "thefam", "thefnolm", "thneduht", "vithit", "xulkat", "zhasik", "zhetam", "zhiman", "zlislym", "zlolzhit", "zlulc", "znolk"],
+        "adj-root": ["femek", "jelk", "sajem", "simem", "slnuhm", "solm", "theln", "zlislym"],
+        "adv-root": ["kic", "slet", "sluln", "snat", "shan", "thef", "tholk", "voln"],
+        "verb-root": ["doln", "fmyvuhk", "kem", "man", "muhshim", "shasholc", "shelgin", "tan", "thek", "zamen", "zhuhzhuhm", "znolc"],
+//        "verb-intrans": ["kem"], //impersonal/intransitives should be handled separately from normal transitives
+//        "verb-impers": ["kem"], //not done for simplicity - D.S. 02016-02-15
+        "noun>adj": ["meht"],
+        "noun>noun": ["ah", "kahf", "so", "zhum"],
+        "verb>noun": ["noc"],
+        aspect: ["da", "eht", "feh", "sho", "um"],
+        "case": ["zheh", "thot", "gu", "vah", "kahm", "vmeh"],
+        "obl-NP": [[" ", "adj", "obl-NP"], ["", "noun", "case"], ["", "pronoun", "case"], [" ", "noun", "post"], [" ", "pronoun", "post"]],
+        "obl": [[" ", "obl-NP", "obl"], "obl-NP"],
+        "aux": ["dic", "dec", "dac", "dulc", "molt", "melt", "myt", "muht"],
+        "post": ["sno"]
+      };
+      var lorem = ["Sen", "VP", "Subj", "Obj"];
+      var choose = function(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+      }
+      var build = function(tree, lor) {
+        if (!tree) {
+          return "{mistake}";
+        }
+        if (tree.constructor === Array) {
+          var r = "";
+          for (var i = 1; i < tree.length; i++) {
+            if (i !== 1) {
+              r += tree[0];
+            }
+            r += build(tree[i], lor);
+          }
+          return r;
+        } else {
+          var m;
+          if (lor) {
+            m = loremmap;
+          } else {
+            m = senmap;
+          }
+          if (m.hasOwnProperty(tree)) {
+            return build(choose(m[tree]), lor);
+          } else {
+            return tree;
+          }
+        }
+      }
+      var disp = function(lor) {
+        document.getElementById("out").innerHTML = build("para", lor);
+      }
+    </script>
+  </body>
+</html>
