@@ -1,0 +1,82 @@
+<html>
+  <head>
+    <title>Calendar Experimenter</title>
+  </head>
+  <body>
+    <h3>Units</h3>
+      <div id="input"></div>
+      <button onclick="addrow();">Add Unit</button>
+    <h3>Calendar Start</h3>
+      <span>Date: </span>
+      <input type="date" id="startday"></input>
+      <span> Time (UTC): </span>
+      <input type="time" id="starttime"></input>
+      <br>
+      <button onclick="setstart('email');">Set to first email</button>
+      <button onclick="setstart('jan01');">Set to 01/01/16</button>
+    <h3>Date</h3>
+      <span>Date: </span>
+      <input type="date" id="calcday"></input>
+      <span> Time (UTC): </span>
+      <input type="time" id="calctime"></input>
+      <br>
+      <button onclick="setcalc('now');">Now</button>
+    <h3>Result</h3>
+      <span id="outdate"></span>
+      <button onclick="makedate();">Show Date</button>
+    <script>
+      var unitvalues = [];
+      var unitnames = [];
+      var addrow = function() {
+        var units = document.getElementById('input').children;
+        var base = "milisecond";
+        if (units.length != 0) {
+          var last = units[units.length - 1];
+          base = last.children[1].value;
+          unitvalues.push(parseInt(last.children[3].value));
+          unitnames.push(last.children[1].value);
+          last.children[1].outerHTML = '<span>' + base + '</span>';
+          last.children[3].outerHTML = '<span>' + unitvalues[unitvalues.length - 1] + '</span>';
+        }
+        document.getElementById('input').innerHTML += '<div class="unit"><span>Unit: </span><input type="text" placeholder="unit name"></input><span> = </span><input type="number"></input><span> ' + base + '</span></div>';
+      };
+      addrow();
+      var setstart = function(when) {
+        if (when == 'email') {
+          document.getElementById('startday').value = "2015-11-29";
+          document.getElementById('starttime').value = "23:34";
+        } else if (when == 'jan01') {
+          document.getElementById('startday').value = "2016-01-01";
+          document.getElementById('starttime').value = "00:00";
+        }
+      };
+      var setcalc = function(when) {
+        if (when == 'now') {
+          var d = new Date();
+          var s = d.toISOString();
+          document.getElementById('calcday').value = s.slice(0,10);
+          document.getElementById('calctime').value = s.slice(11,16);
+        }
+      };
+      var timediff = function() {
+        var start = new Date(document.getElementById('startday').value + ' ' + document.getElementById('starttime').value + ' -0000');
+        var calc = new Date(document.getElementById('calcday').value + ' ' + document.getElementById('calctime').value + ' -0000');
+        return calc.getTime() - start.getTime();
+      };
+      var makedate = function() {
+        var n = timediff();
+        var l = [];
+        for (var i = 0; i < unitvalues.length; i++) {
+          l.push(n % unitvalues[i]);
+          n = (n - (n % unitvalues[i])) / unitvalues[i];
+        }
+        l.push(n);
+        var s = l[0] + ' milliseconds';
+        for (var i = 0; i < l.length-1; i++) {
+          s = l[i+1] + ' ' + unitnames[i] + ' ' + s;
+        }
+        document.getElementById('outdate').innerHTML = s;
+      };
+    </script>
+  </body>
+</html>
