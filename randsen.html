@@ -18,7 +18,8 @@ Recommended use: download, open with webbrowser, click the buttons
         "word": [["", "root", "word"], "root", ["", "word", "suf"]],
         "suf": [["", "consonant", "suf-vowel", "coda"], ["", "consonant", "suf-vowel"], ["", "suf-vowel"], ["", "suf-vowel", "coda"]],
         "root": [["", "syl", "root"], ["", "syl", "end"], "end"],
-        "syl": [["", "consonant", "root-vowel"], ["", "fricative", "nasal", "root-vowel"]],
+        "syl": [["", "consonant", "root-vowel"], ["", "cluster", "root-vowel"]],//["", "fricative", "nasal", "root-vowel"]],
+        "cluster": ["fm", "fn", "vm", "vn", "sn", "zn", "shn", "zhn", "sln", "zln", "thn"],
         "fricative": ["f", "v", "s", "z", "sl", "zl", "sh", "zh", "th"],
         "nasal": ["m", "n"],
         "end": [["", "syl", "coda"]],
@@ -42,10 +43,10 @@ Recommended use: download, open with webbrowser, click the buttons
         pronoun: ["pronoun-root", ["", "pronoun", "noun>noun"]],
         "pronoun-root": ["seh", "theh", "thu", "vo", "vu", "zeh", "zhu", "zlo", "zo"],
         noun: [["", "verb-no-inf", "verb>noun"], ["", "noun", "noun>noun"], "noun-root", ["", "noun-root", "noun"]],
-        "noun-root": ["cejym", "culjim", "din", "divolm", "femek", "gajin", "gamyk", "jafin", "jaxin", "kizhult", "kolthic", "moln", "muhc", "shelsheln", "snym", "sulslem", "tan", "tetan", "thefam", "thefnolm", "thneduht", "vithit", "xamatin", "xulkat", "zatenym", "zatheln", "zhasik", "zhetam", "zhiman", "zlislym", "zlolzhit", "zlulc", "znenan", "znolk"],
+        "noun-root": ["cejym", "culjim", "din", "divolm", "femek", "gajin", "gamyk", "jafin", "jaxin", "kizhult", "kolthic", "moln", "muhc", "shelsheln", "snym", "sulslem", "tan", "tetan", "thefam", "thefnolm", "thneduht", "vithit", "vmelfelc", "xamatin", "xulkat", "zatenym", "zatheln", "zhasik", "zhetam", "zhiman", "zhuhzhim", "zlislym", "zlolzhit", "zlulc", "znenan", "znolk"],
         "adj-root": ["femek", "jelk", "met", "nymem", "sajem", "simem", "slnuhm", "solm", "theln", "zlislym", "znim"],
-        "adv-root": ["kic", "slet", "sluln", "snat", "shan", "thef", "tholk", "voln"],
-        "verb-root": ["cejym", "doln", "fmyvuhk", "kem", "man", "muhshim", "nanym", "shasholc", "shelgin", "tan", "thek", "xaslem", "xaxat", "zamen", "zhuhzhuhm", "znolc"],
+        "adv-root": ["kic", "nacen", "slet", "sluln", "snat", "shan", "thef", "tholk", "voln"],
+        "verb-root": ["cejym", "delgem", "doln", "fmyvuhk", "kem", "man", "muhshim", "nanym", "shasholc", "shelgin", "tan", "thek", "xaslem", "xaxat", "zamen", "zhuhzhuhm", "znolc"],
 //        "verb-intrans": ["kem"], //impersonal/intransitives should be handled separately from normal transitives
 //        "verb-impers": ["kem"], //not done for simplicity - D.S. 02016-02-15
         "noun>adj": ["meht"],
