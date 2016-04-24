@@ -38,15 +38,19 @@ Recommended use: download, open with webbrowser, click the buttons
         NP: ["sNP", "pronoun", [" ", "NP", "conj", "NP"]],
         conj: ["keh"],
         sNP: [[" ", "adj", "sNP"], "noun"],
-        adj: [["", "noun", "noun>adj"], "adj-root", [" ", "adv", "adj"]],
+        adj: [["", "noun", "noun>adj"], "adj-root", "number", [" ", "adv", "adj"]],
+        number: ["tim", "dec", "fam", "vulc", "sluht", "zlik", "shen", "zhat", "kulk", "guhn", "znek", "thnolt", "vmelt",
+                 "tyt", "dolk", "felt", "vyk", "slolc", "zlelc", "xek", "folt", "zhelt"],
         adv: ["adv-root"],
         pronoun: ["pronoun-root", ["", "pronoun", "noun>noun"]],
         "pronoun-root": ["seh", "theh", "thu", "vo", "vu", "zeh", "zhu", "zlo", "zo"],
-        noun: [["", "verb-no-inf", "verb>noun"], ["", "noun", "noun>noun"], "noun-root", ["", "noun-root", "noun"]],
-        "noun-root": ["cejym", "culjim", "din", "divolm", "femek", "gajin", "gamyk", "jafin", "jaxin", "kizhult", "kolthic", "moln", "muhc", "shelsheln", "snym", "sulslem", "tan", "tetan", "thefam", "thefnolm", "thneduht", "vithit", "vmelfelc", "xamatin", "xulkat", "zatenym", "zatheln", "zhasik", "zhetam", "zhiman", "zhuhzhim", "zlislym", "zlolzhit", "zlulc", "znenan", "znolk"],
-        "adj-root": ["femek", "jelk", "met", "nymem", "sajem", "simem", "slnuhm", "solm", "theln", "zlislym", "znim"],
-        "adv-root": ["kic", "nacen", "slet", "sluln", "snat", "shan", "thef", "tholk", "voln"],
-        "verb-root": ["cejym", "delgem", "doln", "fmyvuhk", "kem", "man", "muhshim", "nanym", "shasholc", "shelgin", "tan", "thek", "xaslem", "xaxat", "zamen", "zhuhzhuhm", "znolc"],
+        "plain-noun": [["", "verb-no-inf", "verb>noun"], ["", "plain-noun", "noun>noun"], "noun-root", ["", "noun-root", "plain-noun"]],
+        noun: ["plain-noun", "pronoun", [" ", "shehn", "plain-noun", "om"], [" ", "tahn", "plain-noun", "om"]],
+        //om added even when unconjugated - D.S. 02016-04-24
+        "noun-root": ["cejym", "culjim", "din", "divolm", "femek", "gajin", "gamyk", "gyn", "jafin", "jaxin", "jidolk", "jikin", "jizlet", "kizhult", "kolthic", "moln", "muhc", "shelsheln", "slin", "snym", "sulfekahslifazhislitikesixahsloldolshyc", "sulslem", "tan", "telzlnoln", "tetan", "thefam", "thefnolm", "thneduht", "vithit", "vmelfelc", "xamatin", "xulkat", "zatenym", "zatheln", "zhasik", "zhetam", "zhiman", "zhuhzhim", "zlislym", "zlolzhit", "zlulc", "znenan", "znolk"],
+        "adj-root": ["femek", "jelk", "met", "nymem", "sajem", "simem", "slnuhm", "solm", "suhzhnolm", "theln", "zlislym", "znim"],
+        "adv-root": ["kic", "nacen", "slet", "sluln", "snat", "shan", "thec", "tholk", "voln"],
+        "verb-root": ["cejym", "delgem", "doln", "fmyvuhk", "gulslim", "kem", "man", "muhshim", "nanym", "sesuht", "shasholc", "shelgin", "slin", "tan", "thek", "vaslnulm", "xanoln", "xaslem", "xaxat", "zamen", "zan", "zhuhzhuhm", "znolc"],
 //        "verb-intrans": ["kem"], //impersonal/intransitives should be handled separately from normal transitives
 //        "verb-impers": ["kem"], //not done for simplicity - D.S. 02016-02-15
         "noun>adj": ["meht"],
@@ -56,14 +60,14 @@ Recommended use: download, open with webbrowser, click the buttons
         "valency": ["sun"],
         aspect: ["da", "eht", "feh", "sho", "um"],
         "case": ["zheh", "thot", "gu", "vah", "kahm", "vmeh"],
-        "obl-NP": [[" ", "adj", "obl-NP"], ["", "noun", "case"], ["", "pronoun", "case"], [" ", "noun", "post"], [" ", "pronoun", "post"]],
+        "obl-NP": [[" ", "adj", "obl-NP"], ["", "noun", "case"], [" ", "noun", "post"]],
         "obl": [[" ", "obl-NP", "obl"], "obl-NP"],
         "aux": ["dic", "dec", "dac", "dulc",
                 "golm", "gelm", "gym", "guht",
                 "jit", "jet", "jat", "julc",
                 "molt", "melt", "myt", "muht",
                 "shik", "shek", "shak", "shulk"],
-        "post": ["sno"]
+        "post": ["navnyc", "sholmak", "sno"]
       };
       var lorem = ["Sen", "VP", "Subj", "Obj"];
       var choose = function(arr) {
