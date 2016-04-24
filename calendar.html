@@ -1,19 +1,8 @@
 <html>
   <head>
-    <title>Calendar Experimenter</title>
+    <title>Gregorian to Sajem Tan Calendar Converter</title>
   </head>
   <body>
-    <h3>Units</h3>
-      <div id="input"></div>
-      <button onclick="addrow();">Add Unit</button>
-    <h3>Calendar Start</h3>
-      <span>Date: </span>
-      <input type="date" id="startday"></input>
-      <span> Time (UTC): </span>
-      <input type="time" id="starttime"></input>
-      <br>
-      <button onclick="setstart('email');">Set to first email</button>
-      <button onclick="setstart('jan01');">Set to 01/01/16</button>
     <h3>Date</h3>
       <span>Date: </span>
       <input type="date" id="calcday"></input>
@@ -22,33 +11,45 @@
       <br>
       <button onclick="setcalc('now');">Now</button>
     <h3>Result</h3>
-      <span id="outdate"></span>
+      <p><b>Year:</b> <span id="year"></span></p>
+      <p><b>Month:</b> <span id="month"></span> <b>Day:</b> <span id="monthday"></span></p>
+      <p><b>Cycle:</b> <span id="cycle"></span> <b>Day:</b> <span id="cycleday"></span></p>
+      <p><b>Hour:</b> <span id="hour"></span> <b>Minute:</b> <span id="minute"></span> <b>Millisecond:</b> <span id="millisecond"></span></p>
       <button onclick="makedate();">Show Date</button>
     <script>
-      var unitvalues = [];
-      var unitnames = [];
-      var addrow = function() {
-        var units = document.getElementById('input').children;
-        var base = "milisecond";
-        if (units.length != 0) {
-          var last = units[units.length - 1];
-          base = last.children[1].value;
-          unitvalues.push(parseInt(last.children[3].value));
-          unitnames.push(last.children[1].value);
-          last.children[1].outerHTML = '<span>' + base + '</span>';
-          last.children[3].outerHTML = '<span>' + unitvalues[unitvalues.length - 1] + '</span>';
-        }
-        document.getElementById('input').innerHTML += '<div class="unit"><span>Unit: </span><input type="text" placeholder="unit name"></input><span> = </span><input type="number"></input><span> ' + base + '</span></div>';
+      var countfrom = new Date("29 Nov 2015 18:34:14 -0500");
+      var timediff = function(datestring) {
+        var calc = new Date(datestring);
+        return calc.getTime() - countfrom.getTime();
       };
-      addrow();
-      var setstart = function(when) {
-        if (when == 'email') {
-          document.getElementById('startday').value = "2015-11-29";
-          document.getElementById('starttime').value = "23:34";
-        } else if (when == 'jan01') {
-          document.getElementById('startday').value = "2016-01-01";
-          document.getElementById('starttime').value = "00:00";
-        }
+      var splitdiff = function(milliseconds) {
+        var ret = {};
+        
+        var minutesfactor = Math.pow(6,6) * 4;
+        ret['millisecond'] = milliseconds % minutesfactor;
+        var minutes = (milliseconds - (milliseconds % minutesfactor)) / minutesfactor;
+        
+        var hoursfactor = 36;
+        ret['minute'] = minutes % hoursfactor;
+        var hours = (minutes - (minutes % hoursfactor)) / hoursfactor;
+        
+        var daysfactor = 10;
+        ret['hour'] = hours % daysfactor;
+        var days = (hours - (hours % daysfactor)) / daysfactor;
+        
+        var yearsfactor = 360;
+        var mdays = days % yearsfactor;
+        ret['year'] = (days - mdays) / yearsfactor;
+        
+        var cyclesfactor = 30;
+        ret['cycleday'] = mdays % cyclesfactor;
+        ret['cycle'] = (mdays - (mdays % cyclesfactor)) / cyclesfactor;
+        
+        var monthsfactor = 40;
+        ret['monthday'] = mdays % monthsfactor;
+        ret['month'] = (mdays - (mdays % monthsfactor)) / monthsfactor;
+        
+        return ret;
       };
       var setcalc = function(when) {
         if (when == 'now') {
@@ -58,24 +59,14 @@
           document.getElementById('calctime').value = s.slice(11,16);
         }
       };
-      var timediff = function() {
-        var start = new Date(document.getElementById('startday').value + ' ' + document.getElementById('starttime').value + ' -0000');
-        var calc = new Date(document.getElementById('calcday').value + ' ' + document.getElementById('calctime').value + ' -0000');
-        return calc.getTime() - start.getTime();
-      };
       var makedate = function() {
-        var n = timediff();
-        var l = [];
-        for (var i = 0; i < unitvalues.length; i++) {
-          l.push(n % unitvalues[i]);
-          n = (n - (n % unitvalues[i])) / unitvalues[i];
+        var ms = timediff(document.getElementById('calcday').value + ' ' + document.getElementById('calctime').value + ' -0000');
+        var dt = splitdiff(ms);
+        var ls = Object.keys(dt);
+        for (var i = 0; i < ls.length; i++) {
+          var k = ls[i];
+          document.getElementById(k).innerHTML = dt[k];
         }
-        l.push(n);
-        var s = l[0] + ' milliseconds';
-        for (var i = 0; i < l.length-1; i++) {
-          s = l[i+1] + ' ' + unitnames[i] + ' ' + s;
-        }
-        document.getElementById('outdate').innerHTML = s;
       };
     </script>
   </body>
