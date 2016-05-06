@@ -3,52 +3,96 @@
     <title>Gregorian to Sajem Tan Calendar Converter</title>
   </head>
   <body>
-    <h3>Date</h3>
-      <span>Date: </span>
-      <input type="date" id="calcday"></input>
-      <span> Time (UTC): </span>
-      <input type="time" id="calctime"></input>
-      <br>
-      <button onclick="setcalc('now');">Now</button>
-    <h3>Result</h3>
-      <p><b>Year:</b> <span id="year"></span></p>
-      <p><b>Month:</b> <span id="month"></span> <b>Day:</b> <span id="monthday"></span></p>
-      <p><b>Cycle:</b> <span id="cycle"></span> <b>Day:</b> <span id="cycleday"></span></p>
-      <p><b>Hour:</b> <span id="hour"></span> <b>Minute:</b> <span id="minute"></span> <b>Millisecond:</b> <span id="millisecond"></span></p>
-      <button onclick="makedate();">Show Date</button>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Gregorian</th>
+          <th>Sajem Tan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <span>Date: </span>
+            <input type="date" id="calcday"></input>
+            <br>
+            <span> Time (UTC): </span>
+            <input type="time" id="calctime"></input>
+          </td>
+          <td>
+            <p><b>Year:</b> <input id="year" type="number"></input></p>
+            <p><b>Month:</b> <select id="month"></select> <b>Day:</b> <input id="monthday" type="number" min="0" max="39"></input></p>
+            <p><b>Cycle:</b> <input id="cycle" type="number" min="0", max="11"></input> <b>Day:</b> <select id="cycleday"></select></p>
+            <p><b>Hour:</b> <input id="hour" type="number" min="0" max="9"></input> <b>Minute:</b> <input id="minute" type="number" min="0" max="35"></input> <b>Millisecond:</b> <input id="millisecond" type="number" min="0" max="186623"></input></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button onclick="toST();">Show Sajem Tan Date</button>
+    <button onclick="toGreg();">Show Gregorian Date</button>
+    <button onclick="setcalc('now');">Show Current Date</button>
+    <p>Note: Sajem Tan to Gregorian conversion uses the month and ignores the cycle if they conflict.</p>
     <script>
+      var letters = ["duhdem (d) [0]", "gigim (g) [1]", "xataxym (x) [2]", "jegen (j) [3]", "fijyc (f) [4]", "voljam (v) [5]", "thethat (th) [6]", "sekelt (s) [7]", "zuhzuhmelt (z) [8]", "shuhzhik (sh) [9]", "zhizlik (zh) [10]", "slik (sl) [11]", "zlolfit (zl) [12]", "molmelc (m) [13]", "nyzlan (n) [14]", "nasham (a) [15]", "xelteln (el) [16]", "tezet (e) [17]", "tolmolm (ol) [18]", "mizizlat (i) [19]", "slysyc (y) [20]", "shnuhk (uh) [21]", "tuln (ul) [22]", "cuhc (c) [23]", "tytyt (t) [24]", "kyfik (k) [25]", "zlnanic (ah) [26]", "thnuhduhk (eh) [27]", "snolzem (o) [28]", "vmyn (u) [29]"];
+      var roles = ["Divolm [0]", "Telzlnoln [1]", "Jidolk [2]", "Shelsheln [3]", "Thefam [4]", "Zatheln [5]", "Kizhult [6]", "Thefnolm [7]", "Vithit [8]"];
+
+      var cyclesel = document.getElementById("cycleday");
+      for (var i = 0; i < letters.length; i++) {
+        cyclesel.innerHTML += '<option value="' + i + '">' + letters[i] + '</option>';
+      }
+      var monthsel = document.getElementById("month");
+      for (var i = 0; i < roles.length; i++) {
+        monthsel.innerHTML += '<option value="' + i + '">' + roles[i] + '</option>';
+      }
+
       var countfrom = new Date("29 Nov 2015 18:34:14 -0500");
+      var minutesfactor = Math.pow(6,6) * 4;
+      var hoursfactor = 36;
+      var daysfactor = 10;
+      var yearsfactor = 360;
+      var cyclesfactor = 30;
+      var monthsfactor = 40;
       var timediff = function(datestring) {
         var calc = new Date(datestring);
         return calc.getTime() - countfrom.getTime();
       };
+      var toms = function(dt) {
+        var ret = dt['year'];
+        ret = ret * yearsfactor + dt['month'] * monthsfactor + dt['monthday'];
+        ret = ret * daysfactor + dt['hour'];
+        ret = ret * hoursfactor + dt['minute'];
+        ret = ret * minutesfactor + dt['millisecond'];
+        return countfrom.getTime() + ret;
+      }
       var splitdiff = function(milliseconds) {
         var ret = {};
-        
-        var minutesfactor = Math.pow(6,6) * 4;
+
+        var myrs = 0;
+        var yrmls = minutesfactor * hoursfactor * daysfactor * yearsfactor;
+        while (milliseconds < 0) {
+          myrs++;
+          milliseconds += yrmls;
+        }
+
         ret['millisecond'] = milliseconds % minutesfactor;
         var minutes = (milliseconds - (milliseconds % minutesfactor)) / minutesfactor;
-        
-        var hoursfactor = 36;
+
         ret['minute'] = minutes % hoursfactor;
         var hours = (minutes - (minutes % hoursfactor)) / hoursfactor;
-        
-        var daysfactor = 10;
+
         ret['hour'] = hours % daysfactor;
         var days = (hours - (hours % daysfactor)) / daysfactor;
-        
-        var yearsfactor = 360;
+
         var mdays = days % yearsfactor;
         ret['year'] = (days - mdays) / yearsfactor;
-        
-        var cyclesfactor = 30;
+        ret['year'] -= myrs;
+
         ret['cycleday'] = mdays % cyclesfactor;
         ret['cycle'] = (mdays - (mdays % cyclesfactor)) / cyclesfactor;
-        
-        var monthsfactor = 40;
+
         ret['monthday'] = mdays % monthsfactor;
         ret['month'] = (mdays - (mdays % monthsfactor)) / monthsfactor;
-        
+
         return ret;
       };
       var setcalc = function(when) {
@@ -57,17 +101,31 @@
           var s = d.toISOString();
           document.getElementById('calcday').value = s.slice(0,10);
           document.getElementById('calctime').value = s.slice(11,16);
+          toST();
+        } else {
+          var s = when.toISOString();
+          document.getElementById('calcday').value = s.slice(0,10);
+          document.getElementById('calctime').value = s.slice(11,16);
         }
       };
-      var makedate = function() {
+      var toST = function() {
         var ms = timediff(document.getElementById('calcday').value + ' ' + document.getElementById('calctime').value + ' -0000');
         var dt = splitdiff(ms);
         var ls = Object.keys(dt);
         for (var i = 0; i < ls.length; i++) {
           var k = ls[i];
-          document.getElementById(k).innerHTML = dt[k];
+          document.getElementById(k).value = dt[k];
         }
       };
+      var toGreg = function() {
+        var dt = {};
+        var l = ['year', 'month', 'monthday', 'hour', 'minute', 'millisecond'];
+        for (var i = 0; i < l.length; i++) {
+          dt[l[i]] = parseInt(document.getElementById(l[i]).value);
+        }
+        var d = new Date(toms(dt));
+        setcalc(d);
+      }
     </script>
   </body>
 </html>
