@@ -21,8 +21,9 @@
           </td>
           <td>
             <p><b>Year:</b> <input id="year" type="number"></input></p>
-            <p><b>Month:</b> <select id="month"></select> <b>Day:</b> <input id="monthday" type="number" min="0" max="39"></input></p>
-            <p><b>Cycle:</b> <input id="cycle" type="number" min="0", max="11"></input> <b>Day:</b> <select id="cycleday"></select></p>
+            <input type="radio" name="mode" value="month"></input><span><b>Month:</b> <select id="month"></select> <b>Day:</b> <input id="monthday" type="number" min="0" max="39"></input></span>
+            <br>
+            <input type="radio" name="mode" value="cycle"></input><span><b>Cycle:</b> <input id="cycle" type="number" min="0", max="11"></input> <b>Day:</b> <select id="cycleday"></select></span>
             <p><b>Hour:</b> <input id="hour" type="number" min="0" max="9"></input> <b>Minute:</b> <input id="minute" type="number" min="0" max="35"></input> <b>Millisecond:</b> <input id="millisecond" type="number" min="0" max="186623"></input></p>
           </td>
         </tr>
@@ -31,7 +32,6 @@
     <button onclick="toST();">Show Sajem Tan Date</button>
     <button onclick="toGreg();">Show Gregorian Date</button>
     <button onclick="setcalc('now');">Show Current Date</button>
-    <p>Note: Sajem Tan to Gregorian conversion uses the month and ignores the cycle if they conflict.</p>
     <script>
       var letters = ["duhdem (d) [0]", "gigim (g) [1]", "xataxym (x) [2]", "jegen (j) [3]", "fijyc (f) [4]", "voljam (v) [5]", "thethat (th) [6]", "sekelt (s) [7]", "zuhzuhmelt (z) [8]", "shuhzhik (sh) [9]", "zhizlik (zh) [10]", "slik (sl) [11]", "zlolfit (zl) [12]", "molmelc (m) [13]", "nyzlan (n) [14]", "nasham (a) [15]", "xelteln (el) [16]", "tezet (e) [17]", "tolmolm (ol) [18]", "mizizlat (i) [19]", "slysyc (y) [20]", "shnuhk (uh) [21]", "tuln (ul) [22]", "cuhc (c) [23]", "tytyt (t) [24]", "kyfik (k) [25]", "zlnanic (ah) [26]", "thnuhduhk (eh) [27]", "snolzem (o) [28]", "vmyn (u) [29]"];
       var roles = ["Divolm [0]", "Telzlnoln [1]", "Jidolk [2]", "Shelsheln [3]", "Thefam [4]", "Zatheln [5]", "Kizhult [6]", "Thefnolm [7]", "Vithit [8]"];
@@ -57,8 +57,12 @@
         return calc.getTime() - countfrom.getTime();
       };
       var toms = function(dt) {
-        var ret = dt['year'];
-        ret = ret * yearsfactor + dt['month'] * monthsfactor + dt['monthday'];
+        var ret = dt['year'] * yearsfactor;
+        if (document.querySelector('input[name="mode"]:checked').value == "month") {
+          ret = ret + dt['month'] * monthsfactor + dt['monthday'];
+        } else {
+          ret = ret + dt['cycle'] * cyclesfactor + dt['cycleday'];
+        }
         ret = ret * daysfactor + dt['hour'];
         ret = ret * hoursfactor + dt['minute'];
         ret = ret * minutesfactor + dt['millisecond'];
@@ -119,7 +123,7 @@
       };
       var toGreg = function() {
         var dt = {};
-        var l = ['year', 'month', 'monthday', 'hour', 'minute', 'millisecond'];
+        var l = ['year', 'month', 'monthday', 'cycle', 'cycleday', 'hour', 'minute', 'millisecond'];
         for (var i = 0; i < l.length; i++) {
           dt[l[i]] = parseInt(document.getElementById(l[i]).value);
         }
