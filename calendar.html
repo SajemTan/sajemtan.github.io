@@ -34,7 +34,8 @@
     <button onclick="setcalc('now');">Show Current Date</button>
     <script>
       var letters = ["duhdem (d) [0]", "gigim (g) [1]", "xataxym (x) [2]", "jegen (j) [3]", "fijyc (f) [4]", "voljam (v) [5]", "thethat (th) [6]", "sekelt (s) [7]", "zuhzuhmelt (z) [8]", "shuhzhik (sh) [9]", "zhizlik (zh) [10]", "slik (sl) [11]", "zlolfit (zl) [12]", "molmelc (m) [13]", "nyzlan (n) [14]", "nasham (a) [15]", "xelteln (el) [16]", "tezet (e) [17]", "tolmolm (ol) [18]", "mizizlat (i) [19]", "slysyc (y) [20]", "shnuhk (uh) [21]", "tuln (ul) [22]", "cuhc (c) [23]", "tytyt (t) [24]", "kyfik (k) [25]", "zlnanic (ah) [26]", "thnuhduhk (eh) [27]", "snolzem (o) [28]", "vmyn (u) [29]"];
-      var roles = ["Divolm [0]", "Telzlnoln [1]", "Jidolk [2]", "Shelsheln [3]", "Thefam [4]", "Zatheln [5]", "Kizhult [6]", "Thefnolm [7]", "Vithit [8]"];
+      //var roles = ["Divolm [0]", "Telzlnoln [1]", "Jidolk [2]", "Shelsheln [3]", "Thefam [4]", "Zatheln [5]", "Kizhult [6]", "Thefnolm [7]", "Vithit [8]"];
+      var roles = ["Divolm", "Telzlnoln", "Jidolk", "Shelsheln", "Thefam", "Zatheln", "Kizhult", "Thefnolm", "Vithit"];
 
       var cyclesel = document.getElementById("cycleday");
       for (var i = 0; i < letters.length; i++) {
@@ -52,6 +53,7 @@
       var yearsfactor = 360;
       var cyclesfactor = 30;
       var monthsfactor = 40;
+      var rolesfactor = 9;
       var timediff = function(datestring) {
         var calc = new Date(datestring);
         return calc.getTime() - countfrom.getTime();
@@ -59,7 +61,12 @@
       var toms = function(dt) {
         var ret = dt['year'] * yearsfactor;
         if (document.querySelector('input[name="mode"]:checked').value == "month") {
-          ret = ret + dt['month'] * monthsfactor + dt['monthday'];
+          //ret = ret + dt['month'] * monthsfactor + dt['monthday'];
+          var x = dt['monthday'];
+          while (x % rolesfactor != dt['month']) {
+            x += monthsfactor;
+          }
+          ret += x;
         } else {
           ret = ret + dt['cycle'] * cyclesfactor + dt['cycleday'];
         }
@@ -94,8 +101,10 @@
         ret['cycleday'] = mdays % cyclesfactor;
         ret['cycle'] = (mdays - (mdays % cyclesfactor)) / cyclesfactor;
 
+        //ret['monthday'] = mdays % monthsfactor;
+        //ret['month'] = (mdays - (mdays % monthsfactor)) / monthsfactor;
         ret['monthday'] = mdays % monthsfactor;
-        ret['month'] = (mdays - (mdays % monthsfactor)) / monthsfactor;
+        ret['month'] = mdays % rolesfactor;
 
         return ret;
       };
