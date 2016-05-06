@@ -31,14 +31,15 @@ Recommended use: download, open with webbrowser, click the buttons
       var senmap = {
         para: [["<br>", "sen", "para"], ["<br>", "sen"]],
         sen: [[" ", "VP", "NP"], [" ", "NP", "VP", "NP"], [" ", "VP", "NP", "obl"], [" ", "NP", "VP", "NP", "obl"]],
-        VP: ["verb"],
+        VP: ["verb", [" ", "adv", "verb"]],
         verb: ["verb-aspect", ["", "verb-aspect", "valency"]],
         "verb-aspect": [["", "verb-no-inf", "aspect"]],
         "verb-no-inf": ["verb-root", ["", "adj", "adj>verb"]],
         NP: ["sNP", "pronoun", [" ", "NP", "conj", "NP"]],
         conj: ["keh"],
-        sNP: [[" ", "adj", "sNP"], "noun"],
-        adj: [["", "noun", "noun>adj"], "adj-root", "number", [" ", "adv", "adj"]],
+        sNP: [[" ", "adjP", "sNP"], "noun"],
+        "adjP": ["adj", [" ", "adv", "adjP"]],
+        adj: [["", "noun", "noun>adj"], "adj-root", "number"],
         number: ["tim", "dec", "fam", "vulc", "sluht", "zlik", "shen", "zhat", "kulk", "guhn", "znek", "thnolt", "vmelt",
                  "tyt", "dolk", "felt", "vyk", "slolc", "zlelc", "xek", "folt", "zhelt"],
         adv: ["adv-root"],
@@ -60,7 +61,7 @@ Recommended use: download, open with webbrowser, click the buttons
         "valency": ["sun"],
         aspect: ["da", "eht", "feh", "sho", "um"],
         "case": ["zheh", "thot", "gu", "vah", "kahm", "vmeh"],
-        "obl-NP": [[" ", "adj", "obl-NP"], ["", "noun", "case"], [" ", "noun", "post"]],
+        "obl-NP": [[" ", "adjP", "obl-NP"], ["", "noun", "case"], [" ", "noun", "post"]],
         "obl": [[" ", "obl-NP", "obl"], "obl-NP"],
         "aux": ["dic", "dec", "dac", "dulc",
                 "golm", "gelm", "gym", "guht",
@@ -73,19 +74,24 @@ Recommended use: download, open with webbrowser, click the buttons
       var choose = function(arr) {
         return arr[Math.floor(Math.random() * arr.length)];
       }
+      var lasttree = [];
       var build = function(tree, lor) {
+        var ret = ["tree", "path"];
         if (!tree) {
-          return "{mistake}";
-        }
-        if (tree.constructor === Array) {
-          var r = "";
+          ret[0] = "{mistake}";
+          ret[1] = "{mistake}";
+        } else if (tree.constructor === Array) {
+          ret[0] = "";
+          ret[1] = [];
+          var r;
           for (var i = 1; i < tree.length; i++) {
             if (i !== 1) {
-              r += tree[0];
+              ret[0] += tree[0];
             }
-            r += build(tree[i], lor);
+            r = build(tree[i], lor);
+            ret[0] += r[0];
+            ret[1].push(r[1]);
           }
-          return r;
         } else {
           var m;
           if (lor) {
@@ -94,14 +100,19 @@ Recommended use: download, open with webbrowser, click the buttons
             m = senmap;
           }
           if (m.hasOwnProperty(tree)) {
-            return build(choose(m[tree]), lor);
+            var h = build(choose(m[tree]), lor);
+            ret[0] = h[0];
+            ret[1] = [tree].concat(h[1]);
           } else {
-            return tree;
+            ret = [tree, tree];
           }
         }
+        return ret;
       }
       var disp = function(lor) {
-        document.getElementById("out").innerHTML = build("para", lor);
+        var l = build("para", lor);
+        document.getElementById("out").innerHTML = l[0];
+        lasttree = l[1];
       }
     </script>
   </body>
