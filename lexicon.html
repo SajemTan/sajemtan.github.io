@@ -1,0 +1,77 @@
+<html>
+  <head>
+    <title>Sajem Tan Lexicon</title>
+    <script type="text/javascript" src="lexicon.js"></script>
+  </head>
+  <body>
+    <span>Search: </span><input type="text" id="search" onkeyup="doSearch();"></input><br>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Root</th>
+          <th>Definition</th>
+        </tr>
+      </thead>
+      <tbody id="defs">
+      </tbody>
+    </table>
+    <script>
+      //TODO: multiple sorting methods
+      //TODO: multiple output formats
+      var searchMatch = function(domNode, queryString) {
+        function decodeHtml(html) {
+          var txt = document.createElement("textarea");
+          txt.innerHTML = html;
+          return txt.value;
+        }
+        return decodeHtml(domNode.outerHTML).toLowerCase().includes(decodeHtml(queryString).toLowerCase());
+      };
+      var doSearch = function() {
+        var searchstr = document.getElementById("search").value;
+        var l = document.getElementById("defs").childNodes;
+        for (var i = 0; i < l.length; i++) {
+          l[i].style.display = searchMatch(l[i], searchstr) ? "" : "none";
+        }
+      };
+      var makeRow = function(word) {
+        var ret = "<tr id=\"" + word[0] + "\" data-json=\"" + escape(JSON.stringify(word)) + "\"><td><b>" + word[0] + "</b></td><td>";
+        for (var i = 0; i < word[1].length; i++) {
+          var df = word[1][i];
+          ret += "<p><b>" + df.path.join(" > ") + "</b></p><ul>";
+          for (var j = 0; j < df.defs.length; j++) {
+            ret += "<li>" + df.defs[j] + "</li>";
+          }
+          if (df.hasOwnProperty("archaic")) {
+            ret += "<li><b>Archaic</b> See: <a href=\"#" + df.archaic + "\">" + df.archaic + "</a></li>";
+          }
+          if (df.hasOwnProperty("see also")) {
+            ret += "<li><b>See Also: </b><a href=\"#" + df["see also"] + "\">" + df["see also"] + "</a></li>";
+          }
+          if (df.path[0] == "aux") {
+            ret += "<li style=\"display: none;\">" + generateAux(word[0]) + "</li>";
+          }
+          if (df.hasOwnProperty("example")) {
+            ret += "<li><b>Example: </b>" + df.example + "</li>";
+          }
+          ret += "</ul>";
+        }
+        return ret + "</td></tr>";
+      };
+      var setup = function() {
+        var l = [];
+        var o = listWordsProps();
+        for (var k in o) {
+          l.push([k, o[k]]);
+        }
+        l.sort(function(a, b) { return sortAlpha(a[0], b[0]); });
+        var s = "";
+        var tbl = document.getElementById('defs');
+        for (var i = 0; i < l.length; i++) {
+          s += makeRow(l[i]);
+        }
+        tbl.innerHTML = s;
+      };
+      setup();
+    </script>
+  </body>
+</html>
