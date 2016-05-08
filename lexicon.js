@@ -369,6 +369,30 @@ var listWordsProps = function() {
   doObj(lexicon);
   return words;
 };
+var lexicon_flat = listWordsProps();
+var queryLexPath = function(pth, includeArchaic, inclkeys) {
+  var ret = {};
+  var keylist = [];
+  for (key in lexicon_flat) {
+    var l = [];
+    for (var i = 0; i < lexicon_flat[key].length; i++) {
+      if (!includeArchaic && lexicon_flat[key][i].hasOwnProperty("archaic")) {
+        continue;
+      }
+      if (JSON.stringify(pth) == JSON.stringify(lexicon_flat[key][i].path.slice(0, pth.length))) {
+        l.push(lexicon_flat[key][i]);
+      }
+    }
+    if (l.length > 0) {
+      ret[key] = JSON.parse(JSON.stringify(l));
+      keylist.push(key);
+    }
+  }
+  if (inclkeys) {
+    ret["keys"] = keylist;
+  }
+  return ret;
+};
 var sortAlpha = function(word1, word2) {
   var tols = function(w) {
     var order = ["d", "g", "x", "j", "f", "v", "th", "s", "z", "sh", "zh", "sl", "zl", "m", "n", "a", "el", "e", "ol", "i", "y", "uh", "ul", "c", "t", "k", "ah", "eh", "o", "u"];
