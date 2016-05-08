@@ -6,11 +6,12 @@ Recommended use: download, open with webbrowser, click the buttons
   -->
   <head>
     <title>Sajem Tan lorem ipsum / random sentence generator</title>
+    <script type="text/javascript" src="lexicon.js"></script>
   </head>
   <body>
-    <p id="out"></p>
     <button onclick="disp(true);">Generate nonsense text</button>
     <button onclick="disp(false);">Generate random text</button>
+    <p id="out"></p>
     <script>
       var loremmap = {
         "para": [[" ", "sen", "para"], [" ", "sen"]],
@@ -28,6 +29,9 @@ Recommended use: download, open with webbrowser, click the buttons
         "root-vowel": ["ol", "e", "el", "i", "a", "ul", "uh", "y"],
         "suf-vowel": ["o", "ah", "eh", "u"],
       };
+      var getlist = function(pth) {
+        return queryLexPath(pth, false, true).keys;
+      };
       var senmap = {
         para: [["<br>", "sen", "para"], ["<br>", "sen"]],
         sen: [[" ", "VP", "NP"], [" ", "NP", "VP", "NP"], [" ", "VP", "NP", "obl"], [" ", "NP", "VP", "NP", "obl"]],
@@ -40,35 +44,30 @@ Recommended use: download, open with webbrowser, click the buttons
         sNP: [[" ", "adjP", "sNP"], "noun"],
         "adjP": ["adj", [" ", "adv", "adjP"]],
         adj: [["", "noun", "noun>adj"], "adj-root", "number"],
-        number: ["tim", "dec", "fam", "vulc", "sluht", "zlik", "shen", "zhat", "kulk", "guhn", "znek", "thnolt", "vmelt",
-                 "tyt", "dolk", "felt", "vyk", "slolc", "zlelc", "xek", "folt", "zhelt"],
+        number: Object.keys(lexicon.number.decimal).concat(Object.keys(lexicon.number.senary)),
         adv: ["adv-root"],
         pronoun: ["pronoun-root", ["", "pronoun", "noun>noun"]],
-        "pronoun-root": ["seh", "theh", "thu", "vo", "vu", "zeh", "zhu", "zlo", "zo"],
+        "pronoun-root": getlist(["pronoun"]),
         "plain-noun": [["", "verb-no-inf", "verb>noun"], ["", "plain-noun", "noun>noun"], "noun-root", ["", "noun-root", "plain-noun"]],
         noun: ["plain-noun", "pronoun", [" ", "shehn", "plain-noun", "om"], [" ", "tahn", "plain-noun", "om"]],
         //om added even when unconjugated - D.S. 02016-04-24
-        "noun-root": ["cejym", "cuhc", "culjim", "din", "divolm", "duhdem", "femek", "fijyc", "gajin", "gamyk", "gigim", "gyn", "jafin", "jaxin", "jegen", "jidolk", "jikin", "jizlet", "kizhult", "kolthic", "kuhc", "kyfik", "mizizlat", "molm", "molmelc", "muhc", "nasham", "nyzlan", "sekelt", "shelsheln", "shnuhk", "shuhzhik", "slik", "slin", "slysyc", "snolzem", "snym", "sulfekahslifazhislitikesixahsloldolshyc", "sulslem", "tan", "telzlnoln", "tetan", "tezet", "thefam", "thefnolm", "thethat", "thneduht", "thnuhduhk", "tolmolm", "tuln", "tytyt", "vithit", "vmelfelc", "vmyn", "voljam", "xamatin", "xataxym", "xelteln", "xulkat", "zatenym", "zatheln", "zhasik", "zhetam", "zhiman", "zhizlik", "zhuhzhim", "zlislym", "zlnanic", "zlolfit", "zlolzhit", "zlulc", "znenan", "znolk", "zuhzuhmelt"],
-        "adj-root": ["femek", "jelk", "met", "nymem", "sajem", "simem", "slik", "slnuhm", "solm", "suhzhnolm", "theln", "zlislym", "znim"],
-        "adv-root": ["kic", "nacen", "slet", "sluln", "snat", "shan", "thec", "tholk", "voln"],
-        "verb-root": ["cejym", "delgem", "doln", "fmyvuhk", "gulslim", "kem", "man", "muhshim", "nanym", "sesuht", "shasholc", "shelgin", "slin", "tan", "thek", "vaslnulm", "xanoln", "xaslem", "xaxat", "zamen", "zan", "zhuhzhuhm", "znolc"],
+        "noun-root": getlist(["noun"]),
+        "adj-root": getlist(["adj"]),
+        "adv-root": getlist(["adv"]),
+        "verb-root": getlist(["verb"]),
 //        "verb-intrans": ["kem"], //impersonal/intransitives should be handled separately from normal transitives
 //        "verb-impers": ["kem"], //not done for simplicity - D.S. 02016-02-15
-        "noun>adj": ["meht"],
-        "noun>noun": ["ah", "kah", "mon", "so", "zhum"],
-        "verb>noun": ["noc"],
-        "adj>verb": ["zhut"],
-        "valency": ["sun"],
-        aspect: ["da", "eht", "feh", "sho", "um"],
-        "case": ["zheh", "thot", "gu", "vah", "kahm", "vmeh"],
+        "noun>adj": getlist(["suffix", "noun>adj"]),
+        "noun>noun": getlist(["suffix", "noun>noun"]),
+        "verb>noun": getlist(["suffix", "verb>noun"]),
+        "adj>verb": getlist(["suffix", "noun>verb"]), //discrepancy in name/usage - D.S. 02016-05-08
+        "valency": getlist(["suffix", "valency"]),
+        aspect: getlist(["suffix", "aspect"]),
+        "case": getlist(["suffix", "case"]),
         "obl-NP": [[" ", "adjP", "obl-NP"], ["", "noun", "case"], [" ", "noun", "post"]],
         "obl": [[" ", "obl-NP", "obl"], "obl-NP"],
-        "aux": ["dic", "dec", "dac", "dulc",
-                "golm", "gelm", "gym", "guht",
-                "jit", "jet", "jat", "julc",
-                "molt", "melt", "myt", "muht",
-                "shik", "shek", "shak", "shulk"],
-        "post": ["navnyc", "sholmak", "sno"]
+        "aux": [].concat.apply([], getlist(["aux"]).map(generateAux)),
+        "post": getlist(["post"])
       };
       var lorem = ["Sen", "VP", "Subj", "Obj"];
       var choose = function(arr) {
