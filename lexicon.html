@@ -59,9 +59,8 @@
       };
       var setup = function() {
         var l = [];
-        var o = listWordsProps();
-        for (var k in o) {
-          l.push([k, o[k]]);
+        for (var k in lexicon_flat) {
+          l.push([k, lexicon_flat[k]]);
         }
         l.sort(function(a, b) { return sortAlpha(a[0], b[0]); });
         var s = "";
