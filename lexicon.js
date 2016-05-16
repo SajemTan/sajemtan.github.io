@@ -12,6 +12,7 @@ var lexicon = {
     "solm": ["fast", "swift", "quick (of moving objects)", ["example", "the feathered one is *solm*"], ["see also", "theln"]],
     "suhzhnolm": ["pleasant"],
     "theln": ["fast", "quick (or processes/actions other than motion verbs)", ["example", "*Kizhult* coins words *theln*"], ["see also", "solm"]],
+    "tishnim": ["sleep"],
     "vynit": ["long (time)", "slow", "delayed"],
     "xen": ["incorrect"],
     "zlislym": ["creepy"],
@@ -102,7 +103,7 @@ var lexicon = {
     "slysyc": ["snake"],
     "snolzem": ["knot"],
     "snym": ["cloud"],
-    "sulfekahslifazhislitikesixahsloldolshyc": ["cookie"],
+    "sulfekaslifazhislitikesixasloldolshyc": ["cookie"],
     "sulslem": ["nectar"],
     "tah": [["archaic", "tan"], "honey", "vomit", "language"],
     "tan": ["honey", "vomit", "language"],
@@ -256,7 +257,7 @@ var lexicon = {
       "sun": ["passive voice"]
     },
     "verb>noun": {
-      "noc": ["the end state or product of an action"]
+      "noc": ["the end state or product of an action", ["gloss", "result"]]
     }
   },
   "verb": {
