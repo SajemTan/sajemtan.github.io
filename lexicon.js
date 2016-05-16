@@ -103,6 +103,7 @@ var lexicon = {
     "slysyc": ["snake"],
     "snolzem": ["knot"],
     "snym": ["cloud"],
+    "sulfekahslifazhislitikesixahsloldolshyc": [["archaic", "sulfekaslifazhislitikesixasloldolshyc"], "cookie"],
     "sulfekaslifazhislitikesixasloldolshyc": ["cookie"],
     "sulslem": ["nectar"],
     "tah": [["archaic", "tan"], "honey", "vomit", "language"],
