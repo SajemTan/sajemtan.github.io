@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <title>Sajem Tan Glosser</title>
+    <script type="text/javascript" src="lexicon.js"></script>
+    <style>
+      .root {
+        color: brown;
+      }
+      .root-unk {
+        color: orange;
+      }
+      .suf {
+        color: green;
+      }
+      .suf-unk {
+        color: red;
+      }
+      .other {
+        color: grey;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="sen" type="text"></textarea>
+    <br>
+    <button onclick="gloss();">Gloss</button>
+    <p id="out"></p>
+    <script>
+      var root = /^(([cdfgjkmnstvxz]|[sz]l|[stz]h|[fv][mn]|[sz][hl]?n|thn)([aeiy]|[eou]l|uh))+[ckmnt]/i;
+      var suf = /^([cdfgjkmnstvxz]|[sz]l|[stz]h)?([ou]|[ae]h)[ckmnt]?/i;
+      var glosschop = function(el, regex, cls) {
+        var s = el.innerHTML;
+        var q = "";
+        var rep = "";
+        while (s.length > 0) {
+          var m = s.match(regex);
+          if (m) {
+            if (q.length > 0) {
+              rep += '<span class="other" title="' + q + '">' + q + '</span>';
+              q = "";
+            }
+            s = s.slice(m[0].length);
+            rep += '<span class="' + cls + '" title="' + m[0] + '">' + m[0] + '</span>';
+          } else {
+            q += s[0];
+            s = s.slice(1);
+          }
+        }
+        if (q.length > 0) {
+          rep += '<span class="other" title="' + q + '">' + q + '</span>';
+        }
+        el.outerHTML = rep;
+      };
+      var gloss = function() {
+        var out = document.getElementById("out");
+        out.innerHTML = '<span>' + document.getElementById("sen").value + '</span>';
+        glosschop(out.firstChild, /^\s+/i, "space");
+        Array.prototype.slice.call(document.getElementsByClassName("other")).map(function(el) { glosschop(el, root, "root"); });
+        Array.prototype.slice.call(document.getElementsByClassName("other")).map(function(el) { glosschop(el, suf, "suf"); });
+        var wasSpace = true;
+        for (var i = 0; i < out.childNodes.length; i++) {
+          var node = out.childNodes[i];
+          if (node.className == "space") {
+            wasSpace = true;
+          } else {
+            if (node.className == "root" || node.className == "suf") {
+              if (lexicon_flat.hasOwnProperty(node.innerHTML)) {
+                if (lexicon_flat[node.innerHTML][0].hasOwnProperty("gloss")) {
+                  node.innerHTML = lexicon_flat[node.innerHTML][0].gloss;
+                } else {
+                  node.innerHTML = lexicon_flat[node.innerHTML][0].defs[0];
+                }
+              } else {
+                node.className += "-unk";
+              }
+            }
+            if (!wasSpace) {
+              node.outerHTML = '-' + node.outerHTML;
+              i++;
+            }
+            wasSpace = false;
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
