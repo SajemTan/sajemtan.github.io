@@ -138,7 +138,7 @@ var lexicon = {
     "zatheln": ["spider", "silkworm"],
     "zhasik": ["sky", "canopy of a forest", "ceiling of a cave (but not of a house)"],
     "zhetam": ["pollen", "semen"],
-    "zhetamvalkult": ["biological father"],
+    "zhetamvakult": ["biological father"],
     "zhimahn": [["archaic", "zhiman"], "feather"],
     "zhiman": ["feather", "long lustrous hair"],
     "zhizlik": ["fish"],
@@ -224,7 +224,8 @@ var lexicon = {
   },
   "suffix": {
     "aspect": {
-      "da": ["perfective"],
+      "da": [["archaic", "dah"], "perfective"],
+      "dah": ["perfective"],
       "eht": ["habitual"],
       "fe": [["archaic", "feh"], "durative"],
       "feh": ["durative"],
