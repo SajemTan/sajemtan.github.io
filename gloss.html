@@ -53,7 +53,7 @@
       };
       var gloss = function() {
         var out = document.getElementById("out");
-        out.innerHTML = '<span>' + document.getElementById("sen").value + '</span>';
+        out.innerHTML = '<span>' + document.getElementById("sen").value.toLowerCase() + '</span>';
         glosschop(out.firstChild, /^\s+/i, "space");
         Array.prototype.slice.call(document.getElementsByClassName("other")).map(function(el) { glosschop(el, root, "root"); });
         Array.prototype.slice.call(document.getElementsByClassName("other")).map(function(el) { glosschop(el, suf, "suf"); });
