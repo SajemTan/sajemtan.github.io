@@ -1,7 +1,9 @@
 var lexicon = {
   "adj": {
     "danec": ["borrowed", "copied", "imitated"],
+    "dasnan": ["natural", "cosmic"],
     "femek": ["noetic"],
+    "gevmulk": ["underground", "subterranean", "chthonic"],
     "jelk": ["full"],
     "met": ["falling", "collapsing", "tumbling (chaotic falling, like an stone bouncing many times as it falls down a hill, or a vase breaking when it hits after a simple ballistic fall)"],
     "nymem": ["clumsy"],
@@ -42,7 +44,7 @@ var lexicon = {
       "fnit": [["form", "fn", "t"], "to be willing to"],
       "jit": [["form", "j", "t"], "must", "vital", "necessary"],
       "shik": [["form", "sh", "k"], "be able to"],
-      "sin": [["form", "s", "n"], "may", "let it be that"]
+      "sin": [["form", "s", "n"], "may", "let it be that", "imperative"]
     },
     "ol": {
       "fmolk": [["form", "fm", "k"], "irrealis mood", "counterfactual"],
@@ -68,6 +70,7 @@ var lexicon = {
     "cuhc": ["foot"],
     "culjim": ["ant"],
     "danectheknoc": ["the romanization system"],
+    "dasnan": ["nature", "outer space"],
     "delgemzhum": ["Pokemon"],
     "din": ["home", "hive"],
     "divolm": ["thunder", "phonology"],
@@ -83,6 +86,8 @@ var lexicon = {
     "jaxin": ["plastic or wooden chair, especially one that has been mass-produced", "schoolroom desk", ["gloss", "chair"]],
     "jegen": ["hook"],
     "jegentheknoc": ["the writing system"],
+    "jekelm": ["book", "physical book", "paper book"],
+    "jekelmtuc": ["page", "book cover", "binding"],
     "jidolk": ["flower"],
     "jikin": ["wiki", "notebook", "bulletin board"],
     "jizlet": ["Quizlet"],
@@ -155,6 +160,7 @@ var lexicon = {
     "zhiman": ["feather", "long lustrous hair"],
     "zhizlik": ["fish"],
     "zhuhzhim": ["dust", "a floating particle; something that settles down or doesn't"],
+    "zlantak": ["domino"],
     "zlislym": ["skeleton"],
     "zlnanic": ["chameleon"],
     "zlolfit": ["wing"],
@@ -266,6 +272,7 @@ var lexicon = {
       "mon": ["collective noun", "a group of"],
       "ok": ["horrendous", "excedingly awful"],
       "so": ["having-one", "an entity having the thing referred to by the stem", ["example", "zhiman (feather) > zhimanso (feathered one)"]],
+      "tuc": ["part of"],
       "zhum": ["pet"]
     },
     "noun>verb": {
@@ -311,6 +318,7 @@ var lexicon = {
       "femek": ["deduce", "realize"],
       "fmyvu": [["archaic", "fmyvuhk"], "make", "create"],
       "fmyvuhk": ["make", "create"],
+      "gevmulk": ["bury, especially treasure or waste", "inter", "inhume", ["gloss", "bury"], ["example", "zlovmeh zlolzhit gevmulkfeh molt Thefnolm. = Bear did not bury his poop."]],
       "gulslim": ["nourish", "feed", "sustain"],
       "kasyn": ["repeat", "rerun a TV episode"],
       "kem": ["shake", "cause to vibrate"],
@@ -327,6 +335,7 @@ var lexicon = {
       "tan": ["speak", "vomit"],
       "thek": ["scribble", "scrawl"],
       "tho": [["archaic", "thek"], "scribble", "scrawl"],
+      "thycam": ["read"],
       "vaslnulm": ["cease"],
       "vesnen": ["share"],
       "xanoln": ["greet"],
