@@ -81,6 +81,11 @@
             wasSpace = false;
           }
         }
+        var ls = document.querySelectorAll("span.root, span.suf");
+        console.log(ls);
+        for (var i = 0; i < ls.length; i++) {
+          ls[i].outerHTML = '<a href="lexicon.html#' + ls[i].title + '" title="' + ls[i].title + '" class="' + ls[i].className + '">' + ls[i].innerHTML + '</a>';
+        }
       };
     </script>
   </body>
