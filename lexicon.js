@@ -179,6 +179,7 @@ var lexicon = {
     "zlantak": ["domino"],
     "zlislym": ["skeleton"],
     "zlnanic": ["chameleon"],
+    "zlnathnyn": ["chimera", "any mythical or fictional animal with parts taken from various animals"],
     "zlolfit": ["wing"],
     "zlolzhit": ["poop (thanks, Thunder's sister)"],
     "zlulc": ["lump", "dollop (of a substance)", "instance (of something more abstract)"],
