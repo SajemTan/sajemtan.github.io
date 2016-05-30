@@ -9,6 +9,7 @@
     </div>
     <br>
     <br>
+    <br>
     <table border="1">
       <thead>
         <tr>
@@ -67,6 +68,7 @@
         return ret + "</td></tr>";
       };
       var setupAlt = function() {
+        //TODO incorporate "see also" and "example"
         var headsort = function(a, b) {
           return sortAlpha(a[0][0] == "=" ? a[0].split("(")[1].split(")")[0] : a[0],
                            b[0][0] == "=" ? b[0].split("(")[1].split(")")[0] : b[0]);
@@ -81,6 +83,9 @@
           if (pth[0] == "verb") {
             r += " verb";
           }
+          if (pth[0] == "post") {
+            r = "postposition";
+          }
           return "(" + r + ")";
         };
         s = "<tr><td></td><td><pre>";
@@ -94,6 +99,9 @@
           }
           a = w[0] + " -- " + w[1].map(function(x) { return disp_path(x.path) + " " + x.defs.join("; "); }).join("; ");
           for (var j = 0; j < w[1].length; j++) {
+            if (w[1][j].path[0] == "suffix" && a[0] != "-") {
+              a = "-" + a;
+            }
             if (w[1][j].hasOwnProperty("archaic")) {
               a += " [archaic, xref \"" + w[1][j].archaic + "\"]";
               break;
