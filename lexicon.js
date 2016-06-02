@@ -113,6 +113,7 @@ var lexicon = {
     "kolthic": ["the joy and exhaustion that comes after final exams are over"],
     "kuhc": ["letter"],
     "kyfik": ["arm"],
+    "misleln": ["orange"],
     "mizizlat": ["wheelbarrow", "cart", "trolley", "pram"],
     "molm": ["tribe"],
     "molmelc": ["roof", "shelter"],

@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <title>Sajem Tan Root-finder</title>
+    <script type="text/javascript" src="lexicon.js"></script>
+  </head>
+  <body>
+    <h3>Sajem Tan unused-root-finder</h3>
+    <p>Number of syllables:</p>
+    <span>Minimum: </span>
+    <input id="min" type="number" value="1" min="1"></input>
+    <br>
+    <span>Maximum: </span>
+    <input id="max" type="number" value="5" min="1"></input>
+    <p>Type:</p>
+    <input type="radio" name="type" value="root" checked="checked">Root</input>
+    <input type="radio" name="type" value="suf">Suffix/Particle</input>
+    <br>
+    <br>
+    <button onclick="find(document.getElementById('min').value, document.getElementById('max').value, document.querySelector('input[name=&quot;type&quot;]:checked').value);">Generate</button>
+    <h3>Result:</h3>
+    <p id="out"></p>
+    <script>
+      var c = ["fm", "fn", "vm", "vn", "sn", "zn", "shn", "zhn", "sln", "zln", "thn", "c", "t", "k", "d", "g", "m", "n", "f", "v", "th", "s", "z", "sh", "zh", "sl", "zl", "x", "j"];
+      var rv = ["ol", "e", "el", "i", "a", "ul", "uh", "y"];
+      var sv = ["o", "ah", "eh", "u"];
+      var coda = ["c", "t", "k", "m", "n"];
+      var make = function(mn, mx, typ) {
+        var s = "";
+        if (typ == "root") {
+          for (var i = 0; i < mx; i++) {
+            s += c[Math.floor(Math.random() * c.length)];
+            s += rv[Math.floor(Math.random() * rv.length)];
+            if (i >= mn && Math.random() * (mx - mn) < 1) {
+              break;
+            }
+          }
+          s += coda[Math.floor(Math.random() * coda.length)];
+        } else {
+          if (Math.random() < 0.5) {
+            s += c[Math.floor(Math.random() * c.length)];
+          }
+          s += sv[Math.floor(Math.random() * sv.length)];
+          if (Math.random() < 0.5) {
+            s += coda[Math.floor(Math.random() * coda.length)];
+          }
+        }
+        console.log(s);
+        return s;
+      };
+      var find = function(mn, mx, typ) {
+        var s = make(mn, mx, typ);
+        while (lexicon_flat.hasOwnProperty(s)) {
+          s = make(mn, mx, typ);
+        }
+        document.getElementById("out").innerHTML = s;
+      };
+    </script>
+  </body>
+</html>
