@@ -22,6 +22,7 @@ var lexicon = {
     "tolthim": ["majestic"],
     "vynit": ["long (time)", "slow", "delayed"],
     "xen": ["incorrect"],
+    "xulm": ["much", "many"],
     "xyt": ["all", "each", "every"],
     "zlislym": ["creepy"],
     "znim": ["falling"]
@@ -62,6 +63,7 @@ var lexicon = {
     "jo": ["if", "implies", "therefore", ["example", "sesuhtfeh fmolk zhu jo telzlnolnfeh dic thehvmeh tulnah = If you sing, I'll cry."]],
     "ke": [["archaic", "keh"], "and"],
     "keh": ["and"],
+    "mahn": ["when", "while"],
     "nu": ["at least one of"],
     "tyk": ["so", "as a result"],
     "xok": ["one of", "xor", "exclusive or"]
@@ -331,6 +333,7 @@ var lexicon = {
     "intransitive": {
       "doln": ["make a loud, deep sound", "grumble", "rumble"],
       "femek": ["exclaim \"Elementary my dear Watson!\""],
+      "jelt": ["fly or swim along a meandering route", ["see also", "zhuhzhuhm"], ["gloss", "fly"]],
       "kasyn": ["recur"],
       "kem": ["vibrate"],
       "muhshim": ["be cool", "be awesome"],
@@ -342,7 +345,7 @@ var lexicon = {
       "xaxat": ["laugh"],
       "xidat": ["multi-task"],
       "zamen": ["hope"],
-      "zhuhzhuhm": ["fly in a straight line", "fly like a bird"],
+      "zhuhzhuhm": ["fly in a straight line", "fly like a bird", "swim along a fairly straight line or smooth curve", ["see also", "jelt"], ["gloss", "fly"]],
       "znim": ["fall (unconstrained motion under influence of gravity)"]
     },
     "transitive": {
