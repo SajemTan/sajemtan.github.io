@@ -7,7 +7,7 @@ var lexicon = {
     "gevmulk": ["underground", "subterranean", "chthonic"],
     "jafinmeht": ["melodramatic"],
     "jelk": ["full"],
-    "met": ["falling", "collapsing", "tumbling (chaotic falling, like an stone bouncing many times as it falls down a hill, or a vase breaking when it hits after a simple ballistic fall)"],
+    "met": ["falling", "collapsing", "tumbling (chaotic falling, like an stone bouncing many times as it falls down a hill, or a vase breaking when it hits after a simple ballistic fall)", ["see also", "znim"]],
     "nymem": ["clumsy"],
     "sajem": ["common", "communal", "public"],
     "simem": ["silent", "quiet", "calm", "sleepy", ["see also", "thneduht"]],
@@ -27,7 +27,7 @@ var lexicon = {
     "xulm": ["much", "many"],
     "xyt": ["all", "each", "every"],
     "zlislym": ["creepy"],
-    "znim": ["falling"]
+    "znim": ["falling", ["see also", "met"]]
   },
   "adv": {
     "evidential": {
@@ -57,7 +57,8 @@ var lexicon = {
       "fmolk": [["form", "fm", "k"], "irrealis mood", "counterfactual"],
       "golm": [["form", "g", "m"], "be obligated to"],
       "kolk": [["form", "k", "k"], "polar interogative", "yes-no question"],
-      "molt": [["form", "m", "t"], "not"]
+      "molt": [["form", "m", "t"], "not"],
+      "slol": [["form", "sl", ""], "indicative", ["archaic", "dic"]]
     }
   },
   "conjunction": {
@@ -70,6 +71,9 @@ var lexicon = {
     "tyk": ["so", "as a result"],
     "xok": ["one of", "xor", "exclusive or"]
   },
+  "idiom": {
+    "telzlnolnfeh tulnah": ["crying", "weeping"]
+  },
   "interjection": {
     "slik": ["yes", "okay"],
     "xen": ["no"]
@@ -79,6 +83,7 @@ var lexicon = {
     "celzan": ["tongue"],
     "cethnyt": ["musical instrument", "wind instrument"],
     "cigym": ["rubber duckie"],
+    "colsek": ["apple"],
     "coltan": ["remote-controlled item", "telekinetically-controlled item", "subservient zombie"],
     "cuhc": ["foot"],
     "culjim": ["ant"],
@@ -132,6 +137,7 @@ var lexicon = {
     "muhc": ["that which cities, forests, and hives have in common, a community", ["gloss", "community"]],
     "muhzl": [["archaic", "muhc"], "that which cities, forests, and hives have in common, a community"],
     "nasham": ["wave"],
+    "nesit": ["fruit"],
     "nic": ["hand"],
     "nuln": ["friend"],
     "nulvmic": ["charcoal"],
@@ -195,7 +201,7 @@ var lexicon = {
     "zhan": ["sword"],
     "zhasik": ["sky", "canopy of a forest", "ceiling of a cave (but not of a house)"],
     "zhetam": ["pollen", "semen"],
-    "zhetamvakult": ["biological father"],
+    "zhetamvakult": ["biological father", ["see also", "tat"]],
     "zhimahn": [["archaic", "zhiman"], "feather"],
     "zhiman": ["feather", "long lustrous hair"],
     "zhizlik": ["fish"],
@@ -245,17 +251,17 @@ var lexicon = {
     }
   },
   "particle": {
-    "cehk": ["introduces a new word"],
+    "cehk": ["introduces a new word", ["see also", "thom"]],
     "cehsh": [["archaic", "cehk"], "introduces a new word"],
     "con": ["transliteration, may be phonotactically invalid"],
     "don": ["sounds like the phoneme sequence", ["example", "don zelzeln = sound of a bee"]],
     "kut": ["feels like the phoneme sequence", ["example", "kut xigeldifigeldit = all over the place, higgledy-piggledy"]],
     "om": ["carries conjugations for con, don, kut, shehn, and tahn", ["example", "kut xigeldifigeldit omum culjimah = the ants are all over the place / disorganised"], ["gloss", "{conjugation}"]],
     "shehn": ["feels like", ["example", "shehn simem = the feeling of peace"]],
-    "slah": ["introduces a new sense"],
-    "tahn": ["sounds like", ["example", "tahn divolm = the sound of thunder"]],
-    "thom": ["links word with new definition"],
-    "xo": ["marks an archaic word"]
+    "slah": ["introduces a new sense", ["see also", "thom"]],
+    "tahn": ["sounds like", "a sound emitted by the referent of the following noun", ["example", "tahn divolm = the sound of thunder"]],
+    "thom": ["links word with new definition", ["see also", "cehk"], ["see also", "slah"]],
+    "xo": ["marks an archaic word or a current word used in an archaic sense"]
   },
   "post": {
     "kafmym": ["in", "inside"],
@@ -356,6 +362,7 @@ var lexicon = {
       "kem": ["vibrate"],
       "muhshim": ["be cool", "be awesome"],
       "sesuht": ["sing Let It Go"],
+      "telzlnoln": ["rain"],
       "thek": ["scribble", "scrawl"],
       "tho": [["archaic", "thek"], "scribble", "scrawl"],
       "vaslnulm": ["cease", "flee"],
@@ -363,7 +370,7 @@ var lexicon = {
       "xaxat": ["laugh"],
       "xidat": ["multi-task"],
       "zamen": ["hope"],
-      "zhuhzhuhm": ["fly in a straight line", "fly like a bird", "swim along a fairly straight line or smooth curve", ["see also", "jelt"], ["gloss", "fly"]],
+      "zhuhzhuhm": ["fly like a bird", "fly or swim along a fairly straight line or smooth curve", ["see also", "jelt"], ["gloss", "fly"]],
       "znim": ["fall (unconstrained motion under influence of gravity)"]
     },
     "transitive": {
@@ -420,7 +427,18 @@ var getProps = function(w) {
   var r = {"defs": []};
   for (var i = 0; i < w.length; i++) {
     if (w[i].constructor == Array) {
-      r[w[i][0]] = w[i].slice(1);
+      var a;
+      if (w[i].length == 2) {
+        a = w[i][1];
+      } else {
+        a = w[i].slice(1);
+      }
+      if (r.hasOwnProperty(w[i][0])) {
+        r[w[i][0]].push(a);
+      } else {
+        r[w[i][0]] = [a];
+      }
+      //r[w[i][0]] = w[i].slice(1);
     } else {
       r.defs.push(w[i]);
     }
