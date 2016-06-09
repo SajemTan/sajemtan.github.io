@@ -70,16 +70,14 @@
       var setupAlt = function() {
         //TODO incorporate "see also" and "example"
         var headsort = function(a, b) {
-          var aadd = "";
-          var badd = "";
-          if (a[0][0] == "=" && (a[0].split("(")[1].split(")")[0] == b || a[0].split("(")[1].split(")")[0] == b.slice(1))) {
-            badd = "u";
+          if (a[0][0] == "=" && (a[0].split("(")[1].split(")")[0] == b[0] || "-" + a[0].split("(")[1].split(")")[0] == b[0])) {
+            return -1;
           }
-          if (b[0][0] == "=" && (b[0].split("(")[1].split(")")[0] == a || b[0].split("(")[1].split(")")[0] == a.slice(1))) {
-            aadd = "u";
+          if (b[0][0] == "=" && (b[0].split("(")[1].split(")")[0] == a[0] || "-" + b[0].split("(")[1].split(")")[0] == a[0])) {
+            return 1;
           }
-          return sortAlpha((a[0][0] == "=" ? a[0].split("(")[1].split(")")[0] : a[0]) + aadd,
-                           (b[0][0] == "=" ? b[0].split("(")[1].split(")")[0] : b[0]) + badd);
+          return sortAlpha((a[0][0] == "=" ? a[0].split("(")[1].split(")")[0] : a[0]),
+                           (b[0][0] == "=" ? b[0].split("(")[1].split(")")[0] : b[0]));
         };
         var l = JSON.parse(JSON.stringify(lexicon_flat_arr)).concat(["duhdem (d)", "gigim (g)", "xataxym (x)", "jegen (j)", "fijyc (f)", "voljam (v)", "thethat (th)", "sekelt (s)", "zuhzuhmelt (z)", "shuhzhik (sh)", "zhizlik (zh)", "slik (sl)", "zlolfit (zl)", "molmelc (m)", "nyzlan (n)", "nasham (a)", "xelteln (el)", "tezet (e)", "tolmolm (ol)", "mizizlat (i)", "slysyc (y)", "shnuhk (uh)", "tuln (ul)", "cuhc (c)", "tytyt (t)", "kyfik (k)", "zlnanic (ah)", "thnuhduhk (eh)", "snolzem (o)", "vmyn (u)"].map(function(h) { return ["==== " + h + " ====\n\n", null]; }));
         l.sort(headsort);
