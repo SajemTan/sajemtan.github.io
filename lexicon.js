@@ -30,7 +30,8 @@ var lexicon = {
     "xulm": ["much", "many"],
     "xyt": ["all", "each", "every"],
     "zlislym": ["creepy"],
-    "znim": ["falling", ["see also", "met"]]
+    "znim": ["falling", ["see also", "met"]],
+    "zhazhuhn": ["chaotic"]
   },
   "adv": {
     "evidential": {
@@ -54,12 +55,12 @@ var lexicon = {
       "fnit": [["form", "fn", "t"], "to be willing to"],
       "jit": [["form", "j", "t"], "must", "vital", "necessary"],
       "shik": [["form", "sh", "k"], "be able to"],
-      "sin": [["form", "s", "n"], "may", "let it be that", "imperative"],
+      "sin": [["form", "s", "n"], "may", "let it be that", "imperative", ["see also", "golm"]],
       "sit": [["form", "s", "t"], "begin", "start"]
     },
     "ol": {
       "fmolk": [["form", "fm", "k"], "irrealis mood", "counterfactual"],
-      "golm": [["form", "g", "m"], "be obligated to"],
+      "golm": [["form", "g", "m"], "be obligated to", "must", ["see also", "golm"]],
       "kolk": [["form", "k", "k"], "polar interogative", "yes-no question"],
       "molt": [["form", "m", "t"], "no", "not", "negative verb (like Finnish 'ei')"],
       "slol": [["form", "sl", ""], "indicative", ["archaic", "dic"]]
@@ -83,6 +84,7 @@ var lexicon = {
     "xen": ["no"]
   },
   "noun": {
+    "becek": ["chicken"],
     "cejym": ["OCD"],
     "celzan": ["tongue"],
     "cethnyt": ["musical instrument", "wind instrument"],
@@ -101,6 +103,7 @@ var lexicon = {
     "din": ["home", "hive"],
     "divolm": ["thunder", "phonology"],
     "duhdem": ["dam", "swamp"],
+    "duhden": ["pasta", "that which causes conversational tangents and disruptions from the main topic"],
     "duhk": ["spear"],
     "dyznek": ["two-handed sword", ["see also", "zhan"], ["gloss", "sword"]],
     "femek": ["mind", "thought", "Sherlock Holmes"],
@@ -121,6 +124,7 @@ var lexicon = {
     "jekelmtuc": ["page", "book cover", "binding"],
     "jidolk": ["flower"],
     "jikin": ["wiki", "notebook", "bulletin board"],
+    "jin": ["light", "pathos", "display of irrationality/passion", "dramatic situation"],
     "jizlet": ["Quizlet"],
     "juhcen": ["fire"],
     "kagan": ["hoola-hoop", "donut", "doughnut"],
@@ -133,6 +137,7 @@ var lexicon = {
     "kolthic": ["the joy and exhaustion that comes after final exams are over"],
     "kuhc": ["letter"],
     "kyfik": ["arm"],
+    "melsuln": ["ice cream", "gelato"],
     "misleln": ["orange"],
     "mizizlat": ["wheelbarrow", "cart", "trolley", "pram"],
     "molduhm": ["mace"],
@@ -141,6 +146,7 @@ var lexicon = {
     "molmvakult": ["legal parent", "adoptive parent"],
     "muhc": ["that which cities, forests, and hives have in common, a community", ["gloss", "community"]],
     "muhzl": [["archaic", "muhc"], "that which cities, forests, and hives have in common, a community"],
+    "mynam": ["conlang", "constructed language"],
     "nasham": ["wave"],
     "nesit": ["fruit"],
     "nic": ["hand"],
@@ -171,6 +177,7 @@ var lexicon = {
     "telzlnoln": ["rain"],
     "tetan": ["flying snail"],
     "tezet": ["lightning"],
+    "that": ["auxlang", "auxiliary langauge"],
     "thefam": ["stone", "writing", "orthography"],
     "thefahm": [["archaic", "thefam"], "stone"],
     "thefnolm": ["bear"],
@@ -207,6 +214,7 @@ var lexicon = {
     "zelvet": ["sun", "star", "that which gives the (false) impression of constancy or permanence"],
     "zhan": ["one-handed sword", "dagger", "knife", ["see also", "dyznek"], ["gloss", "sword"]],
     "zhasik": ["sky", "canopy of a forest", "ceiling of a cave (but not of a house)"],
+    "zhazhuhn": ["chaos"],
     "zhetam": ["pollen", "semen"],
     "zhetamvakult": ["biological father", ["see also", "tat"]],
     "zhimahn": [["archaic", "zhiman"], "feather"],
@@ -222,7 +230,7 @@ var lexicon = {
     "zlnathnyn": ["chimera", "any mythical or fictional animal with parts taken from various animals"],
     "zlolfit": ["wing"],
     "zlolzhit": ["poop (thanks, Thunder's sister)", ["gloss", "poop"]],
-    "zluhznyk": ["dignity"],
+    "zluhznyk": ["dignity", "honor"],
     "zlulc": ["lump", "dollop (of a substance)", "instance (of something more abstract)"],
     "znenan": ["tale", "story"],
     "znolk": ["day"],
@@ -277,6 +285,7 @@ var lexicon = {
     "sholmak": ["between"],
     "sno": ["in the time of", "during"],
     "taznoln": ["until"],
+    "tuhn": ["having a quality/property", ["gloss", "having"]],
     "zult": ["after", "once", "soon after"]
   },
   "pronoun": {
@@ -363,6 +372,7 @@ var lexicon = {
     },
     "intransitive": {
       "doln": ["make a loud, deep sound", "grumble", "rumble"],
+      "duhden": ["deviate from the topic of conversation"],
       "femek": ["exclaim \"Elementary my dear Watson!\""],
       "jelt": ["fly or swim along a meandering route", ["see also", "zhuhzhuhm"], ["gloss", "fly"]],
       "kasyn": ["recur"],
@@ -393,6 +403,7 @@ var lexicon = {
       "fmyvuhk": ["make", "create"],
       "gevmulk": ["bury, especially treasure or waste", "inter", "inhume", ["gloss", "bury"], ["example", "zlovmeh zlolzhit gevmulkfeh molt Thefnolm. = Bear did not bury his poop."]],
       "gulslim": ["nourish", "feed", "sustain"],
+      "gyvnam": ["cook"],
       "juhcen": ["set on fire", "enflame"],
       "kafmym": ["be inside"],
       "kasyn": ["repeat", "rerun a TV episode"],
@@ -415,7 +426,7 @@ var lexicon = {
       "tah": [["archaic", "tan"], "speak", "vomit"],
       "tan": ["speak", "vomit"],
       "thek": ["scribble", "scrawl", "write"],
-      "thethnym": ["bear", "birth", "give birth to"],
+      "thethnym": ["bear", "birth", "give birth to", "conceive", "gestate"],
       "tho": [["archaic", "thek"], "scribble", "scrawl"],
       "thycam": ["read"],
       "tolthim": ["want", "desire"],
@@ -425,6 +436,7 @@ var lexicon = {
       "xafolm": ["wield", "attack"],
       "xanoln": ["greet"],
       "xaslem": ["transition smoothly"],
+      "xifem": ["overthink", "ruminate"],
       "ximuc": ["bid farewell"],
       "zan": ["be", "is"],
       "zhejuln": ["enjoy"],
