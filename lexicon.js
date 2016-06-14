@@ -28,7 +28,7 @@ var lexicon = {
     "vynit": ["long (time)", "slow", "delayed"],
     "xen": ["incorrect"],
     "xulm": ["much", "many"],
-    "xyt": ["all", "each", "every"],
+    "xyt": ["all", "each", "every", "whole"],
     "zlislym": ["creepy"],
     "znim": ["falling", ["see also", "met"]],
     "zhazhuhn": ["chaotic"]
@@ -60,9 +60,9 @@ var lexicon = {
     },
     "ol": {
       "fmolk": [["form", "fm", "k"], "irrealis mood", "counterfactual"],
-      "golm": [["form", "g", "m"], "be obligated to", "must", ["see also", "golm"]],
+      "golm": [["form", "g", "m"], "be obligated to", "must", ["see also", "sin"]],
       "kolk": [["form", "k", "k"], "polar interogative", "yes-no question"],
-      "molt": [["form", "m", "t"], "no", "not", "negative verb (like Finnish 'ei')"],
+      "molt": [["form", "m", "t"], "no", "not", "negative verb (like Finnish 'ei')", ["see also", "xeht"], ["see also", "uk"]],
       "slol": [["form", "sl", ""], "indicative", ["archaic", "dic"]]
     }
   },
@@ -84,7 +84,7 @@ var lexicon = {
     "xen": ["no"]
   },
   "noun": {
-    "becek": ["chicken"],
+    "becek": ["chicken", ["archaic", "decek"]],
     "cejym": ["OCD"],
     "celzan": ["tongue"],
     "cethnyt": ["musical instrument", "wind instrument"],
@@ -94,10 +94,12 @@ var lexicon = {
     "cuhc": ["foot"],
     "culjim": ["ant"],
     "culjimdin": ["anthill"],
-    "dacok": ["cudgel", "club"],
+    "dacok": ["cudgel", "club", ["archaic", "dacolk"]],
+    "dacolk": ["cudgel", "club"],
     "dafmuhm": ["arrow (on a page or a sign)", "direction", ["see also", "vmanduhk"]],
     "danectheknoc": ["the romanization system"],
     "dasnan": ["nature", "outer space"],
+    "decek": ["chicken"],
     "dejizoln": ["wood"],
     "delgemzhum": ["Pokemon"],
     "din": ["home", "hive"],
@@ -108,7 +110,7 @@ var lexicon = {
     "dyznek": ["two-handed sword", ["see also", "zhan"], ["gloss", "sword"]],
     "femek": ["mind", "thought", "Sherlock Holmes"],
     "fijyc": ["rainbow"],
-    "fmolthyt": ["rights"],
+    "fmolthyt": ["duty", "responsibility", "thing one ought to do"],
     "gajin": ["pure awe"],
     "gamyk": ["tree", "one that produces"],
     "gazhyn": ["green"],
@@ -121,7 +123,7 @@ var lexicon = {
     "jegen": ["hook"],
     "jegentheknoc": ["the writing system"],
     "jelkelm": ["book", "physical book", "paper book"],
-    "jekelmtuc": ["page", "book cover", "binding"],
+    "jelkelmtuc": ["page", "book cover", "binding"],
     "jidolk": ["flower"],
     "jikin": ["wiki", "notebook", "bulletin board"],
     "jin": ["light", "pathos", "display of irrationality/passion", "dramatic situation"],
@@ -220,7 +222,8 @@ var lexicon = {
     "zhimahn": [["archaic", "zhiman"], "feather"],
     "zhiman": ["feather", "long lustrous hair"],
     "zhizlik": ["fish"],
-    "zhnicon": ["dog"],
+    "zhnicoln": ["dog"],
+    "zhnicon": ["dog", ["archaic", "zhnicoln"]],
     "zhuhzhim": ["dust", "a floating particle; something that settles down or doesn't"],
     "zizulm": ["library"],
     "zlantak": ["domino"],
@@ -355,6 +358,8 @@ var lexicon = {
     "noun>verb": {
       "zhut": ["cause to be"]
     },
+    "uk": ["non-, un-, other than, different from", ["see also", "xeht"]],
+    "ukmun": ["anti-", "opposite of", ["see also", "xeht"]],
     "valency": {
       "jahk": ["in order to"],
       "sun": ["passive voice"]
@@ -364,7 +369,8 @@ var lexicon = {
     },
     "verb>verb": {
       "mun": ["very", "extremely", "maximal intensification"]
-    }
+    },
+    "xeht": ["lacking", "lack of", "no", "not", ["see also", "molt"], ["see also", "uk"]]
   },
   "verb": {
     "impersonal": {
@@ -437,7 +443,8 @@ var lexicon = {
       "xanoln": ["greet"],
       "xaslem": ["transition smoothly"],
       "xifem": ["overthink", "ruminate"],
-      "ximuc": ["bid farewell"],
+      "ximuc": ["bid farewell", ["archaic", "ximulc"]],
+      "ximulc": ["bid farewell"],
       "zan": ["be", "is"],
       "zhejuln": ["enjoy"],
       "zlaslolk": ["point at", "indicate"],
