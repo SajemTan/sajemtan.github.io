@@ -1,14 +1,10 @@
 <html>
-  <!--
-Lorem Ipsum and random sentence generator for Sajem Tan
-created by Daniel Swanson, all use permitted
-Recommended use: download, open with webbrowser, click the buttons
-  -->
   <head>
     <title>Sajem Tan lorem ipsum / random sentence generator</title>
     <script type="text/javascript" src="lexicon.js"></script>
   </head>
   <body>
+    <p>Click <a href="http://www.frathwiki.com/Sajem_Tan/Zhetammeht_Delgemnocah">here</a> to share the more interesting results.</p>
     <button onclick="disp(true);">Generate nonsense text</button>
     <button onclick="disp(false);">Generate random text</button>
     <p id="out"></p>
@@ -33,44 +29,54 @@ Recommended use: download, open with webbrowser, click the buttons
         return queryLexPath(pth, false, true).keys;
       };
       var senmap = {
-        para: [["<br>", "sen", "para"], ["<br>", "sen"]],
-        sen: [[" ", "VP", "NP"], [" ", "NP", "VP", "NP"], [" ", "VP", "NP", "obl"], [" ", "NP", "VP", "NP", "obl"]],
-        VP: ["verb", [" ", "adv", "verb"]],
-        verb: ["verb-aspect", ["", "verb-aspect", "valency"]],
-        "verb-aspect": [["", "verb-no-inf", "aspect"]],
-        "verb-no-inf": ["verb-root", ["", "adj", "adj>verb"]],
-        NP: ["sNP", "pronoun", [" ", "NP", "conj", "NP"]],
-        conj: ["keh"],
-        sNP: [[" ", "adjP", "sNP"], "noun"],
-        "adjP": ["adj", [" ", "adv", "adjP"]],
-        adj: [["", "noun", "noun>adj"], "adj-root", "number"],
-        number: Object.keys(lexicon.number.decimal).concat(Object.keys(lexicon.number.senary)),
-        adv: ["adv-root"],
-        pronoun: ["pronoun-root", ["", "pronoun", "noun>noun"]],
-        "pronoun-root": getlist(["pronoun"]),
-        "plain-noun": [["", "verb-no-inf", "verb>noun"], ["", "plain-noun", "noun>noun"], "noun-root", ["", "noun-root", "plain-noun"]],
-        noun: ["plain-noun", "pronoun", [" ", "shehn", "plain-noun", "om"], [" ", "tahn", "plain-noun", "om"]],
-        "noun-root": getlist(["noun"]),
-        "adj-root": getlist(["adj"]),
-        "adv-root": getlist(["adv"]),
-        "verb-root": getlist(["verb"]),
-//        "verb-intrans": ["kem"], //impersonal/intransitives should be handled separately from normal transitives
-//        "verb-impers": ["kem"], //not done for simplicity - D.S. 02016-02-15
-        "noun>adj": getlist(["suffix", "noun>adj"]),
-        "noun>noun": getlist(["suffix", "noun>noun"]),
-        "verb>noun": getlist(["suffix", "verb>noun"]),
-        "adj>verb": getlist(["suffix", "noun>verb"]), //discrepancy in name/usage - D.S. 02016-05-08
-        "valency": getlist(["suffix", "valency"]),
-        aspect: getlist(["suffix", "aspect"]),
-        "case": getlist(["suffix", "case"]),
-        "obl-NP": [[" ", "adjP", "obl-NP"], ["", "noun", "case"], [" ", "noun", "post"]],
-        "obl": [[" ", "obl-NP", "obl"], "obl-NP"],
-        "aux": [].concat.apply([], getlist(["aux"]).map(generateAux)),
-        "post": getlist(["post"])
+        para: [[".<br><br>", "sen", "para"], ["", "sen", "."]],
+        sen: [[" ", "VP", "obl"], [" ", "sen", getlist(["conjunction", "clause"]).concat(getlist(["conjunction", "both"])), "sen"]],
+        VP: [[" ", "NP", "trans-V", "NP"], [" ", "NP", "NP", "etrans-V"], [" ", "intrans-V", "NP"], [" ", "NP", "eintrans-V"]],
+        root: ["adj", "adv", "noun", "trans", "etrans", "intrans", "eintrans", "post"],
+        //adjectives
+        adj: ["adj-base", ["", "noun", "noun>adj"]],
+        "adj-base": getlist(["adj"]).concat(Object.keys(lexicon.number.decimal)).concat(Object.keys(lexicon.number.senary)),
+        adjP: ["adj", [" ", "adv", "adjP"]],
+        //adverbs
+        adv: ["adv-base"],
+        "adv-base": getlist(["adv"]),
+        //nouns
+        noun: ["noun-base", ["", ["trans", "etrans", "intrans", "eintrans"], "verb>noun"], ["", "noun", "noun>noun"]],
+        "noun-base": getlist(["noun"]).concat(getlist(["pronoun"])),
+        NP: ["noun", [" ", "adjP", "NP"], [" ", "NP", getlist(["conjunction", "noun"]).concat(getlist(["conjunction", "both"])), "NP"]],
+        obl: [["", "NP", "case"], [" ", "NP", "post"]],
+        //transitive verbs
+        trans: ["trans-base", ["", "noun", "noun>trans"], ["", "adj", "adj>trans"]],
+        "trans-base": getlist(["verb", "transitive"]),
+        //experiencer transitive verbs
+        etrans: ["etrans-base"],
+        "etrans-base": getlist(["verb", "experiencer transitive"]),
+        //intransitive verbs
+        intrans: ["trans-base", ["", "adj", "adj>intrans"]],
+        "intrans-base": getlist(["verb", "intransitive"]),
+        //experiencer intransitive verbs
+        eintrans: ["eintrans-base"],
+        "eintrans-base": getlist(["verb", "experiencer intransitive"]),
+        //postpostions
+        "post": getlist(["post"]),
+        //auxiliary verbs
+        "aux": [].concat.apply([], getlist(["aux"]).map(generateAux))
       };
+      for (var k in lexicon.suffix) {
+        senmap[(k == "any") ? "suffix-any" : k] = getlist(["suffix", k]);
+      }
+      for (var i = 0; i < senmap.root.length; i++) {
+        var k = senmap.root[i];
+        senmap[k] = senmap[k].concat([["", "root", k], ["", k, "suffix-any"]]);
+      }
+      var verbs = ["trans", "etrans", "intrans", "eintrans"];
+      for (var i = 0; i < verbs.length; i++) {
+        senmap[verbs[i] + "-V"] = [["", verbs[i], "aspect"], [" ", "adv", verbs[i] + "-V"], [" ", verbs[i] + "-V", "aux"]];
+      }
       var lorem = ["Sen", "VP", "Subj", "Obj"];
       var choose = function(arr) {
-        return arr[Math.floor(Math.random() * arr.length)];
+        var n = Math.floor(Math.random() * arr.length * 2) - arr.length;
+        return (n > 0) ? arr[n] : arr[0];
       }
       var lasttree = [];
       var build = function(tree, lor) {
@@ -91,12 +97,7 @@ Recommended use: download, open with webbrowser, click the buttons
             ret[1].push(r[1]);
           }
         } else {
-          var m;
-          if (lor) {
-            m = loremmap;
-          } else {
-            m = senmap;
-          }
+          var m = lor ? loremmap : senmap;
           if (m.hasOwnProperty(tree)) {
             var h = build(choose(m[tree]), lor);
             ret[0] = h[0];

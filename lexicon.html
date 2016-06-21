@@ -52,23 +52,29 @@
             ret += "<li>" + df.defs[j] + "</li>";
           }
           if (df.hasOwnProperty("archaic")) {
-            ret += "<li><b>Archaic</b> See: <a href=\"#" + df.archaic + "\">" + df.archaic + "</a></li>";
+            for (var i = 0; i < df.archaic.length; i++) {
+              ret += "<li><b>Archaic</b> See: <a href=\"#" + df.archaic[i] + "\">" + df.archaic[0] + "</a></li>";
+            }
           }
           if (df.hasOwnProperty("see also")) {
-            ret += "<li><b>See Also: </b><a href=\"#" + df["see also"] + "\">" + df["see also"] + "</a></li>";
+            for (var i = 0; i < df["see also"].length; i++) {
+              ret += "<li><b>See Also: </b><a href=\"#" + df["see also"][i] + "\">" + df["see also"][i] + "</a></li>";
+            }
           }
           if (df.path[0] == "aux") {
             ret += "<li style=\"display: none;\">" + generateAux(word[0]) + "</li>";
           }
           if (df.hasOwnProperty("example")) {
-            ret += "<li><b>Example: </b>" + df.example + "</li>";
+            for (var i = 0; i < df.example.length; i++) {
+              ret += "<li><b>Example: </b>" + df.example[i] + "</li>";
+            }
           }
           ret += "</ul>";
         }
         return ret + "</td></tr>";
       };
       var setupAlt = function() {
-        //TODO incorporate "see also" and "example"
+        //TODO incorporate "example"?
         var headsort = function(a, b) {
           if (a[0][0] == "=" && (a[0].split("(")[1].split(")")[0] == b[0] || "-" + a[0].split("(")[1].split(")")[0] == b[0])) {
             return -1;
@@ -91,6 +97,12 @@
           }
           if (pth[0] == "post") {
             r = "postposition";
+          }
+          if (pth[0] == "suffix" && pht[1] == "any") {
+            r = "suffix";
+          }
+          if (pth[0] == "conjunction") {
+            r = "conjunction";
           }
           return "(" + r + ")";
         };
@@ -121,7 +133,7 @@
           s += a + "\n\n";
         }
         s += "</pre></td>";
-        document.getElementById('defs').innerHTML = s;
+        document.body.innerHTML = s;
       };
       var setup = function() {
         var s = "";
