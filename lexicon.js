@@ -182,6 +182,8 @@ var lexicon = {
     "muhzl": [["archaic", "muhc"], "that which cities, forests, and hives have in common, a community"],
     "mynam": ["conlang", "constructed language"],
     "nasham": ["wave"],
+    "nenyk": ["playing card"],
+    "nenyktak": ["card game"],
     "nesit": ["fruit"],
     "nic": ["hand"],
     "nuldic": ["miner, usually a coal miner", "one who mines", ["gloss", "miner"]],
