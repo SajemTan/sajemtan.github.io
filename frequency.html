@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <title>Sajem Tan Phoneme Frequency</title>
+    <script type="text/javascript" src="lexicon.js"></script>
+  </head>
+  <body>
+    <span>Count by phonemes</span>
+    <input type="radio" name="count" value="phoneme" checked="checked"></input>
+    <span>Count by words</span>
+    <input type="radio" name="count" value="word"></input>
+    <br>
+    <span>Only single phonemes</span>
+    <input type="radio" name="clusters" value="none" checked="checked"></input>
+    <span>Also count clusters</span>
+    <input type="radio" name="clusters" value="also"></input>
+    <span>Separately count clusters</span>
+    <input type="radio" name="clusters" value="only"></input>
+    <br>
+    <button onclick="update(document.querySelector('input[name=&quot;count&quot;]:checked').value, document.querySelector('input[name=&quot;clusters&quot;]:checked').value);">Update</button>
+    <br>
+    <table border="1">
+      <tbody id="out">
+      </tbody>
+    </table>
+    <script>
+      var clusters = ["fm", "fn", "vm", "vn", "shn", "zhn", "sln", "zln", "sn", "zn", "thn", "sh", "zh", "sl", "zl", "th", "c", "t", "k", "d", "g", "m", "n", "f", "v", "s", "z", "x", "j", "ol", "ah", "eh", "el", "e", "i", "a", "ul", "uh", "y", "o", "u"];
+      var no_clusters = ["sh", "zh", "sl", "zl", "th", "c", "t", "k", "d", "g", "m", "n", "f", "v", "s", "z", "x", "j", "ol", "ah", "eh", "el", "e", "i", "a", "ul", "uh", "y", "o", "u"];
+      var wordlist = [];
+      var non_archaic = queryLexPath([], false);
+      for (k in non_archaic) {
+        if (non_archaic[k][0].path[0] != "idiom") {
+          wordlist.push(k);
+        }
+      }
+      var update = function(count_mode, clusters_mode) {
+        var counts = {};
+        var phlist = (clusters_mode == "none" ? no_clusters : clusters);
+        phlist.map(function(c) { counts[c] = 0; });
+        var w, found, c, err;
+        for (var w_index = 0; w_index < wordlist.length; w_index ++) {
+          w = wordlist[w_index];
+          found = [];
+          while (w.length > 0) {
+            err = 0;
+            for (var c_index = 0; c_index < phlist.length; c_index ++) {
+              c = phlist[c_index];
+              if (w.startsWith(c)) {
+                if (clusters_mode == "none" || clusters_mode == "only" || c_index >= 11) {
+                  found.push(c);
+                  w = w.slice(c.length);
+                  err = 1;
+                  break;
+                } else {
+                  found.push(c);
+                }
+              }
+            }
+            if (err == 0) {
+              console.log(["messed up on:", w, wordlist[w_index]]);
+              break;
+            }
+          }
+          if (count_mode == "phoneme") {
+            found.map(function(p) { counts[p] ++; });
+          } else {
+            for (var i = 0; i < found.length; i++) {
+              if (found.indexOf(found[i]) == i) {
+                counts[found[i]] ++;
+              }
+            }
+          }
+        }
+        console.log(counts);
+        var order = Object.keys(counts).sort(function(a, b) { return counts[b] - counts[a]; });
+        var out = document.getElementById("out");
+        out.innerHTML = "";
+        for (var i = 0; i < order.length; i++) {
+          out.innerHTML += "<tr><td>" + order[i] + "</td><td>" + counts[order[i]] + "</td></tr>";
+        }
+      };
+    </script>
+  </body>
+</html>
