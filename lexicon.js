@@ -135,7 +135,7 @@ var lexicon = {
     "fijyc": ["rainbow"],
     "fmolthyt": ["duty", "responsibility", "thing one ought to do", "domain", "specialization"],
     "fnadyc": ["death"],
-    "fnadyc": ["clearness", "transparency"],
+    "fnadycsoljem": ["clearness", "transparency"],
     "gajin": ["pure awe"],
     "gak": ["fun derived from a game or other entertainment"],
     "gamyk": ["tree", "one that produces"],
