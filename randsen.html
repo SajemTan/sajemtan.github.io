@@ -41,7 +41,8 @@
         adv: ["adv-base"],
         "adv-base": getlist(["adv"]),
         //nouns
-        noun: ["noun-base", ["", ["trans", "etrans", "intrans", "eintrans"], "verb>noun"], ["", "noun", "noun>noun"]],
+        "verb-roots": ["trans", "etrans", "intrans", "eintrans"],
+        noun: ["noun-base", ["", "verb-roots", "verb>noun"], ["", "noun", "noun>noun"]],
         "noun-base": getlist(["noun"]).concat(getlist(["pronoun"])),
         NP: ["noun", [" ", "adjP", "NP"], [" ", "NP", getlist(["conjunction", "noun"]).concat(getlist(["conjunction", "both"])), "NP"]],
         obl: [["", "NP", "case"], [" ", "NP", "post"]],
@@ -52,7 +53,7 @@
         etrans: ["etrans-base"],
         "etrans-base": getlist(["verb", "experiencer transitive"]),
         //intransitive verbs
-        intrans: ["trans-base", ["", "adj", "adj>intrans"]],
+        intrans: ["intrans-base", ["", "adj", "adj>intrans"]],
         "intrans-base": getlist(["verb", "intransitive"]),
         //experiencer intransitive verbs
         eintrans: ["eintrans-base"],
