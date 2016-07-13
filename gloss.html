@@ -54,6 +54,7 @@
         }
         el.outerHTML = rep;
       };
+      var auxList = Object.keys(queryLexPath(["aux"], false)).map(function(a) { return generateAux(a, false); });
       var gloss = function() {
         var out = document.getElementById("out");
         out.innerHTML = '<span>' + document.getElementById("sen").value.toLowerCase() + '</span>';
@@ -61,6 +62,13 @@
         Array.prototype.slice.call(document.getElementsByClassName("other")).map(function(el) { glosschop(el, root, "root"); });
         Array.prototype.slice.call(document.getElementsByClassName("other")).map(function(el) { glosschop(el, suf, "suf"); });
         var wasSpace = true;
+        var getgloss = function(word) { //word is assumed to exist
+          if (lexicon_flat[word][0].hasOwnProperty("gloss")) {
+            return lexicon_flat[word][0].gloss;
+          } else {
+            return lexicon_flat[word][0].defs[0];
+          }
+        };
         for (var i = 0; i < out.childNodes.length; i++) {
           var node = out.childNodes[i];
           if (node.className == "space") {
@@ -68,13 +76,24 @@
           } else {
             if (node.className == "root" || node.className == "suf") {
               if (lexicon_flat.hasOwnProperty(node.innerHTML)) {
-                if (lexicon_flat[node.innerHTML][0].hasOwnProperty("gloss")) {
-                  node.innerHTML = lexicon_flat[node.innerHTML][0].gloss;
-                } else {
-                  node.innerHTML = lexicon_flat[node.innerHTML][0].defs[0];
-                }
+                node.innerHTML = getgloss(node.innerHTML);
               } else {
-                node.className += "-unk";
+                var changed = false;
+                for (var i = 0; i < auxList.length; i++) {
+                  for (var t in auxList[i]) {
+                    if (auxList[i][t] == node.innerHTML) {
+                      node.innerHTML = getgloss(auxList[i].pres) + "-" + t + "PST";
+                      changed = true;
+                      break;
+                    }
+                  }
+                  if (changed) {
+                    break;
+                  }
+                }
+                if (!changed) {
+                  node.className += "-unk";
+                }
               }
             }
             if (!wasSpace) {

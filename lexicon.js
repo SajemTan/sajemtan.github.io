@@ -594,17 +594,29 @@ var getProps = function(w) {
   }
   return r;
 };
-var generateAux = function(a) {
+var generateAux = function(a, justlist) {
   if (lexicon.aux.i.hasOwnProperty(a)) {
     var w = lexicon.aux.i[a];
     var f = getProps(w).form[0];
-    return ["i", "e", "a", "ul"].map(function(c) { return f[0] + c + f[1]; });
+    var r = {
+      pres: f[0] + "i"  + f[1],
+      near: f[0] + "e"  + f[1],
+      mid:  f[0] + "a"  + f[1],
+      far:  f[0] + "ul" + f[1]
+    };
+    return justlist ? Object.values(r) : r;
   } else if (lexicon.aux.ol.hasOwnProperty(a)) {
     var w = lexicon.aux.ol[a];
     var f = getProps(w).form[0];
-    return ["ol", "el", "y", "uh"].map(function(c) { return f[0] + c + f[1]; });
+    var r = {
+      pres: f[0] + "ol" + f[1],
+      near: f[0] + "el" + f[1],
+      mid:  f[0] + "y"  + f[1],
+      far:  f[0] + "uh" + f[1]
+    };
+    return justlist ? Object.values(r) : r;
   } else {
-    return [];
+    return null;
   }
 };
 var listWords = function() {

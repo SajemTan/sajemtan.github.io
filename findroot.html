@@ -47,9 +47,18 @@
         console.log(s);
         return s;
       };
+      var genaux = function() {
+        var aux = queryLexPath(["aux"], false, false);
+        var l = Object.keys(aux);
+        for (var i = 0; i < l.length; i++) {
+          generateAux(l[i], true).map(function(k) { aux[k] = ""; });
+        }
+        return aux;
+      };
+      var aux = genaux();
       var find = function(mn, mx, typ) {
         var s = make(mn, mx, typ);
-        while (lexicon_flat.hasOwnProperty(s)) {
+        while (lexicon_flat.hasOwnProperty(s) || aux.hasOwnProperty(s)) {
           s = make(mn, mx, typ);
         }
         document.getElementById("out").innerHTML = s;
