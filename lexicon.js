@@ -380,7 +380,7 @@ var lexicon = {
     "seln": ["to", "towards"],
     "sholmak": ["between"],
     "shyn": ["knowing abstract things", ["see also", "feln"], ["see also", "zet"]],
-    "snat": ["around", "through", "about", "surrounding"],
+    "smet": ["around", "through", "about", "surrounding"],
     "sno": ["in the time of", "during", "in", "on (time period or event)", ["see also", "mahn"]],
     "taznoln": ["until"],
     "tuhn": ["having a quality/property", ["gloss", "having"]],
