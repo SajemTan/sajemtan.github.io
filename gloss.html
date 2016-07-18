@@ -29,8 +29,8 @@
     <button onclick="gloss();">Gloss</button>
     <p id="out"></p>
     <script>
-      var root = /^(([cdfgjkmnstvxz]|[sz]l|[stz]h|[fv][mn]|[sz][hl]?n|thn)([aeiy]|[eou]l|uh))+[ckmnt]/i;
-      var suf = /^([cdfgjkmnstvxz]|[sz]l|[stz]h|[fv][mn]|[sz][hl]?n|thn)?([ou]|[ae]h)[ckmnt]?/i;
+      var root = /^(([cdfgjkmnstvxz]|[sz]l|[stz]h|[fv][mn]|[sz][hl]?[mn]|thn)([aeiy]|[eou]l|uh))+[ckmnt]/i;
+      var suf = /^([cdfgjkmnstvxz]|[sz]l|[stz]h|[fv][mn]|[sz][hl]?[mn]|thn)?([ou]|[ae]h)[ckmnt]?/i;
       var glosschop = function(el, regex, cls) {
         var s = el.innerHTML;
         var q = "";
@@ -70,7 +70,12 @@
           }
         };
         for (var i = 0; i < out.childNodes.length; i++) {
-          var node = out.childNodes[i];
+          out.childNodes[i].id = i.toString();
+        }
+        var todo = out.childNodes.length;
+        //var nodelist = [].slice.call(out.childNodes);
+        for (var i = 0; i < todo; i++) {
+          var node = document.getElementById(i.toString());
           if (node.className == "space") {
             wasSpace = true;
           } else {
@@ -79,10 +84,10 @@
                 node.innerHTML = getgloss(node.innerHTML);
               } else {
                 var changed = false;
-                for (var i = 0; i < auxList.length; i++) {
-                  for (var t in auxList[i]) {
-                    if (auxList[i][t] == node.innerHTML) {
-                      node.innerHTML = getgloss(auxList[i].pres) + "-" + t + "PST";
+                for (var aux = 0; aux < auxList.length; aux++) {
+                  for (var t in auxList[aux]) {
+                    if (auxList[aux][t] == node.innerHTML) {
+                      node.innerHTML = getgloss(auxList[aux].pres) + "-" + t + "PST";
                       changed = true;
                       break;
                     }
@@ -97,8 +102,7 @@
               }
             }
             if (!wasSpace) {
-              node.outerHTML = '-' + node.outerHTML;
-              i++;
+              out.insertBefore(document.createTextNode("-"), document.getElementById(i.toString()));
             }
             wasSpace = false;
           }

@@ -312,6 +312,7 @@ var lexicon = {
     "zhnicoln": ["dog"],
     "zhnicon": ["dog", ["archaic", "zhnicoln"]],
     "zhuhzhim": ["dust", "a floating particle; something that settles down or doesn't"],
+    "zhyshyn": ["bread"],
     "zizulm": ["library"],
     "zlantak": ["domino"],
     "zlaslolk": ["laser", "phaser", "ray gun", "energy beam"],
@@ -421,7 +422,7 @@ var lexicon = {
     "any": {
       "ku": ["interogative suffix", ["example", "thefamahku znolcfeh zhu = Which rocks did you gather?"]],
       "mun": ["very", "extremely", "maximal intensification"],
-      "uk": ["non-, un-, other than, different from", ["see also", "xeht"]],
+      "uk": ["non-", "un-", "other than", "different from", ["see also", "xeht"]],
       "ukmun": ["anti-", "opposite of", ["see also", "xeht"]],
       "xeht": ["lacking", "lack of", "no", "not", ["see also", "molt"], ["see also", "uk"]]
     },
