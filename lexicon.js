@@ -601,6 +601,15 @@ var getProps = function(w) {
   }
   return r;
 };
+if (Object.values == null) {
+  Object.values = function(obj) {
+    var r = [];
+    for (var k in obj) {
+      r.push(obj[k]);
+    }
+    return r;
+  };
+}
 var generateAux = function(a, justlist) {
   if (lexicon.aux.i.hasOwnProperty(a)) {
     var w = lexicon.aux.i[a];
