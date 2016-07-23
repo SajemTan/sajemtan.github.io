@@ -63,7 +63,7 @@
           }
           if (df.path[0] == "aux") {
             var tenses = generateAux(word[0], false);
-            ret += "<li><b>Past Tenses:</b> <i>near:</i> " + tenses.near + ", <i>mid:</i> " + tenses.mid + ", <i>far:</i> " + tenses.far + "</li>";
+            ret += "<li><b>Past Tenses:</b> <i id=\"" + tenses.near + "\">near:</i> " + tenses.near + ", <i id=\"" + tenses.mid + "\">mid:</i> " + tenses.mid + ", <i id=\"" + tenses.far + "\">far:</i> " + tenses.far + "</li>";
           }
           if (df.hasOwnProperty("example")) {
             for (var i = 0; i < df.example.length; i++) {

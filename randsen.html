@@ -30,7 +30,8 @@
       };
       var senmap = {
         para: [[".<br><br>", "sen", "para"], ["", "sen", "."]],
-        sen: [[" ", "VP", "obl"], [" ", "sen", getlist(["conjunction", "clause"]).concat(getlist(["conjunction", "both"])), "sen"]],
+        sen: [[" ", "VP", "obl"], [" ", "sen", "sen-conj", "sen"]],
+        "sen-conj": getlist(["conjunction", "clause"]).concat(getlist(["conjunction", "both"])),
         VP: [[" ", "NP", "trans-V", "NP"], [" ", "NP", "NP", "etrans-V"], [" ", "intrans-V", "NP"], [" ", "NP", "eintrans-V"]],
         root: ["adj", "adv", "noun", "trans", "etrans", "intrans", "eintrans", "post"],
         //adjectives
@@ -44,7 +45,8 @@
         "verb-roots": ["trans", "etrans", "intrans", "eintrans"],
         noun: ["noun-base", ["", "verb-roots", "verb>noun"], ["", "noun", "noun>noun"]],
         "noun-base": getlist(["noun"]).concat(getlist(["pronoun"])),
-        NP: ["noun", [" ", "adjP", "NP"], [" ", "NP", getlist(["conjunction", "noun"]).concat(getlist(["conjunction", "both"])), "NP"]],
+        NP: ["noun", [" ", "adjP", "NP"], [" ", "NP", "NP-conj", "NP"]],
+        "NP-conj": getlist(["conjunction", "noun"]).concat(getlist(["conjunction", "both"])),
         obl: [["", "NP", "case"], [" ", "NP", "post"]],
         //transitive verbs
         trans: ["trans-base", ["", "noun", "noun>trans"], ["", "adj", "adj>trans"]],
@@ -61,7 +63,7 @@
         //postpostions
         "post": getlist(["post"]),
         //auxiliary verbs
-        "aux": [].concat.apply([], getlist(["aux"]).map(generateAux))
+        "aux": [].concat.apply([], getlist(["aux"]).map(function(a) { return generateAux(a, true); }))
       };
       for (var k in lexicon.suffix) {
         senmap[(k == "any") ? "suffix-any" : k] = getlist(["suffix", k]);
