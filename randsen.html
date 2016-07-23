@@ -77,9 +77,13 @@
         senmap[verbs[i] + "-V"] = [["", verbs[i], "aspect"], [" ", "adv", verbs[i] + "-V"], [" ", verbs[i] + "-V", "aux"]];
       }
       var lorem = ["Sen", "VP", "Subj", "Obj"];
-      var choose = function(arr) {
-        var n = Math.floor(Math.random() * arr.length * 2) - arr.length;
-        return (n > 0) ? arr[n] : arr[0];
+      var choose = function(arr, islore, key) {
+        if (islore || key.endsWith("base")) {
+          return arr[Math.floor(Math.random() * arr.length)];
+        } else {
+          var n = Math.floor(Math.random() * arr.length * 2) - arr.length;
+          return (n > 0) ? arr[n] : arr[0];
+        }
       }
       var lasttree = [];
       var build = function(tree, lor) {
@@ -102,7 +106,7 @@
         } else {
           var m = lor ? loremmap : senmap;
           if (m.hasOwnProperty(tree)) {
-            var h = build(choose(m[tree]), lor);
+            var h = build(choose(m[tree], lor, tree), lor);
             ret[0] = h[0];
             ret[1] = [tree].concat(h[1]);
           } else {
