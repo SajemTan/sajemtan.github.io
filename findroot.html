@@ -15,8 +15,11 @@
     <input type="radio" name="type" value="root" checked="checked">Root</input>
     <input type="radio" name="type" value="suf">Suffix/Particle</input>
     <br>
+    <span>Number of roots to generate: </span>
+    <input id="count" type="number" value="1" min="1"></input>
     <br>
-    <button onclick="find(document.getElementById('min').value, document.getElementById('max').value, document.querySelector('input[name=&quot;type&quot;]:checked').value);">Generate</button>
+    <br>
+    <button onclick="find();">Generate</button>
     <h3>Result:</h3>
     <p id="out"></p>
     <script>
@@ -56,12 +59,21 @@
         return aux;
       };
       var aux = genaux();
-      var find = function(mn, mx, typ) {
-        var s = make(mn, mx, typ);
-        while (lexicon_flat.hasOwnProperty(s) || aux.hasOwnProperty(s)) {
+      var find = function() {
+        var mn = document.getElementById('min').value;
+        var mx = document.getElementById('max').value;
+        var typ = document.querySelector('input[name="type"]:checked').value;
+        var count = document.getElementById('count').value;
+        var r = {};
+        var s;
+        for (var i = 0; i < count; i++) {
           s = make(mn, mx, typ);
+          while (lexicon_flat.hasOwnProperty(s) || aux.hasOwnProperty(s) || r.hasOwnProperty(s)) {
+            s = make(mn, mx, typ);
+          }
+          r[s] = 0;
         }
-        document.getElementById("out").innerHTML = s;
+        document.getElementById("out").innerHTML = Object.keys(r).join("<br>");
       };
     </script>
   </body>

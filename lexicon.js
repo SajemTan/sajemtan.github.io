@@ -62,7 +62,8 @@ var lexicon = {
       "jit": [["form", "j", "t"], "must", "vital", "necessary"],
       "shik": [["form", "sh", "k"], "be able to"],
       "sin": [["form", "s", "n"], "may", "let it be that", "imperative", ["see also", "golm"]],
-      "sit": [["form", "s", "t"], "begin", "start"]
+      "sit": [["form", "s", "t"], "begin", "start"],
+      "ximic": [["form", "xim", "c"], "continue"]
     },
     "ol": {
       "fmolk": [["form", "fm", "k"], "irrealis mood", "counterfactual"],
@@ -138,6 +139,7 @@ var lexicon = {
     "dyculm": ["movie theater"],
     "dyznek": ["two-handed sword", ["see also", "zhan"], ["gloss", "sword"]],
     "femek": ["mind", "thought", "Sherlock Holmes"],
+    "femekukmunkanolt": ["a door that you keep wanting to push but it's actually a pull door"],
     "fic": ["here", "now"],
     "fijyc": ["rainbow"],
     "fmolthyt": ["duty", "responsibility", "thing one ought to do", "domain", "specialization"],
@@ -172,6 +174,7 @@ var lexicon = {
     "kacfic": ["past"],
     "kagan": ["hoola-hoop", "donut", "doughnut"],
     "kagantheknoc": ["the cursive form of the writing system"],
+    "kanolt": ["door", "dough, especially of bread or cookies"],
     "kecyc": ["Internet", "cyberspace", "virtual reality", "dream", "Holodeck", "multiplayer game mode", "Second Life", "Tron", "something which is illusionary or simulated"],
     "kecyctatulk": ["Google Glass"],
     "kecycthuhfam": ["Silicon"],
@@ -186,6 +189,7 @@ var lexicon = {
     "kolthic": ["the joy and exhaustion that comes after final exams are over"],
     "kuhc": ["letter"],
     "kyfik": ["arm"],
+    "kyvydyc": ["crack", "tear", "hole"],
     "melsuln": ["ice cream", "gelato", "cold"],
     "melsulntelzlnoln": ["snow"],
     "misleln": ["orange (fruit)", ["gloss", "orange"]],
@@ -295,6 +299,8 @@ var lexicon = {
     "xulkat": ["fun", "grammar", "climbing", "the enjoyment of challenges"],
     "xulkatsazyc": ["adventure"],
     "xykuhk": ["shield"],
+    "zadit": ["glass", "victory"],
+    "zaditkanolt": ["window"],
     "zatenym": ["troop", "group", "platoon"],
     "zatheln": ["spider", "silkworm", "syntax"],
     "zelvet": ["sun", "star", "that which gives the (false) impression of constancy or permanence"],
