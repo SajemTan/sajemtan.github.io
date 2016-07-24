@@ -43,6 +43,10 @@
           l[i].style.display = searchMatch(l[i], searchstr) ? "" : "none";
         }
       };
+      var setSearch = function(str) {
+        document.getElementById("search").value = str;
+        doSearch();
+      }
       var makeRow = function(word) {
         var ret = "<tr id=\"" + word[0] + "\" data-json=\"" + escape(JSON.stringify(word)) + "\"><td><b>" + word[0] + "</b></td><td>";
         for (var i = 0; i < word[1].length; i++) {
@@ -53,12 +57,12 @@
           }
           if (df.hasOwnProperty("archaic")) {
             for (var i = 0; i < df.archaic.length; i++) {
-              ret += "<li><b>Archaic</b> See: <a href=\"#" + df.archaic[i] + "\">" + df.archaic[0] + "</a></li>";
+              ret += "<li><b>Archaic: </b>See <a href=\"#\" onclick=\"setSearch('" + df["archaic"][i] + "')\">" +df["archaic"][i] + "</a></li>";
             }
           }
           if (df.hasOwnProperty("see also")) {
             for (var i = 0; i < df["see also"].length; i++) {
-              ret += "<li><b>See Also: </b><a href=\"#" + df["see also"][i] + "\">" + df["see also"][i] + "</a></li>";
+              ret += "<li><b>See Also: </b><a href=\"#\" onclick=\"setSearch('" + df["see also"][i] + "')\">" +df["see also"][i] + "</a></li>";
             }
           }
           if (df.path[0] == "aux") {
