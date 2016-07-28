@@ -287,6 +287,7 @@ var lexicon = {
     "tult": ["object", "thing"],
     "tultxeht": ["nothing"],
     "tulvmyzam": ["cloth", "fabric"],
+    "tythemek": ["a mythical centipede with human hands, and the teeth and dangling thing of a deep-sea anglerfish", "bad idea"],
     "tytyt": ["clover"],
     "vakult": ["parent", "parental figure", "teacher", "older relative"],
     "vazolt": ["cat"],
