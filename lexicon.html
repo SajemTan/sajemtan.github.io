@@ -2,6 +2,7 @@
   <head>
     <title>Sajem Tan Lexicon</title>
     <script type="text/javascript" src="lexicon.js"></script>
+    <meta charset="UTF-8" />
   </head>
   <body>
     <div style="width: 100%; background-color: rgba(255, 255, 255, 0.9); position: fixed; left: 0px; top: 0px; padding: 15px;"
@@ -71,7 +72,12 @@
           }
           if (df.hasOwnProperty("example")) {
             for (var i = 0; i < df.example.length; i++) {
-              ret += "<li><b>Example: </b>" + df.example[i] + "</li>";
+              ret += "<li><b>Example: </b>" + df.example[i][0] + " (<i>" + df.example[i][1] + "</i>)</li>";
+            }
+          }
+          if (df.hasOwnProperty("suf-example")) {
+            for (var i = 0; i < df["suf-example"].length; i++) {
+              ret += "<li><b>Example: </b>" + df["suf-example"][i][0] + " ➔ " + df["suf-example"][i][1] + "</li>";
             }
           }
           ret += "</ul>";
