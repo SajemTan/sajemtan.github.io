@@ -36,7 +36,7 @@
         root: ["adj", "adv", "noun", "trans", "etrans", "intrans", "eintrans", "post"],
         //adjectives
         adj: ["adj-base", ["", "noun", "noun>adj"]],
-        "adj-base": getlist(["adj"]).concat(Object.keys(lexicon.number.decimal)).concat(Object.keys(lexicon.number.senary)),
+        "adj-base": getlist(["adj"]).concat(Object.keys(lexicon.number.decimal)).concat(Object.keys(lexicon.number.senary)).concat(getlist(["color"])),
         adjP: ["adj", [" ", "adv", "adjP"]],
         //adverbs
         adv: ["adv-base"],
@@ -44,7 +44,7 @@
         //nouns
         "verb-roots": ["trans", "etrans", "intrans", "eintrans"],
         noun: ["noun-base", ["", "verb-roots", "verb>noun"], ["", "noun", "noun>noun"]],
-        "noun-base": getlist(["noun"]).concat(getlist(["pronoun"])),
+        "noun-base": getlist(["noun"]).concat(getlist(["pronoun"])).concat(getlist(["color"])),
         NP: ["noun", [" ", "adjP", "NP"], [" ", "NP", "NP-conj", "NP"]],
         "NP-conj": getlist(["conjunction", "noun"]).concat(getlist(["conjunction", "both"])),
         obl: [["", "NP", "case"], [" ", "NP", "post"]],

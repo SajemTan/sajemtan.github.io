@@ -369,12 +369,12 @@ var lexicon = {
       "snitin": ["orange"]
     },
     "secondary": {
-      "gafuln": ["blue", ["see-also", "nyzhyn"]],
-      "nyzhyn": ["blue", ["see-also", "gafuln"]],
-      "nytin": ["red", ["see-also", "snifuln"]],
-      "snifuln": ["red", ["see-also", "nytin"]],
-      "snizhyn": ["yellow", ["see-also", "gatin"]],
-      "gatin": ["yellow", ["see-also", "snizhyn"]]
+      "gafuln": ["blue", ["see also", "nyzhyn"]],
+      "nyzhyn": ["blue", ["see also", "gafuln"]],
+      "nytin": ["red", ["see also", "snifuln"]],
+      "snifuln": ["red", ["see also", "nytin"]],
+      "snizhyn": ["yellow", ["see also", "gatin"]],
+      "gatin": ["yellow", ["see also", "snizhyn"]]
     },
     "tertiary": {
       "gagafuln": ["green-blue"],
