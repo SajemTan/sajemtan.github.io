@@ -154,15 +154,12 @@ var lexicon = {
     "fmolthyt": ["duty", "responsibility", "thing one ought to do", "domain", "specialization"],
     "fmolxem": ["destiny", "fate"],
     "fnadyc": ["death"],
-    "fnadycsoljem": ["clearness", "transparency"],
     "gafuht": ["brick"],
     "gajin": ["pure awe"],
     "gak": ["fun derived from a game or other entertainment"],
     "gamyk": ["tree", "one that produces"],
     "gasnoln": ["effort", "attempt", "pain"],
-    "gazhyn": ["green"],
     "geselt": ["chest", "box", "large container"],
-    "gevmulksoljem": ["black"],
     "gezhelfuln": ["one's personal potential"],
     "gigim": ["flipper", "fin"],
     "golduhn": ["three-dimensional shape or geometric object"],
@@ -226,7 +223,6 @@ var lexicon = {
     "nuldic": ["miner, usually a coal miner", "one who mines", ["gloss", "miner"]],
     "nuln": ["friend"],
     "nulvmic": ["charcoal"],
-    "nyfuln": ["purple"],
     "nyzlan": ["snail"],
     "sasoln": ["applause", "an ovation", "the rumbling praise of the crowd"],
     "saznolt": ["mud"],
@@ -236,7 +232,6 @@ var lexicon = {
     "shnuhk": ["lips"],
     "shuhzhik": ["tear", "drop"],
     "slelceln": ["lemon"],
-    "slifuhn": ["orange"],
     "slik": ["thumbs-up"],
     "slin": ["fight"],
     "slingyn": ["warrior", "Klingon"],
@@ -247,7 +242,6 @@ var lexicon = {
     "snijat": ["mountain"],
     "snolzem": ["knot"],
     "snym": ["cloud"],
-    "snymsoljem": ["white"],
     "snymsoljemthuhfam": ["Silver"],
     "soljem": ["color"],
     "soljesolm": ["chromesthesia"],
@@ -278,7 +272,6 @@ var lexicon = {
     "thnadyc": ["inspiration", "Death"],
     "thnamolk": ["pizza"],
     "thnamolkmahk": ["marinara sauce"],
-    "thnamolkmahksoljem": ["red"],
     "thnamolksoljemmahk": ["olive oil"],
     "thneduht": ["silence", "ominous stillness", "void"],
     "thnolduhn": ["zoccihedron", "a 100-sided shape"],
@@ -367,6 +360,34 @@ var lexicon = {
     "znolk": ["day"],
     "zuhzuhmelt": ["ladle", "dipper"],
     "zyzlolk": ["gas"]
+  },
+  "color": {
+    // Organised by color wheel, not alphabet
+    "primary": {
+      "gazhyn": ["green"],
+      "nyfuln": ["purple"],
+      "snitin": ["orange"]
+    },
+    "secondary": {
+      "gafuln": ["blue", ["see-also", "nyzhyn"]],
+      "nyzhyn": ["blue", ["see-also", "gafuln"]],
+      "nytin": ["red", ["see-also", "snifuln"]],
+      "snifuln": ["red", ["see-also", "nytin"]],
+      "snizhyn": ["yellow", ["see-also", "gatin"]],
+      "gatin": ["yellow", ["see-also", "snizhyn"]]
+    },
+    "tertiary": {
+      "gagafuln": ["green-blue"],
+      "nynyzhyn": ["purple-blue"],
+      "nynytin": ["purple-red"],
+      "snisnifuln": ["orange-red"],
+      "snisnizhyn": ["orange-yellow"],
+      "gagatin": ["green-yellow"]
+    },
+    "snymsoljem": ["white"],
+    "gevmulksoljem": ["black"],
+    "fnadycsoljem": ["clear", "transparant"],
+    "thnamolkmahksoljem" : ["dark red"]
   },
   "number": {
     "decimal": {
