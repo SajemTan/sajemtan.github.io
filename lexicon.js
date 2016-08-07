@@ -1,5 +1,6 @@
 var lexicon = {
   "adj": {
+    "cenetulnyslin": ["inconsistent", "spontaneous"],
     "cimuht": ["equal", "same"],
     "danec": ["borrowed", "copied", "imitated"],
     "dasnan": ["natural", "cosmic"],
@@ -12,6 +13,7 @@ var lexicon = {
     "jafinmeht": ["melodramatic"],
     "jam": ["new"],
     "jelk": ["full"],
+    "kak": ["darkened"],
     "met": ["falling", "collapsing", "tumbling (chaotic falling, like an stone bouncing many times as it falls down a hill, or a vase breaking when it hits after a simple ballistic fall)", ["see also", "znim"]],
     "nymem": ["clumsy"],
     "sajem": ["common", "communal", "public"],
@@ -31,6 +33,7 @@ var lexicon = {
     "tishnim": ["sleepy"],
     "tolthim": ["majestic"],
     "vynit": ["long (time)", "slow", "delayed"],
+    "xatat": ["magnetic"],
     "xen": ["incorrect"],
     "xolt": ["real"],
     "xulm": ["much", "many"],
@@ -54,6 +57,7 @@ var lexicon = {
       "tholk": ["direct sensory evidence"],
       "voln": ["understood through the reversal of a previously deep belief"]
     },
+    "cenetulnyslin": ["inconsistantly", "at random", "spontaniously"],
     "janem": ["forcefully"],
     "nacen": ["also"],
     "theln": ["quickly"],
@@ -107,6 +111,7 @@ var lexicon = {
   "noun": {
     "becek": ["chicken", ["archaic", "decek"]],
     "cadelk": ["planet", ["example", "cadelk zanum kolk con Pluto om?", "Is Pluto a planet?"]],
+    "canolc": ["month", ["example", "Divolmcanolc", "Month Divolm"]],
     "cejym": ["OCD"],
     "celtuln": ["that which is considered morally acceptable to be eaten"],
     "celzan": ["tongue"],
@@ -151,6 +156,7 @@ var lexicon = {
     "femekukmunkanolt": ["a door that you keep wanting to push but it's actually a pull door"],
     "fic": ["here", "now"],
     "fijyc": ["rainbow"],
+    "fmat": ["seed"],
     "fmolthyt": ["duty", "responsibility", "thing one ought to do", "domain", "specialization"],
     "fmolxem": ["destiny", "fate"],
     "fnadyc": ["death"],
@@ -166,6 +172,7 @@ var lexicon = {
     "golslim": ["photograph"],
     "golt": ["limit", "boundary", "termination point", "end"],
     "guhnolduhn": ["nonahedron"],
+    "gygik": ["food"],
     "gyn": ["worker"],
     "gyznyt": ["nose"],
     "jafin": ["melodrama"],
@@ -190,6 +197,9 @@ var lexicon = {
     "kecyc": ["Internet", "cyberspace", "virtual reality", "dream", "Holodeck", "multiplayer game mode", "Second Life", "Tron", "something which is illusionary or simulated"],
     "kecyctatulk": ["Google Glass"],
     "kecycthuhfam": ["Silicon"],
+    "kemen": ["bovine"],
+    "kemenzamin": ["milk"],
+    "kemenzaminthuhfam": ["Calcium"],
     "kexek": ["emotion"],
     "kexekdolkat": ["emoji"],
     "kexekdolkatduhden": ["when Thunder starts distracting the tribe by inserting random emojis"],
@@ -204,6 +214,7 @@ var lexicon = {
     "kuhc": ["letter"],
     "kyfik": ["arm"],
     "kyvydyc": ["crack", "tear", "hole"],
+    "mazem": ["engilang", "engineered language"],
     "melsuln": ["ice cream", "gelato", "cold"],
     "melsulntelzlnoln": ["snow"],
     "misleln": ["orange (fruit)", ["gloss", "orange"]],
@@ -232,6 +243,7 @@ var lexicon = {
     "shnuhk": ["lips"],
     "shuhzhik": ["tear", "drop"],
     "slelceln": ["lemon"],
+    "slijak": ["artlang", "artistic language"],
     "slik": ["thumbs-up"],
     "slin": ["fight"],
     "slingyn": ["warrior", "Klingon"],
@@ -295,6 +307,7 @@ var lexicon = {
     "tythemek": ["a mythical centipede with human hands, and the teeth and dangling thing of a deep-sea anglerfish", "bad idea"],
     "tytyt": ["clover"],
     "vakult": ["parent", "parental figure", "teacher", "older relative"],
+    "vavmyn": ["anarchy"],
     "vazolt": ["cat"],
     "vesnennoc": ["communism"],
     "vith": [["archaic", "vithit"], "bird"],
@@ -313,6 +326,8 @@ var lexicon = {
     "xananzmet": ["house"],
     "xaslan": ["sign language"],
     "xataxym": ["hole", "pit", "ditch"],
+    "xatat": ["magnet"],
+    "xatatthuhfam": ["Iron"],
     "xelteln": ["cliff"],
     "xen": ["thumbs-down"],
     "xidat": ["tail, especially one that is prehensile", ["gloss", "tail"]],
@@ -321,6 +336,7 @@ var lexicon = {
     "xulkatsazyc": ["adventure"],
     "xykuhk": ["shield"],
     "zac": ["tuba"],
+    "zamin": ["juice"],
     "zadit": ["glass", "victory"],
     "zaditkanolt": ["window"],
     "zatenym": ["troop", "group", "platoon"],
@@ -359,6 +375,7 @@ var lexicon = {
     "znenan": ["tale", "story"],
     "znolk": ["day"],
     "zuhzuhmelt": ["ladle", "dipper"],
+    "zulzulm": ["word dump"],
     "zyzlolk": ["gas"]
   },
   "color": {
@@ -523,6 +540,9 @@ var lexicon = {
     "noun>trans": {
       "zhut": ["cause to be"]
     },
+    "number": {
+      "sut": ["turns number into ordinal number"]
+    },
     "valency": {
       "jahk": ["in order to"],
       "sun": ["passive voice"]
@@ -549,6 +569,7 @@ var lexicon = {
       "zhejuln": ["enjoy"]
     },
     "intransitive": {
+      "cenetulnyslin": ["to be inconsistent"],
       "dat": ["rise", "get up", "move upwards", "take off"],
       "doln": ["make a loud, deep sound", "grumble", "rumble"],
       "duhden": ["deviate from the topic of conversation"],
@@ -641,7 +662,8 @@ var lexicon = {
       "zlasloln": ["shoot"],
       "zmet": ["build"],
       "znolc": ["gather", "collect"],
-      "znols": [["archaic", "znolc"], "gather", "collect"]
+      "znols": [["archaic", "znolc"], "gather", "collect"],
+      "zyshen": ["help", "aid", "assist"]
     }
   }
 };
