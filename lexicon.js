@@ -81,6 +81,34 @@ var lexicon = {
       "slol": [["form", "sl", ""], "indicative", ["archaic", "dic"]]
     }
   },
+  "color": {
+    // Organised by color wheel, not alphabet
+    "primary": {
+      "gazhyn": ["green"],
+      "nyfuln": ["purple"],
+      "snitin": ["orange"]
+    },
+    "secondary": {
+      "gafuln": ["blue", ["see also", "nyzhyn"]],
+      "nyzhyn": ["blue", ["see also", "gafuln"]],
+      "nytin": ["red", ["see also", "snifuln"]],
+      "snifuln": ["red", ["see also", "nytin"]],
+      "snizhyn": ["yellow", ["see also", "gatin"]],
+      "gatin": ["yellow", ["see also", "snizhyn"]]
+    },
+    "tertiary": {
+      "gagafuln": ["green-blue"],
+      "nynyzhyn": ["purple-blue"],
+      "nynytin": ["purple-red"],
+      "snisnifuln": ["orange-red"],
+      "snisnizhyn": ["orange-yellow"],
+      "gagatin": ["green-yellow"]
+    },
+    "snymsoljem": ["white"],
+    "gevmulksoljem": ["black"],
+    "fnadycsoljem": ["clear", "transparant"],
+    "thnamolkmahksoljem" : ["dark red"]
+  },
   "conjunction": {
     "both": {
       "ahn": ["one of"],
@@ -377,34 +405,6 @@ var lexicon = {
     "zuhzuhmelt": ["ladle", "dipper"],
     "zulzulm": ["word dump"],
     "zyzlolk": ["gas"]
-  },
-  "color": {
-    // Organised by color wheel, not alphabet
-    "primary": {
-      "gazhyn": ["green"],
-      "nyfuln": ["purple"],
-      "snitin": ["orange"]
-    },
-    "secondary": {
-      "gafuln": ["blue", ["see also", "nyzhyn"]],
-      "nyzhyn": ["blue", ["see also", "gafuln"]],
-      "nytin": ["red", ["see also", "snifuln"]],
-      "snifuln": ["red", ["see also", "nytin"]],
-      "snizhyn": ["yellow", ["see also", "gatin"]],
-      "gatin": ["yellow", ["see also", "snizhyn"]]
-    },
-    "tertiary": {
-      "gagafuln": ["green-blue"],
-      "nynyzhyn": ["purple-blue"],
-      "nynytin": ["purple-red"],
-      "snisnifuln": ["orange-red"],
-      "snisnizhyn": ["orange-yellow"],
-      "gagatin": ["green-yellow"]
-    },
-    "snymsoljem": ["white"],
-    "gevmulksoljem": ["black"],
-    "fnadycsoljem": ["clear", "transparant"],
-    "thnamolkmahksoljem" : ["dark red"]
   },
   "number": {
     "decimal": {
