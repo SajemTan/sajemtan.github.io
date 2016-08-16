@@ -312,6 +312,7 @@ var lexicon = {
     "thikit": ["strength"],
     "thikitmahk": ["steroids"],
     "thnadyc": ["inspiration", "Death"],
+    "thnak": ["root"],
     "thnamolk": ["pizza"],
     "thnamolkmahk": ["marinara sauce"],
     "thnamolksoljemmahk": ["olive oil"],
