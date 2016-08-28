@@ -54,6 +54,7 @@ var lexicon = {
       "snat": ["learned via seconday/tertiary/etc. sources, especially writings"],
       "thec": ["deduced from sensory evidence"],
       "thef": [["archaic", "thec"], "deduced from sensory evidence"],
+      "thmak": ["known through context"],
       "tholk": ["direct sensory evidence"],
       "voln": ["understood through the reversal of a previously deep belief"]
     },
@@ -131,6 +132,7 @@ var lexicon = {
     "telzlnolnfeh tulnah": ["crying", "weeping"]
   },
   "interjection": {
+    "jolfnim": ["huzzah"],
     "mik": ["whoa", "woah"],
     "slik": ["yes", "okay"],
     "thnadyc": ["death"],
@@ -245,6 +247,7 @@ var lexicon = {
     "kyfik": ["arm"],
     "kyvydyc": ["crack", "tear", "hole"],
     "mazem": ["engilang", "engineered language"],
+    "mazuhn": ["insect"],
     "melsuln": ["ice cream", "gelato", "cold"],
     "melsulntelzlnoln": ["snow"],
     "misleln": ["orange (fruit)", ["gloss", "orange"]],
@@ -269,6 +272,7 @@ var lexicon = {
     "saznolt": ["mud"],
     "sekelt": ["valley"],
     "shelsheln": ["river", "pragmatics"],
+    "shikolk": ["sugar glider"],
     "shisek": ["orchard"],
     "shnuhk": ["lips"],
     "shuhzhik": ["tear", "drop"],
@@ -563,6 +567,8 @@ var lexicon = {
   },
   "verb": {
     "experiencer intransitive": {
+      "fik": ["die"],
+      "golcic": ["diminish"],
       "julnim": ["have a pleasant dream"],
       "kasyn": ["recur"],
       "kem": ["shake", "vibrate"],
