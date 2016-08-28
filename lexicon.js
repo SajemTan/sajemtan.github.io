@@ -455,12 +455,12 @@ var lexicon = {
     "kut": ["feels like the phoneme sequence", ["example", "kut xigeldifigeldit", "all over the place, higgledy-piggledy"]],
     "neh": ["clarifies the following word as an intransitive verb"],
     "om": ["carries conjugations for con, don, kut, shehn, and tahn", ["example", "kut xigeldifigeldit omum culjimah.", "The ants are all over the place / disorganised."], ["gloss", "{conjugation}"]],
+    "oz": ["clarifies the following word as a noun"],
     "shehn": ["feels like", ["example", "shehn simem", "the feeling of peace"]],
     "slah": ["introduces a new sense", ["see also", "thom"]],
     "tahn": ["sounds like", "a sound emitted by the referent of the following noun", ["example", "tahn divolm", "the sound of thunder"]],
     "thom": ["links word with new definition", ["see also", "cehk"], ["see also", "slah"]],
-    "xo": ["marks an archaic word or a current word used in an archaic sense"],
-    "zo": ["clarifies the following word as a noun"]
+    "xo": ["marks an archaic word or a current word used in an archaic sense"]
   },
   "post": {
     "feln": ["knowing persons or places", ["see also", "shyn"], ["see also", "zet"]],
