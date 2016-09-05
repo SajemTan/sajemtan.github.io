@@ -1,5 +1,6 @@
 var lexicon = {
   "adj": {
+    "can": ["bored"],
     "cenetulnyslin": ["inconsistent", "spontaneous"],
     "cimuht": ["equal", "same"],
     "danec": ["borrowed", "copied", "imitated"],
@@ -32,6 +33,7 @@ var lexicon = {
     "thnoln": ["free"],
     "tishnim": ["sleepy"],
     "tolthim": ["majestic"],
+    "vmelfelc": ["crazy"],
     "vynit": ["long (time)", "slow", "delayed"],
     "xatat": ["magnetic"],
     "xen": ["incorrect"],
@@ -59,9 +61,11 @@ var lexicon = {
       "voln": ["understood through the reversal of a previously deep belief"]
     },
     "cenetulnyslin": ["inconsistantly", "at random", "spontaniously"],
+    "janan": ["it's funny that/how"],
     "janem": ["forcefully"],
     "nacen": ["also"],
     "theln": ["quickly"],
+    "zeltyt": ["seemingly"],
     "zezholt": ["done with good intentions"]
   },
   "aux": {
@@ -121,6 +125,7 @@ var lexicon = {
     },
     "clause": {
       "mahn": ["when", "while", ["see also", "sno"]],
+      "smah": ["but"],
       "tidyn": ["like", "similarly to", "occurring in comparable manner to"],
       "tyk": ["so", "as a result"],
     },
@@ -189,6 +194,7 @@ var lexicon = {
     "fmat": ["seed"],
     "fmolthyt": ["duty", "responsibility", "thing one ought to do", "domain", "specialization"],
     "fmolxem": ["destiny", "fate"],
+    "fmulzhik": ["year"],
     "fnadyc": ["death"],
     "fuhn": ["dwarf, especially from Dwarf Fortress", ["gloss", "dwarf"]],
     "gafuht": ["brick"],
@@ -197,8 +203,10 @@ var lexicon = {
     "gamyk": ["tree", "one that produces"],
     "gasnoln": ["effort", "attempt", "pain"],
     "geselt": ["chest", "box", "large container"],
+    "geshik": ["clock", "sundial", "timekeeper"],
     "gezhelfuln": ["one's personal potential"],
     "gigim": ["flipper", "fin"],
+    "gisnolm": ["pain from an accident or injury"],
     "golduhn": ["three-dimensional shape or geometric object"],
     "golslim": ["photograph"],
     "golt": ["limit", "boundary", "termination point", "end"],
@@ -246,6 +254,7 @@ var lexicon = {
     "kuhc": ["letter"],
     "kyfik": ["arm"],
     "kyvydyc": ["crack", "tear", "hole"],
+    "madam": ["history"],
     "mazem": ["engilang", "engineered language"],
     "mazuhn": ["insect"],
     "melsuln": ["ice cream", "gelato", "cold"],
@@ -256,6 +265,7 @@ var lexicon = {
     "molm": ["tribe"],
     "molmelc": ["roof", "shelter"],
     "molmvakult": ["legal parent", "adoptive parent"],
+    "molshnem": ["tribemember"],
     "muhc": ["that which cities, forests, and hives have in common, a community", ["gloss", "community"]],
     "muhzl": [["archaic", "muhc"], "that which cities, forests, and hives have in common, a community"],
     "mynam": ["conlang", "constructed language"],
@@ -327,6 +337,7 @@ var lexicon = {
     "thnuhduhk": ["elephant"],
     "thuhfam": ["metal", "Copper"],
     "thuhfin": ["theater for live performances"],
+    "thuhnenolgem": ["fort", "fortress"],
     "thulvmythat": ["flag"],
     "tolcuhkek": ["forcefield"],
     "tolmolm": ["slope"],
@@ -356,6 +367,7 @@ var lexicon = {
     "vmedyt": ["projectile"],
     "vmelfelc": ["wisdom", "silliness"],
     "vmyn": ["mouth"],
+    "vnevnec": ["echo"],
     "vnisyt": ["moon"],
     "voljam": ["ear"],
     "volt": ["plant"],
@@ -373,6 +385,7 @@ var lexicon = {
     "xulkat": ["fun", "grammar", "climbing", "the enjoyment of challenges"],
     "xulkatsazyc": ["adventure"],
     "xykuhk": ["shield"],
+    "xyzak": ["bat (winged mammal)", ["gloss", "bat"]],
     "zac": ["tuba"],
     "zamin": ["juice"],
     "zadit": ["glass", "victory"],
@@ -398,6 +411,7 @@ var lexicon = {
     "zholgam": ["shapeshifter, especially were-creatures"],
     "zhuhzhim": ["dust", "a floating particle; something that settles down or doesn't"],
     "zhyshyn": ["bread"],
+    "zicuhm": ["a container for consumable liquids, especially a bottle, cup, or thermos"],
     "zizulm": ["library"],
     "zlantak": ["domino"],
     "zlaslolk": ["laser", "phaser", "ray gun", "energy beam"],
@@ -562,7 +576,8 @@ var lexicon = {
       "sun": ["passive voice"]
     },
     "verb>noun": {
-      "noc": ["the end state or product of an action", ["gloss", "result"]]
+      "noc": ["the end state or product of an action", ["gloss", "result"]],
+      "thnu": ["the act of"]
     }
   },
   "verb": {
@@ -582,6 +597,7 @@ var lexicon = {
       "kafmym": ["be inside"],
       "nelm": ["see", "have in view"],
       "tuht": ["be of similar size to"],
+      "voljam": ["hear"],
       "zhejuln": ["enjoy"]
     },
     "intransitive": {
@@ -614,7 +630,7 @@ var lexicon = {
       "cejym": ["obsessively organize minute details"],
       "dafmuhm": ["point"],
       "dathnyc": ["encounter", "stumble upon"],
-      "delgem": ["select", "curate", "anthologize"],
+      "delgem": ["select", "curate", "anthologize", "choose", "decide"],
       "dolzec": ["conceptually return to a source", "renew creativity by reviewing old inspirations"],
       "duhden": ["distract"],
       "femek": ["deduce", "realize"],
@@ -630,15 +646,18 @@ var lexicon = {
       "jan": ["care about", "take interest in"],
       "jezlan": ["excell at something"],
       "juhcen": ["set on fire", "enflame"],
+      "julvet": ["state a name", "identify or denominate oneself"],
       "kasyn": ["repeat", "rerun a TV episode"],
       "katolc": ["pilot", "drive"],
       "kem": ["shake", "cause to vibrate"],
       "kygyk": ["eat", "drink", "consume"],
       "ma": [["archaic", "man"], "thank"],
       "man": ["thank"],
+      "misnem": ["be injured by another's carelessness"],
       "nanym": ["dispatch, especially for military purposes", "send a letter", ["gloss", "dispatch"]],
       "nelnolk": ["hide"],
       "ninuhn": ["cut", "chop", "slice", "hack"],
+      "sacet": ["need"],
       "sasoln": ["applaud", "chear", "give a standing ovation"],
       "sazyc": ["go", "travel", ["example", "con Paris om sazycfeh kolk zhu?", "Did you go to Paris?"]],
       "sesuht": ["sing boisterously, especially music that is disliked by others"],
@@ -672,6 +691,7 @@ var lexicon = {
       "xinem": ["teleport", "instantly travel", ["example", "zoku xinemfeh do?", "Where did you teleport?"]],
       "zak": ["release", "let go of"],
       "zan": ["be", "is"],
+      "zen": ["invite"],
       "zholsat": ["defend", "protect"],
       "zlafmelk": ["miss a target, especially when aiming a projectile weapon like a gun, a bow, or a laser", ["gloss", "miss"]],
       "zlaslolk": ["point at", "indicate"],
