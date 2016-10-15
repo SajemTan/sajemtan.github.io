@@ -207,7 +207,7 @@ var lexicon = {
     "famat": ["farm"],
     "femek": ["mind", "thought", "Sherlock Holmes"],
     "femekukmunkanolt": ["a door that you keep wanting to push but it's actually a pull door"],
-    "fenal": ["animal", "land animal, particularly mammals and reptiles"],
+    "fenat": ["animal", "land animal, particularly mammals and reptiles"],
     "fic": ["here", "now"],
     "fijyc": ["rainbow"],
     "fmat": ["seed"],
