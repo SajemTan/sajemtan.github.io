@@ -12,7 +12,7 @@ var findST = function(query) {
 };
 var formatST = function(raw) {
   if (raw != null) {
-    return "<a href=\"lexicon.html#" + k + "\">" + k + "</a>";
+    return "<a href=\"lexicon.html#" + raw + "\">" + raw + "</a>";
   } else {
     return "[none yet]";
   }
