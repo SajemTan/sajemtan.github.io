@@ -1,7 +1,6 @@
 <head>
   <title>ST Linguistics Terms</title>
   <script type="text/javascript" src="lexicon.js"></script>
-  <script type="text/javascript" src="finddefs.js"></script>
   <meta charset="UTF-8" />
 </head>
 <body>
@@ -15,6 +14,11 @@
   </table>
   
   <script>
+    //A few of these are redundant, though I think I got most of those.
+    //A lot of these (particularly ones with slashes or parentheses) will almost certainly not be found in a lexicon search.
+    //This could be corrected either by reformatting the list or by having a function check if part of the term could be found.
+    //(strip "(case)", "to", split on "/", maybe a couple other things)
+    //-D.S. 02016-10-16
     var words = [
       "ablative (case)",
       "ablaut",
@@ -34,7 +38,6 @@
       "analytic",
       "apostrophe",
       "approximant (phoneme)",
-      "approximant (phoneme)",
       "article",
       "articulation",
       "aspect",
@@ -47,7 +50,6 @@
       "bilabial",
       "calque/loanword",
       "case",
-      "case",
       "central",
       "centralised",
       "classic",
@@ -59,7 +61,6 @@
       "communication",
       "complement",
       "concept/term",
-      "conjuction",
       "conjunction",
       "consonant",
       "copula",
@@ -73,16 +74,12 @@
       "definition",
       "delative (case)",
       "dental",
-      "dental",
-      "dental",
       "derivative",
       "dialect",
       "dialect continuum",
       "dictionary",
       "digraph",
       "diminutive",
-      "diminutive",
-      "diphthong",
       "diphthong",
       "direct object",
       "dorsal",
@@ -100,13 +97,10 @@
       "extra short",
       "falling",
       "feminine",
-      "feminine",
       "finite verb",
       "flap (phoneme)",
       "form",
       "fricative",
-      "fricative (phoneme)",
-      "fricative (phoneme)",
       "front",
       "gender",
       "genitive (case)",
@@ -123,7 +117,6 @@
       "homonym",
       "homophone",
       "hypercorretion",
-      "hyphen",
       "hyphen",
       "idiolect",
       "idoglossa",
@@ -144,7 +137,6 @@
       "interjection",
       "IPA",
       "intonation",
-      "intonation",
       "intransitive",
       "irregular",
       "isolated",
@@ -153,8 +145,6 @@
       "language family",
       "laryngal",
       "lateral",
-      "lateral (phoneme)",
-      "lateral (phoneme)",
       "letter/symbol/character",
       "lexicography",
       "lexicon/dictionary",
@@ -162,16 +152,13 @@
       "ligature",
       "light (vowel)",
       "lingua franca",
-      "linguist (female)",
-      "linguist (male)",
-      "linguistics",
+      "linguist",
       "linguistics",
       "lip",
       "loan word",
       "locative (case)",
       "long",
       "low",
-      "masculine",
       "masculine",
       "meaning/definition",
       "metathesis",
@@ -182,7 +169,6 @@
       "mood",
       "morphology",
       "nasal",
-      "nasal (phoneme)",
       "near back",
       "near-close",
       "near-front",
@@ -218,7 +204,6 @@
       "phonology",
       "pidgin",
       "pitch accent",
-      "pitch accent",
       "plosive (phoneme)",
       "pluperfect (tense)",
       "plural (number)",
@@ -226,7 +211,6 @@
       "pluricentric",
       "polysynthetic",
       "possessive",
-      "possessive (case)",
       "postaveolar",
       "predicate",
       "prefix",
@@ -239,9 +223,7 @@
       "prolative (case)",
       "pronoun",
       "protolangauge",
-      "protolanguages",
       "qualifier",
-      "reflexive",
       "reflexive",
       "regular",
       "relatied",
@@ -260,11 +242,9 @@
       "separative (case)",
       "short",
       "sibilant (phoneme)",
-      "sibilant (phoneme)",
       "sign language",
       "sign/signal",
       "singular",
-      "singular (number)",
       "singular (number)",
       "sound",
       "sound (the way something sounds)",
@@ -300,7 +280,6 @@
       "tilde",
       "tip of the tongue",
       "to aspirate",
-      "to aspirate",
       "to communicate",
       "to complement/to complete",
       "to conjugate",
@@ -323,7 +302,6 @@
       "to research",
       "to rise",
       "to sound",
-      "to sound",
       "to speak",
       "to teach someone a language",
       "to understand",
@@ -336,7 +314,6 @@
       "translative (case)",
       "trill (phoneme)",
       "triphthong",
-      "triphthong",
       "typology",
       "umbrella language",
       "umlaut",
@@ -348,7 +325,6 @@
       "uvula",
       "uvular",
       "velar",
-      "verb",
       "verb",
       "vocabulary",
       "vocative (case)",
@@ -363,13 +339,12 @@
       "word origin/etymology",
       "word root",
       "writing system",
-      "writing system",
       "written"
     ];
     
     var tb = document.getElementById("terms");
     for (var i = 0; i < words.length; i++) {
-      tb.innerHTML = tb.innerHTML + "<tr><td>" + words[i] + "</td><td>" + formatST(findST(words[i])) + "</td></tr>";
+      tb.innerHTML += "<tr><td>" + words[i] + "</td><td>" + formatST(findST(words[i])) + "</td></tr>";
     }
   </script>
 </body>
