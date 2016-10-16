@@ -15,4 +15,5 @@ var formatST = function(raw) {
     return "<a href=\"lexicon.html#" + k + "\">" + k + "</a>";
   } else {
     return "[none yet]";
+  }
 }
