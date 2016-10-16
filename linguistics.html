@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
 </head>
 <body>
-  <table>
+  <table border="1">
     <tr>
       <th>English term</th>
       <th>Sajem Tan term</th>
@@ -142,7 +142,7 @@
       "instrumental (case)",
       "intelligibility",
       "interjection",
-      "International Phonetic Alphabet (IPA)",
+      "IPA",
       "intonation",
       "intonation",
       "intransitive",
@@ -369,7 +369,7 @@
     
     var tb = document.getElementById("terms");
     for (var i = 0; i < words.length; i++) {
-      tb.innerHTML = tb.innerHTML + "<tr><td>" + words[i] + "</td><td><a target=\"_blank\" href=\"lexicon.html#" + formatST(findST(words[i])) + "\">" + formatST(findST(words[i])) + "</a></td></tr>";
+      tb.innerHTML = tb.innerHTML + "<tr><td>" + words[i] + "</td><td>" + formatST(findST(words[i])) + "</td></tr>";
     }
   </script>
 </body>
