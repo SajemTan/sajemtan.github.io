@@ -1,0 +1,43 @@
+<head>
+  <title>Sajem Tan Romanization to IPA</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <textarea id="orth" rows="4" cols="50"></textarea><br>
+  <input id="switch" type="button" value="Switch" onclick="parse()">
+  <p id="ipa"></p>
+  <script type="text/javascript">
+    var mods = /h|l/;
+    function parse() {
+      var ipa = "/";
+      orth = document.getElementById("orth").value.toLowerCase();
+      for(var i = 0; i < orth.length; i++) {
+        var c = orth.charAt(i);
+        var n = orth.charAt(i+1);
+        if (n == "l") {
+          if (c == "s") { ipa = ipa + "&#620;"; }
+          else if (c == "z") { ipa = ipa + "&#622;"; }
+          else if (c == "o") { ipa = ipa + "&#248;"; }
+          else if (c == "e") { ipa = ipa + "&#339;"; }
+          else if (c == "u") { ipa = ipa + "&#612;"; }
+          i++;
+        } else if (n == "h") {
+          if (c == "s") { ipa = ipa + "&#643;"; }
+          else if (c == "z") { ipa = ipa + "&#658;"; }
+          else if (c == "t") { ipa = ipa + "&#952;"; }
+          else if (c == "a") { ipa = ipa + "&#593;"; }
+          else if (c == "e") { ipa = ipa + "&#603;"; }
+          else if (c == "u") { ipa = ipa + "&#652;"; }
+          i++;
+        } else {
+          if (c == "c") { ipa = ipa + "t&#865;s"; }
+          else if (c == "j") { ipa = ipa + "&#654;"; }
+          else if (c == "a") { ipa = ipa + "&#230;"; }
+          else if (c == "\n") { ipa = ipa + "/<br>/"; }
+          else { ipa = ipa + orth.charAt(i); }
+        }
+      }
+      document.getElementById("ipa").innerHTML = ipa + "/";
+    }
+  </script>
+</body>
