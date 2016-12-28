@@ -46,6 +46,7 @@ var lexicon = {
     "jelk": ["full"],
     "kak": ["darkened"],
     "magolt": ["valuable"],
+    "mehn": ["some", "any"],
     "met": ["falling", "collapsing", "tumbling (chaotic falling, like an stone bouncing many times as it falls down a hill, or a vase breaking when it hits after a simple ballistic fall)", ["see also", "znim"]],
     "molten": ["solid", "rigid", "stiff", "firm"],
     "nymem": ["clumsy"],
@@ -120,6 +121,7 @@ var lexicon = {
       "fmolk": [["form", "fm", "k"], "irrealis mood", "counterfactual"],
       "golm": [["form", "g", "m"], "be obligated to", "must", ["see also", "sin"]],
       "goln": [["form", "g", "n"], "try to", "attempt"],
+      "jol": [["form", "j", ""], "should"],
       "kolk": [["form", "k", "k"], "polar interogative", "yes-no question"],
       "molt": [["form", "m", "t"], "no", "not", "negative verb (like Finnish 'ei')", ["see also", "xeht"], ["see also", "uk"]],
       "slol": [["form", "sl", ""], "indicative", ["archaic", "dic"]]

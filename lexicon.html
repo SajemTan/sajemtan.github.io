@@ -5,8 +5,11 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <div style="width: 100%; background-color: rgba(255, 255, 255, 0.9); position: fixed; left: 0px; top: 0px; padding: 15px;"
-      <span>Search: </span><input type="text" id="search" onkeyup="doSearch();"></input>
+    <div style="width: 100%; background-color: rgba(255, 255, 255, 0.9); position: fixed; left: 0px; top: 0px; padding: 15px;">
+      <span>Search: </span>
+      <input type="text" id="search" onkeyup="doSearch();"></input>
+      <span>Regex? </span>
+      <input type="checkbox" id="regex" onclick="doSearch();"></input>
     </div>
     <br>
     <br>
@@ -29,19 +32,26 @@
         lexicon_flat_arr.push([k, lexicon_flat[k]]);
       }
       lexicon_flat_arr.sort(function(a, b) { return sortAlpha(a[0], b[0]); });
-      var searchMatch = function(domNode, queryString) {
+      var searchMatch = function(domNode, queryString, isRegex) {
         function decodeHtml(html) {
           var txt = document.createElement("textarea");
           txt.innerHTML = html;
           return txt.value;
         }
-        return decodeHtml(domNode.outerHTML).toLowerCase().includes(decodeHtml(queryString).toLowerCase());
+        var str = decodeHtml(domNode.outerHTML);
+        var find = decodeHtml(queryString);
+        if (!isRegex) {
+          return str.toLowerCase().includes(find.toLowerCase());
+        } else {
+          return str.match(queryString) != null;
+        }
       };
       var doSearch = function() {
         var searchstr = document.getElementById("search").value;
+        var isRegex = document.getElementById("regex").checked;
         var l = document.getElementById("defs").childNodes;
         for (var i = 0; i < l.length; i++) {
-          l[i].style.display = searchMatch(l[i], searchstr) ? "" : "none";
+          l[i].style.display = searchMatch(l[i], searchstr, isRegex) ? "" : "none";
         }
       };
       var setSearch = function(str) {
