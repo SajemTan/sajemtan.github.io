@@ -26,41 +26,53 @@
   <body>
     <textarea id="sen" type="text"></textarea>
     <br>
-    <button onclick="gloss();">Gloss</button>
+    <button onclick="gloss(fromend=false);">Gloss</button>
+    <button onclick="gloss(fromend=true);" title="sometimes gives better results">Gloss from end</button>
     <p id="out"></p>
     <script>
       var root = /^(([cdfgjkmnstvxz]|[sz]l|[stz]h|[fv][mn]|[sz][hl]?[mn]|thn)([aeiy]|[eou]l|uh))+[ckmnt]/i;
       var suf = /^([cdfgjkmnstvxz]|[sz]l|[stz]h|[fv][mn]|[sz][hl]?[mn]|thn)?([ou]|[ae]h)[ckmnt]?/i;
-      var glosschop = function(el, regex, cls) {
+      var root_end = /(([cdfgjkmnstvxz]|[sz]l|[stz]h|[fv][mn]|[sz][hl]?[mn]|thn)([aeiy]|[eou]l|uh))+[ckmnt]$/i;
+      var suf_end = /([cdfgjkmnstvxz]|[sz]l|[stz]h|[fv][mn]|[sz][hl]?[mn]|thn)?([ou]|[ae]h)[ckmnt]?$/i;
+      var glosschop = function(el, regex, cls, fromend) {
         var s = el.innerHTML;
         var q = "";
         var rep = "";
+        var temp;
         while (s.length > 0) {
           var m = s.match(regex);
           if (m) {
             if (q.length > 0) {
-              rep += '<span class="other" title="' + q + '">' + q + '</span>';
+              temp = '<span class="other" title="' + q + '">' + q + '</span>';
+              rep = fromend ? temp + rep : rep + temp;
               q = "";
             }
-            s = s.slice(m[0].length);
-            rep += '<span class="' + cls + '" title="' + m[0] + '">' + m[0] + '</span>';
+            s = fromend ? s.substr(0, s.length-m[0].length) : s.slice(m[0].length);
+            temp = '<span class="' + cls + '" title="' + m[0] + '">' + m[0] + '</span>';
+            rep = fromend ? temp + rep : rep + temp;
           } else {
-            q += s[0];
-            s = s.slice(1);
+            if (fromend) {
+              q = s[s.length-1] + q;
+              s = s.substr(0, s.length-1);
+            } else {
+              q += s[0];
+              s = s.slice(1);
+            }
           }
         }
         if (q.length > 0) {
-          rep += '<span class="other" title="' + q + '">' + q + '</span>';
+          temp = '<span class="other" title="' + q + '">' + q + '</span>';
+          rep = fromend ? temp + rep : rep + temp;
         }
         el.outerHTML = rep;
       };
       var auxList = Object.keys(queryLexPath(["aux"], false)).map(function(a) { return generateAux(a, false); });
-      var gloss = function() {
+      var gloss = function(fromend) {
         var out = document.getElementById("out");
         out.innerHTML = '<span>' + document.getElementById("sen").value.toLowerCase() + '</span>';
-        glosschop(out.firstChild, /^\s+/i, "space");
-        Array.prototype.slice.call(document.getElementsByClassName("other")).map(function(el) { glosschop(el, root, "root"); });
-        Array.prototype.slice.call(document.getElementsByClassName("other")).map(function(el) { glosschop(el, suf, "suf"); });
+        glosschop(out.firstChild, fromend ? /\s+$/i : /^\s+/i, "space", fromend);
+        Array.prototype.slice.call(document.getElementsByClassName("other")).map(function(el) { glosschop(el, fromend ? root_end : root, "root", fromend); });
+        Array.prototype.slice.call(document.getElementsByClassName("other")).map(function(el) { glosschop(el, fromend ? suf_end : suf, "suf", fromend); });
         var wasSpace = true;
         var getgloss = function(word) { //word is assumed to exist
           if (lexicon_flat[word][0].hasOwnProperty("gloss")) {
