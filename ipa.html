@@ -30,12 +30,17 @@
           else if (c == "e") { ipa = ipa + "&#603;"; }
           else if (c == "u") { ipa = ipa + "&#652;"; }
           i++;
+        } else if (n == c) {
+          ipa = ipa + c + "&#601;" + c;
+        }
         } else {
           if (c == "c") { ipa = ipa + "t&#865;s"; }
           else if (c == "j") { ipa = ipa + "&#654;"; }
           else if (c == "a") { ipa = ipa + "&#230;"; }
+          else if (c == "o") { ipa = ipa + "&#629;"; }
           else if (c == "\n") { ipa = ipa + "/<br>/"; }
-          else { ipa = ipa + orth.charAt(i); }
+          else if (c == "[" || c == "]") { ipa = ipa + "!"; }
+          else { ipa = ipa + c; }
         }
       }
       document.getElementById("ipa").innerHTML = ipa + "/";
