@@ -946,33 +946,52 @@ var queryLexPath = function(pth, includeArchaic, inclkeys) {
   }
   return ret;
 };
-var sortAlpha = function(word1, word2) {
-  var tols = function(w) {
-    var order = ["d", "g", "x", "j", "f", "v", "th", "s", "z", "sh", "zh", "sl", "zl", "m", "n", "a", "el", "e", "ol", "i", "y", "uh", "ul", "c", "t", "k", "ah", "eh", "o", "u"];
-    var i = 0;
-    var r = [];
-    var c = "";
-    while (i < w.length) {
-      c = w[i];
+var splitword = function(w) {
+  var i = 0;
+  var r = [];
+  var c = "";
+  while (i < w.length) {
+    c = w[i];
+    i++;
+    if (i < w.length && (w[i] == "h" || w[i] == "l")) {
+      c += w[i];
       i++;
-      if (i < w.length && (w[i] == "h" || w[i] == "l")) {
-        c += w[i];
-        i++;
-      }
-      r.push(order.indexOf(c));
     }
-    return r;
-  };
-  var l1 = tols(word1);
-  var l2 = tols(word2);
+    r.push(c);
+  }
+  return r;
+};
+var sortAlpha = function(word1, word2) {
+  var order = ["d", "g", "x", "j", "f", "v", "th", "s", "z", "sh", "zh", "sl", "zl", "m", "n", "a", "el", "e", "ol", "i", "y", "uh", "ul", "c", "t", "k", "ah", "eh", "o", "u"];
+  var l1 = splitword(word1);
+  var l2 = splitword(word2);
   var i = 0;
   while (i < l1.length && i < l2.length) {
     if (l1[i] != l2[i]) {
-      return l1[i] - l2[i];
+      return order.indexOf(l1[i]) - order.indexOf(l2[i]);
     }
     i++;
   }
   return l1.length - l2.length;
+};
+var tonewortho = function(text) {
+  var l = splitword(text);
+  return l.map(function(chr) {
+    switch (chr) {
+      case "eh": return "ê";
+      case "a": return "ë";
+      case "ah": return "a";
+      case "ul": return "ü";
+      case "uh": return "û";
+      case "ol": return "ö";
+      case "el": return "ô";
+      case "sl": return "l";
+      case "zl": return "r";
+      case "sh": return "š";
+      case "zh": return "ž";
+      default: return chr;
+    }
+  }).join("");
 };
 var findST = function(query) {
   for (var k in lexicon_flat) {
@@ -986,9 +1005,9 @@ var findST = function(query) {
   }
   return null;
 };
-var formatST = function(raw) {
+var formatST = function(raw, updated) {
   if (raw != null) {
-    return "<a href=\"lexicon.html#" + raw + "\">" + raw + "</a>";
+    return "<a href=\"lexicon.html#" + raw + "\">" + (updated ? tonewortho(raw) : raw) + "</a>";
   } else {
     return "[none yet]";
   }

@@ -11,6 +11,8 @@
       <input type="text" id="search" onkeyup="doSearch();"></input>
       <span>Regex? </span>
       <input type="checkbox" id="regex" onclick="doSearch();"></input>
+      <input type="radio" id="oldortho" name="ortho" onchange="setup();" checked="checked">Old Orthography</input>
+      <input type="radio" name="ortho" onchange="setup();">Reformed Orthography</input>
     </div>
     <br>
     <br>
@@ -26,8 +28,6 @@
       </tbody>
     </table>
     <script>
-      //TODO: multiple sorting methods
-      //TODO: multiple output formats
       var lexicon_flat_arr = [];
       for (var k in lexicon_flat) {
         lexicon_flat_arr.push([k, lexicon_flat[k]]);
@@ -59,8 +59,18 @@
         document.getElementById("search").value = str;
         doSearch();
       }
-      var makeRow = function(word) {
-        var ret = "<tr id=\"" + word[0] + "\" data-json=\"" + escape(JSON.stringify(word)) + "\"><td><b>" + word[0] + "</b></td><td>";
+      var dispWord = function(word, update) {
+        if (update) {
+          return tonewortho(word);
+        } else {
+          return word;
+        }
+      };
+      var makeLink = function(word, update) {
+        return "<a href=\"#\" onclick=\"setSearch('" + word + "')\">" + dispWord(word, update) + "</a>";
+      };
+      var makeRow = function(word, update) {
+        var ret = "<tr id=\"" + word[0] + "\" data-json=\"" + escape(JSON.stringify(word)) + "\"><td><b>" + dispWord(word[0], update) + "</b></td><td>";
         for (var i = 0; i < word[1].length; i++) {
           var df = word[1][i];
           ret += "<p><b>" + df.path.join(" > ") + "</b></p><ul>";
@@ -69,17 +79,17 @@
           }
           if (df.hasOwnProperty("archaic")) {
             for (var i = 0; i < df.archaic.length; i++) {
-              ret += "<li><b>Archaic: </b>See <a href=\"#\" onclick=\"setSearch('" + df["archaic"][i] + "')\">" +df["archaic"][i] + "</a></li>";
+              ret += "<li><b>Archaic: </b>See " + makeLink(df["archaic"][i], update) + "</li>";
             }
           }
           if (df.hasOwnProperty("see also")) {
             for (var i = 0; i < df["see also"].length; i++) {
-              ret += "<li><b>See Also: </b><a href=\"#\" onclick=\"setSearch('" + df["see also"][i] + "')\">" +df["see also"][i] + "</a></li>";
+              ret += "<li><b>See Also: </b>" + makeLink(df["see also"][i], update) + "</li>";
             }
           }
           if (df.path[0] == "aux") {
             var tenses = generateAux(word[0], false);
-            ret += "<li><b>Past Tenses:</b> <i id=\"" + tenses.near + "\">near:</i> " + tenses.near + ", <i id=\"" + tenses.mid + "\">mid:</i> " + tenses.mid + ", <i id=\"" + tenses.far + "\">far:</i> " + tenses.far + "</li>";
+            ret += "<li><b>Past Tenses:</b> <i id=\"" + tenses.near + "\">near:</i> " + dispWord(tenses.near, update) + ", <i id=\"" + tenses.mid + "\">mid:</i> " + dispWord(tenses.mid, update) + ", <i id=\"" + tenses.far + "\">far:</i> " + dispWord(tenses.far, update) + "</li>";
           }
           if (df.hasOwnProperty("example")) {
             for (var i = 0; i < df.example.length; i++) {
@@ -163,7 +173,7 @@
       var setup = function() {
         var s = "";
         for (var i = 0; i < lexicon_flat_arr.length; i++) {
-          s += makeRow(lexicon_flat_arr[i]);
+          s += makeRow(lexicon_flat_arr[i], !document.getElementById("oldortho").checked);
         }
         document.getElementById('defs').innerHTML = s;
       };
