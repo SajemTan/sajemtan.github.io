@@ -978,17 +978,35 @@ var tonewortho = function(text) {
   var l = splitword(text);
   return l.map(function(chr) {
     switch (chr) {
-      case "eh": return "ê";
-      case "a": return "ë";
+      case "eh": return "\u00ea";
+      case "a":  return "\u00eb";
       case "ah": return "a";
-      case "ul": return "ü";
-      case "uh": return "û";
-      case "ol": return "ö";
-      case "el": return "ô";
+      case "ul": return "\u00fc";
+      case "uh": return "\u00fb";
+      case "ol": return "\u00f6";
+      case "el": return "\u00f4";
       case "sl": return "l";
       case "zl": return "r";
-      case "sh": return "š";
-      case "zh": return "ž";
+      case "sh": return "\u0161";
+      case "zh": return "\u017e";
+      default: return chr;
+    }
+  }).join("");
+};
+var tooldortho = function(text) {
+  return text.split("").map(function(chr) {
+    switch (chr) {
+      case "\u00ea": return "eh";
+      case "\u00eb": return "a";
+      case "a": return "ah";
+      case "\u00fc": return "ul";
+      case "\u00fb": return "uh";
+      case "\u00f6": return "ol";
+      case "\u00f4": return "el";
+      case "l": return "sl";
+      case "r": return "zl";
+      case "\u0161": return "sh";
+      case "\u017e": return "zh";
       default: return chr;
     }
   }).join("");
