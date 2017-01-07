@@ -22,7 +22,7 @@
     <br>
     <button onclick="find();">Generate</button>
     <h3>Result:</h3>
-    <p id="out"></p>
+    <table id="out"></table>
     <script>
       var c = ["fm", "fn", "vm", "vn", "sn", "zn", "shn", "zhn", "sln", "zln", "thn", "c", "t", "k", "d", "g", "m", "n", "f", "v", "th", "s", "z", "sh", "zh", "sl", "zl", "x", "j"];
       var rv = ["ol", "e", "el", "i", "a", "ul", "uh", "y"];
@@ -74,7 +74,13 @@
           }
           r[s] = 0;
         }
-        document.getElementById("out").innerHTML = Object.keys(r).join("<br>");
+        var outstr = "<tbody><tr><th>Old Orthography</th><th>Reformed Orthography</th></tr>";
+        var wl = Object.keys(r);
+        for (var i = 0; i < wl.length; i++) {
+          outstr += "<tr><td>" + wl[i] + "</td><td>" + tonewortho(wl[i]) + "</td></tr>";
+        }
+        document.getElementById("out").innerHTML = outstr + "</tbody>";
+        //document.getElementById("out").innerHTML = Object.keys(r).join("<br>");
       };
     </script>
   </body>
