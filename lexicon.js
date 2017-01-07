@@ -16,7 +16,8 @@ var lexicon = {
       "zledyzit": ["glottal"]
     },
     "manner of articulation": {
-      "nalmycim": ["nasal"],
+      "namycim": ["nasal"],
+      "nalmycim": ["nasal", ["archaic", "namycim"]],
       "doljejolt": ["plosive"],
       "guhtesnelt": ["trill"],
       "slnulzhuhm": ["fricative"],
@@ -47,6 +48,7 @@ var lexicon = {
     "kak": ["darkened"],
     "magolt": ["valuable"],
     "mehn": ["some", "any"],
+    "men": ["normal", "average"],
     "met": ["falling", "collapsing", "tumbling (chaotic falling, like an stone bouncing many times as it falls down a hill, or a vase breaking when it hits after a simple ballistic fall)", ["see also", "znim"]],
     "molten": ["solid", "rigid", "stiff", "firm"],
     "nymem": ["clumsy"],
@@ -124,6 +126,7 @@ var lexicon = {
       "jol": [["form", "j", ""], "should"],
       "kolk": [["form", "k", "k"], "polar interogative", "yes-no question"],
       "molt": [["form", "m", "t"], "no", "not", "negative verb (like Finnish 'ei')", ["see also", "xeht"], ["see also", "uk"]],
+      "shnoln": [["form", "shn", "n"], "it is possible that", "may", "maybe"],
       "slol": [["form", "sl", ""], "indicative", ["archaic", "dic"]]
     }
   },
@@ -324,6 +327,7 @@ var lexicon = {
     "melsuln": ["ice cream", "gelato", "cold"],
     "melsulntelzlnoln": ["snow"],
     "menec": ["a false sense of safety"],
+    "mislek": ["fern", "mathematics"],
     "misleln": ["orange (fruit)", ["gloss", "orange"]],
     "mizizlat": ["wheelbarrow", "cart", "trolley", "pram"],
     "molduhm": ["mace"],
@@ -497,6 +501,7 @@ var lexicon = {
     "zhimahn": [["archaic", "zhiman"], "feather"],
     "zhiman": ["feather", "long lustrous hair"],
     "zhizlik": ["fish"],
+    "zhnazym": ["table"],
     "zhnicoln": ["dog"],
     "zhnicon": ["dog", ["archaic", "zhnicoln"]],
     "zholgam": ["shapeshifter, especially were-creatures"],
@@ -561,8 +566,9 @@ var lexicon = {
     "kun": ["clarifies the following word as an adjective or adverb"],
     "kut": ["feels like the phoneme sequence", ["example", "kut xigeldifigeldit", "all over the place, higgledy-piggledy"]],
     "neh": ["clarifies the following word as an intransitive verb"],
+    "oc": ["clarifies the following word as a noun"],
     "om": ["carries conjugations for con, don, kut, shehn, and tahn", ["example", "kut xigeldifigeldit omum culjimah.", "The ants are all over the place / disorganised."], ["gloss", "{conjugation}"]],
-    "oz": ["clarifies the following word as a noun"],
+    "oz": ["clarifies the following word as a noun", ["archaic", "oc"]],
     "shehn": ["feels like", ["example", "shehn simem", "the feeling of peace"]],
     "slah": ["introduces a new sense", ["see also", "thom"]],
     "tahn": ["sounds like", "a sound emitted by the referent of the following noun", ["example", "tahn divolm", "the sound of thunder"]],
