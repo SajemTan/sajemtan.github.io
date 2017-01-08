@@ -565,6 +565,7 @@ var lexicon = {
     "ehm": ["clarifies the following word as a transitive verb"],
     "kun": ["clarifies the following word as an adjective or adverb"],
     "kut": ["feels like the phoneme sequence", ["example", "kut xigeldifigeldit", "all over the place, higgledy-piggledy"]],
+    "nem": ["identifies a word as a class of words ; in the class of __ ", ["example", "janycnem", "the class of things which are morally unacceptable to eat"]],
     "neh": ["clarifies the following word as an intransitive verb"],
     "oc": ["clarifies the following word as a noun"],
     "om": ["carries conjugations for con, don, kut, shehn, and tahn", ["example", "kut xigeldifigeldit omum culjimah.", "The ants are all over the place / disorganised."], ["gloss", "{conjugation}"]],
