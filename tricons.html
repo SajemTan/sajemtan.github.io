@@ -9,10 +9,34 @@
     <script>
       var node = document.getElementById("out");
       var root = /^(([cdfgjklmnrstvxzšž]|thn?|[flrsvzšž][mn])[öeëiaüûy]){2,}[ckmnt]$/i;
+      var vowels = ["ol", "e", "el", "i", "a", "ul", "uh", "y"];
+      var c3 = [];
+      var cp = [];
       for (k in lexicon_flat) {
         if (tonewortho(k).match(root)) {
-          node.innerHTML += "<li>" + k + "<br>" + lexicon_flat[k][0].defs.join("; ") + "</li>";
+          var spl1 = splitword(k);
+          var spl = [spl1[0]];
+          for (var i = 1; i < spl1.length; i++) {
+            if (!vowels.includes(spl1[i]) && !vowels.includes(spl1[i-1])) {
+              spl[spl.length-1] += spl1[i];
+            } else {
+              spl.push(spl1[i]);
+            }
+          }
+          var disp = "";
+          if (spl.length == 5) {
+            disp = spl[0] + "_" + spl[2] + "_" + spl[4];
+          }
+          var x = "<!-- " + disp + " --><li><b>" + k + "</b> " + disp + "<br>" + lexicon_flat[k][0].defs.join("; ") + "</li>";
+          if (spl.length == 5) {
+            c3.push(x);
+          } else {
+            cp.push(x);
+          }
         }
+        c3.sort();
+        cp.sort();
+        node.innerHTML = c3.join("") + "<li>====================</li>" + cp.join("");
       }
     </script>
   </body>
