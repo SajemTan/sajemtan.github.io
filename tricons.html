@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Tri-consonantal root thingy</title>
+    <script type="text/javascript" src="lexicon.js"></script>
+    <link rel="shortcut icon" type="image/png" href="flag.png">
+  </head>
+  <body>
+    <ul id="out"></ul>
+    <script>
+      var node = document.getElementById("out");
+      var root = /^(([cdfgjklmnrstvxzšž]|thn?|[flrsvzšž][mn])[ëeiyôöüû]){2,}[ckmnt]$/i;
+      for (k in lexicon_flat) {
+        if (tonewortho(k).match(root)) {
+          node.innerHTML += "<li>" + k + "<br>" + lexicon_flat[k][0].defs.join("; ") + "</li>";
+        }
+      }
+    </script>
+  </body>
+</html>
