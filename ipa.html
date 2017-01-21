@@ -5,44 +5,44 @@
 </head>
 <body>
   <textarea id="orth" rows="4" cols="50"></textarea><br>
+  <select id="from">
+    <option value="oldipa"> Original Phonology IPA</option>
+    <option value="newipa"> Reformed Phonology IPA</option>
+    <option value="oldorth"> Original Orthography</option>
+    <option value="neworth"> Reformed Orthography</option>
+  </select>
+  &rarr;
+  <select id="to">
+    <option value="oldipa"> Original Phonology IPA</option>
+    <option value="newipa"> Reformed Phonology IPA</option>
+    <option value="oldorth"> Original Orthography</option>
+    <option value="neworth"> Reformed Orthography</option>
+  </select>
   <input id="switch" type="button" value="Switch" onclick="parse()">
   <p id="ipa"></p>
   <script type="text/javascript">
-    var mods = /h|l/;
+    var oldipa[] = {"d", "g", "x", "&#654;", "f", "v", "&#952;", "s", "z", "&#643;", "&#658;", "&#620;", "&#622;", "m", "n", "&#230;", "&#339;", "e", "&#248;", "i", "y", "&#652;", "&#612;", "t&#865;s", "t", "k", "&#593;", "&#603;", "&#629;", "u"};
+    var newipa[] = {"d", "g", "x", "j", "f", "v", "&#952;", "s", "z", "&#643;", "&#658;", "&#620;", "&#622;", "m", "n", "&#230;", "&#339;", "e", "&#248;", "i", "y", "&#652;", "&#650;", "t&#865;s", "t", "k", "&#593;", "&#603;", "o", "u"}
+    var oldorth[] = {"d", "g", "x", "j", "f", "v", "th", "s", "z", "sh", "zh", "sl", "zl", "m", "n", "a", "el", "e", "ol", "i", "y", "uh", "ul", "c", "t", "k", "ah", "eh", "o", "u"};
+    var neworth[] = {"d", "g", "x", "j", "f", "v", "th", "s", "z", "š", "ž", "l", "r", "m", "n", "a", "ë", "e", "ö", "i", "y", "û", "ü", "c", "t", "k", "â", "ê", "o", "u"};
+    
+    function getList(value) {
+      if (value == "oldipa") { return oldipa; }
+      if (value == "newipa") { return newipa; }
+      if (value == "oldorth") { return oldorth; }
+      if (value == "neworth") { return neworth; }
+    }
+    
     function parse() {
-      var ipa = "/";
-      orth = document.getElementById("orth").value.toLowerCase();
-      for(var i = 0; i < orth.length; i++) {
-        var c = orth.charAt(i);
-        var n = orth.charAt(i+1);
-        if (n == "l") {
-          if (c == "s") { ipa = ipa + "&#620;"; }
-          else if (c == "z") { ipa = ipa + "&#622;"; }
-          else if (c == "o") { ipa = ipa + "&#248;"; }
-          else if (c == "e") { ipa = ipa + "&#339;"; }
-          else if (c == "u") { ipa = ipa + "&#612;"; }
-          i++;
-        } else if (n == "h") {
-          if (c == "s") { ipa = ipa + "&#643;"; }
-          else if (c == "z") { ipa = ipa + "&#658;"; }
-          else if (c == "t") { ipa = ipa + "&#952;"; }
-          else if (c == "a") { ipa = ipa + "&#593;"; }
-          else if (c == "e") { ipa = ipa + "&#603;"; }
-          else if (c == "u") { ipa = ipa + "&#652;"; }
-          i++;
-        } else if (n == c) {
-          ipa = ipa + c + "&#601;" + c;
-        } else {
-          if (c == "c") { ipa = ipa + "t&#865;s"; }
-          else if (c == "j") { ipa = ipa + "&#654;"; }
-          else if (c == "a") { ipa = ipa + "&#230;"; }
-          else if (c == "o") { ipa = ipa + "&#629;"; }
-          else if (c == "\n") { ipa = ipa + "/<br>/"; }
-          else if (c == "[" || c == "]") { ipa = ipa + "!"; }
-          else { ipa = ipa + c; }
-        }
+      var input = document.getElementById("orth").value.toLowerCase();
+      var inlist = getList(document.getElementById("from").value);
+      var outlist = getList(document.getElementById("to").value);
+      
+      for (var i = 0; i < inlist.length; i++) {
+        input.replace(inlist[i], outlist[i]);
       }
-      document.getElementById("ipa").innerHTML = ipa + "/";
+      
+      document.getElementById("ipa").innerHTML = input;
     }
   </script>
 </body>
