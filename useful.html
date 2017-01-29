@@ -1,0 +1,132 @@
+<html>
+  <head>
+    <title>Common Phrases in Sajem Tan</title>
+    <script type="text/javascript" src="lexicon.js"></script>
+    <link rel="shortcut icon" type="image/png" href="flag.png">
+  </head>
+  <body>
+    <span>I am </span>
+    <select id="1mode" onchange="update1();">
+      <option value="animal1">an animal</option>
+      <option value="animals">a group of animals</option>
+      <option value="plant1">a plant</option>
+      <option value="plants">a group of plants</option>
+      <option value="rock1">a rock (or other inanimate object)</option>
+      <option value="rocks">a group of rocks</option>
+      <option value="neutral1">(do not wish to specify)</option>
+      <option value="neutrals">a nonspecific or varied group</option>
+    </select>
+    <br>
+    <br>
+    <span>I am speaking to </span>
+    <select id="2mode" onchange="update2();">
+      <option value="animal1">an animal</option>
+      <option value="animals">a group of animals</option>
+      <option value="plant1">a plant</option>
+      <option value="plants">a group of plants</option>
+      <option value="rock1">a rock (or other inanimate object)</option>
+      <option value="rocks">a group of rocks</option>
+      <option value="neutral1">(do not wish to specify or unknown)</option>
+      <option value="neutrals">a nonspecific or varied group</option>
+    </select>
+    <br>
+    <br>
+    <span>I prefer the </span>
+    <select id="ortho" onchange="ortho();">
+      <option value="old">original orthography</option>
+      <option value="new">reformed orthography</option>
+    </select>
+    <br>
+    <br>
+    <table border="1">
+      <tbody>
+        <tr>
+          <th>English</th>
+          <th>Long Form</th>
+          <th>Short Form</th>
+          <th>Comments</th>
+        </tr>
+        <tr>
+          <td>Hello</td>
+          <td><span class="2S st">du</span> <span class="st">xanolnfeh</span> <span class="1S st">deh</span></td>
+          <td class="st">xanolnfeh</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Goodbye</td>
+          <td><span class="2S st">du</span> <span class="st">ximulcfeh</span> <span class="1S st">deh</span></td>
+          <td class="st">ximulcfeh</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>How are you?</td>
+          <td><span class="st">kexekkusho</span> <span class="2S st">du</span></td>
+          <td class="st">kexekkusho?</td>
+          <td>"In what manner do you emote?"</td>
+        </tr>
+        <tr>
+          <td>I am well.</td>
+          <td><span class="st">tulceslitsho</span> <span class="1S st">deh</span><span class="st">vmeh kexekah</span></td>
+          <td></td>
+          <td>"My emotions affect me in a good way."</td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      var update1 = function() {
+        var val = document.getElementById("1mode").value;
+        var spans = document.getElementsByClassName("1S");
+        var pronouns = {
+          animal1: "seh",
+          animals: "sehah",
+          plant1: "thu",
+          plants: "thuah",
+          rock1: "theh",
+          rocks: "thehah",
+          neutral1: "deh",
+          neutrals: "dehah"
+        };
+        for (var i = 0; i < spans.length; i++) {
+          spans[i].innerHTML = pronouns[val];
+        }
+      };
+      var update2 = function() {
+        var val = document.getElementById("2mode").value;
+        var spans = document.getElementsByClassName("2S");
+        var pronouns = {
+          animal1: "zhu",
+          animals: "zhuah",
+          plant1: "vo",
+          plants: "voah",
+          rock1: "vu",
+          rocks: "vuah",
+          neutral1: "do",
+          neutrals: "doah"
+        };
+        for (var i = 0; i < spans.length; i++) {
+          spans[i].innerHTML = pronouns[val];
+        }
+      };
+      var currentortho = "old";
+      var ortho = function() {
+        var val = document.getElementById("ortho").value;
+        if (val == currentortho) {
+          return "";
+        } else {
+          currentortho = val;
+        }
+        var spans = document.getElementsByClassName("st");
+        for (var i = 0; i < spans.length; i++) {
+          if (val == "old") {
+            spans[i].innerHTML = tooldortho(spans[i].innerHTML);
+          } else {
+            spans[i].innerHTML = tonewortho(spans[i].innerHTML);
+          }
+        }
+      };
+      update1();
+      update2();
+      ortho();
+    </script>
+  </body>
+</html>
