@@ -18,6 +18,7 @@
     </style>
   </head>
   <body>
+    <button onclick="load(true);">I hate the old orthography!</button>
     <table>
       <tbody>
         <tr>
@@ -160,15 +161,18 @@
       </tbody>
     </table>
     <script>
-      var ls = document.getElementsByTagName("td");
-      var n = 1;
-      for (var i = 0; i < ls.length; i++) {
-        if (ls[i].id) {
-          ls[i].innerHTML = "<b>" + n + "</b><br><b>" + formatST(findST(ls[i].id)) + "</b><br><span>" + ls[i].id + "</span>";
-          ls[i].className = "elem";
-          n++;
+      var load = function(isnew) {
+        var ls = document.getElementsByTagName("td");
+        var n = 1;
+        for (var i = 0; i < ls.length; i++) {
+          if (ls[i].id) {
+            ls[i].innerHTML = "<b>" + n + "</b><br><b>" + formatST(findST(ls[i].id), isnew) + "</b><br><span>" + ls[i].id + "</span>";
+            ls[i].className = "elem";
+            n++;
+          }
         }
-      }
+      };
+      load(false);
     </script>
   </body>
 </html>
