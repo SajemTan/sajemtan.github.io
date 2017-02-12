@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <link rel="shortcut icon" type="image/png" href="flag.png">
   </head>
-  <body>
+  <body onload="doSearch();">
     <div style="width: 100%; background-color: rgba(255, 255, 255, 0.9); position: fixed; left: 0px; top: 0px; padding: 15px;">
       <span>Search: </span>
       <input type="text" id="search" onkeyup="doSearch();"></input>
@@ -27,6 +27,7 @@
       <tbody id="defs">
       </tbody>
     </table>
+    <p id="matches"></p>
     <script>
       var lexicon_flat_arr = [];
       for (var k in lexicon_flat) {
@@ -51,9 +52,12 @@
         var searchstr = document.getElementById("search").value;
         var isRegex = document.getElementById("regex").checked;
         var l = document.getElementById("defs").childNodes;
+        var matches = 0
         for (var i = 0; i < l.length; i++) {
           l[i].style.display = searchMatch(l[i], searchstr, isRegex) ? "" : "none";
+          if (l[i].style.display == "") { matches++; }
         }
+        document.getElementById("matches").innerHTML = matches + " matches for " + searchstr;
       };
       var setSearch = function(str) {
         document.getElementById("search").value = str;
