@@ -6,29 +6,43 @@
   <body>
     <p>Type a word in below to test:</p>
     <input type="text" id="word"></input>
-    <button id="click">Check</button>
+    <button onclick="setold(); main();">Check (Old Orthography)</button>
+    <button onclick="setnew(); main();">Check (New Orthography)</button>
     <p id="result"></p>
     <script>
-var root_v = "([aeiy]|[eou]l|uh)";
-var suf_v = "([ou]|[ae]h)";
-var start_c = "([cdfgjkmnstvxz]|[sz]l|[stz]h|[fv][mn]|[sz][hl]?[mn]|th[mn])";
-var suf_c = "([cdfgjkmnstvxz]|[sz]l|[stz]h)";
+var root_v;
+var suf_v;
+var start_c;
+var suf_c;
 var end_c = "[ckmnt]";
+
+var setold = function() {
+  root_v = "([aeiy]|[eou]l|uh)";
+  suf_v = "([ou]|[ae]h)";
+  start_c = "([cdfgjkmnstvxz]|[sz]l|[stz]h|[fv][mn]|[sz][hl]?[mn]|th[mn])";
+  suf_c = "([cdfgjkmnstvxz]|[sz]l|[stz]h)";
+};
+var setnew = function() {
+  root_v = "[aeiy\u00fb\u00fc\u00f6\u00eb]";
+  suf_v = "[ou\u00ea\u00e2]";
+  start_c = "([cdfgjkmnstvxzlr\u0161\u017e]|[fvlrsz\u0161\u017e][mn]|th[mn]?)";
+  suf_c = "([cdfgjkmnstvxzlr\u0161\u017e]|th)";
+};
 
 var ok_root = function(s) {
 	var m = new RegExp('^(' + start_c + root_v + ')*' + start_c + root_v + end_c + '$');
 	return s.match(m);
-}
+};
 
 var ok_suf = function(s) {
 	var m = new RegExp('^' + suf_c + '?' + suf_v + end_c + '?$');
   return s.match(m);
-}
+};
 
 var ok_word = function(s) {
 	var m = new RegExp('^((' + start_c + root_v + ')*' + start_c + root_v + end_c + ')+(' + suf_c + '?' + suf_v + end_c + '?)*$');
   return s.match(m);
-}
+};
 
 var main = function() {
 	var w = document.getElementById('word').value;
@@ -45,9 +59,7 @@ var main = function() {
   	out.innerHTML = w + " is not phonotactically valid in Common Honey";
     return;
   }
-}
-
-document.getElementById('click').addEventListener("click", main);
+};
     </script>
   </body>
 </html>
