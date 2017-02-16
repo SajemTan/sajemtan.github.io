@@ -5,17 +5,17 @@
     <link rel="shortcut icon" type="image/png" href="flag.png">
   </head>
   <body>
-    <span>Count by phonemes</span>
     <input type="radio" name="count" value="phoneme" checked="checked"></input>
-    <span>Count by words</span>
+    <span>Count by phonemes</span>
     <input type="radio" name="count" value="word"></input>
+    <span>Count by words</span>
     <br>
-    <span>Only single phonemes</span>
     <input type="radio" name="clusters" value="none" checked="checked"></input>
-    <span>Also count clusters</span>
+    <span>Only single phonemes</span>
     <input type="radio" name="clusters" value="also"></input>
-    <span>Separately count clusters</span>
+    <span>Also count clusters</span>
     <input type="radio" name="clusters" value="only"></input>
+    <span>Separately count clusters</span>
     <br>
     <button onclick="update(document.querySelector('input[name=&quot;count&quot;]:checked').value, document.querySelector('input[name=&quot;clusters&quot;]:checked').value);">Update</button>
     <br>
@@ -24,7 +24,7 @@
       </tbody>
     </table>
     <script>
-      var clusters = ["fm", "fn", "vm", "vn", "shn", "zhn", "sln", "zln", "sn", "zn", "thn", "sh", "zh", "sl", "zl", "th", "c", "t", "k", "d", "g", "m", "n", "f", "v", "s", "z", "x", "j", "ol", "ah", "eh", "el", "e", "i", "a", "ul", "uh", "y", "o", "u"];
+      var clusters = ["fm", "fn", "vm", "vn", "shn", "zhn", "sln", "zln", "sn", "zn", "thm", "thn", "sh", "zh", "sl", "zl", "th", "c", "t", "k", "d", "g", "m", "n", "f", "v", "s", "z", "x", "j", "ol", "ah", "eh", "el", "e", "i", "a", "ul", "uh", "y", "o", "u"];
       var no_clusters = ["sh", "zh", "sl", "zl", "th", "c", "t", "k", "d", "g", "m", "n", "f", "v", "s", "z", "x", "j", "ol", "ah", "eh", "el", "e", "i", "a", "ul", "uh", "y", "o", "u"];
       var wordlist = [];
       var non_archaic = queryLexPath([], false);
