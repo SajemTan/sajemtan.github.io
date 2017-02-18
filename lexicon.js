@@ -91,6 +91,7 @@ var lexicon = {
     "znim": ["falling", ["see also", "met"]],
     "zhazhuhn": ["chaotic"],
     "znolzhen": ["weary"],
+    "zulk": ["burned"],
     "zyshen": ["cute", "adorable", "beautiful", "pretty", "nice", "kind"]
   },
   "adv": {
@@ -204,6 +205,8 @@ var lexicon = {
     "canolc": ["month", ["example", "Divolmcanolc", "Month Divolm"]],
     "cadelgyn": ["astronaut", "cosmonaut"],
     "cagyn": ["underachiever", "couch potato"],
+    "cajik": ["tea"],
+    "cajikzhum": ["tea pet", "small sheep-like creatures that grow tea leaves as fur"],
     "cejanym": ["telephone"],
     "cejym": ["OCD"],
     "cejyn": ["sound"],
