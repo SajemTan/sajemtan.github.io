@@ -1,13 +1,14 @@
 <html>
   <head>
-    <title>Sajem Tan lorem ipsum / random sentence generator</title>
+    <title>The Wisomful Beehive</title>
     <script type="text/javascript" src="lexicon.js"></script>
     <link rel="shortcut icon" type="image/png" href="flag.png">
   </head>
   <body>
     <p>Click <a href="http://www.frathwiki.com/Sajem_Tan/Zhetammeht_Delgemnocah">here</a> to share the more interesting results.</p>
-    <button onclick="disp(true);">Generate nonsense text</button>
-    <button onclick="disp(false);">Generate random text</button>
+    <button onclick="disp(false);">Speak to the Wisdomful Beehive</button>
+    <button onclick="disp(true);">Ask the Wisdomful Beehive to speak in tongues</button>
+    <input type="checkbox" id="newortho">Use the Reformed Orthography</input>
     <p id="out"></p>
     <script>
       var loremmap = {
@@ -118,7 +119,7 @@
       }
       var disp = function(lor) {
         var l = build("para", lor);
-        document.getElementById("out").innerHTML = l[0];
+        document.getElementById("out").innerHTML = document.getElementById('newortho').checked ? tonewortho(l[0]) : l[0];
         lasttree = l[1];
       }
     </script>

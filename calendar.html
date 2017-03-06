@@ -2,8 +2,10 @@
   <head>
     <title>Gregorian to Sajem Tan Calendar Converter</title>
     <link rel="shortcut icon" type="image/png" href="flag.png">
+    <meta charset="UTF-8" />
   </head>
   <body>
+    <a href="index.html">Sajem Tan tools index</a>
     <table border="1">
       <thead>
         <tr>
@@ -36,23 +38,73 @@
     <button onclick="toGreg();">Show Gregorian Date</button>
     <button onclick="setcalc('now');">Show Current Date</button>
     <button onclick="sync();">Synchronize Sajem Tan Dates</button>
+    <button onclick="setupNew();" id="swapbutton">Switch Orthographies</button>
     <p>The month/day mode with the currently selected radio button (Day, Month, or Cycle) will the one used if there is a discrepancy.</p>
     <p>Day mode is simply the day of the year as a number from 0 to 359 (the days are in numerical order).</p>
-    <p>Month mode is 2 overlapping cycles: the characters of the creation myth in order of appearance and the numbers 0 to 39 in numerical order. The characters cycle through independently of the numbers, so the year begins Divolm 0, Telzlnoln 1, Jidolk 2, Shelsheln 3, Thefam 4, Zatheln 5, Kizhult 6, Thefnolm 7, Vithit 8, Divolm 9, Telzlnoln 10, ...</p>
-    <p>Cycle mode has a cycle number from 0 to 11 (numerical order), and within each cycle it goes through the letters of the Sajem Tan alphabet in order, so the year here begins 0 duhdem, 0 gigim, 0 xataxym, [25 more letters], 0 snolzem, 0 vmyn, 1 duhdem, 1 gigim, ...</p>
+    <p>Month mode is 2 overlapping cycles: the characters of the creation myth in order of appearance and the numbers 0 to 39 in numerical order. The characters cycle through independently of the numbers, so the year begins Div<span class="swap">ol</span>m 0, T<span class="swap">el</span><span class="swap">zl</span>n<span class="swap">ol</span>n 1, Jid<span class="swap">ol</span>k 2, Shelsheln 3, Thefam 4, Zath<span class="swap">el</span>n 5, Ki<span class="swap">zh</span><span class="swap">ul</span>t 6, Thefn<span class="swap">ol</span>m 7, Vithit 8, Div<span class="swap">ol</span>m 9, T<span class="swap">el</span><span class="swap">zl</span>n<span class="swap">ol</span>n 10, ...</p>
+    <p>Cycle mode has a cycle number from 0 to 11 (numerical order), and within each cycle it goes through the letters of the Sajem Tan alphabet in order, so the year here begins 0 d<span class="swap">uh</span>dem, 0 gigim, 0 xataxym, [25 more letters], 0 sn<span class="swap">ol</span>zem, 0 vmyn, 1 d<span class="swap">uh</span>dem, 1 gigim, ...</p>
     <script>
-      var letters = ["duhdem (d) [0]", "gigim (g) [1]", "xataxym (x) [2]", "jegen (j) [3]", "fijyc (f) [4]", "voljam (v) [5]", "thethat (th) [6]", "sekelt (s) [7]", "zuhzuhmelt (z) [8]", "shuhzhik (sh) [9]", "zhizlik (zh) [10]", "slik (sl) [11]", "zlolfit (zl) [12]", "molmelc (m) [13]", "nyzlan (n) [14]", "nasham (a) [15]", "xelteln (el) [16]", "tezet (e) [17]", "tolmolm (ol) [18]", "mizizlat (i) [19]", "slysyc (y) [20]", "shnuhk (uh) [21]", "tuln (ul) [22]", "cuhc (c) [23]", "tytyt (t) [24]", "kyfik (k) [25]", "zlnanic (ah) [26]", "thnuhduhk (eh) [27]", "snolzem (o) [28]", "vmyn (u) [29]"];
-      //var roles = ["Divolm [0]", "Telzlnoln [1]", "Jidolk [2]", "Shelsheln [3]", "Thefam [4]", "Zatheln [5]", "Kizhult [6]", "Thefnolm [7]", "Vithit [8]"];
-      var roles = ["Divolm", "Telzlnoln", "Jidolk", "Shelsheln", "Thefam", "Zatheln", "Kizhult", "Thefnolm", "Vithit"];
+      var setupOld = function() {
+        var letters = ["duhdem (d) [0]", "gigim (g) [1]", "xataxym (x) [2]", "jegen (j) [3]", "fijyc (f) [4]", "voljam (v) [5]", "thethat (th) [6]", "sekelt (s) [7]", "zuhzuhmelt (z) [8]", "shuhzhik (sh) [9]", "zhizlik (zh) [10]", "slik (sl) [11]", "zlolfit (zl) [12]", "molmelc (m) [13]", "nyzlan (n) [14]", "nasham (a) [15]", "xelteln (el) [16]", "tezet (e) [17]", "tolmolm (ol) [18]", "mizizlat (i) [19]", "slysyc (y) [20]", "shnuhk (uh) [21]", "tuln (ul) [22]", "cuhc (c) [23]", "tytyt (t) [24]", "kyfik (k) [25]", "zlnanic (ah) [26]", "thnuhduhk (eh) [27]", "snolzem (o) [28]", "vmyn (u) [29]"];
+        var roles = ["Divolm", "Telzlnoln", "Jidolk", "Shelsheln", "Thefam", "Zatheln", "Kizhult", "Thefnolm", "Vithit"];
 
-      var cyclesel = document.getElementById("cycleday");
-      for (var i = 0; i < letters.length; i++) {
-        cyclesel.innerHTML += '<option value="' + i + '">' + letters[i] + '</option>';
-      }
-      var monthsel = document.getElementById("month");
-      for (var i = 0; i < roles.length; i++) {
-        monthsel.innerHTML += '<option value="' + i + '">' + roles[i] + '</option>';
-      }
+        var cyclesel = document.getElementById("cycleday");
+        cyclesel.innerHTML = '';
+        for (var i = 0; i < letters.length; i++) {
+          cyclesel.innerHTML += '<option value="' + i + '">' + letters[i] + '</option>';
+        }
+        var monthsel = document.getElementById("month");
+        monthsel.innerHTML = '';
+        for (var i = 0; i < roles.length; i++) {
+          monthsel.innerHTML += '<option value="' + i + '">' + roles[i] + '</option>';
+        }
+        var swap = {
+          "ö": "ol",
+          "ë": "el",
+          "r": "zl",
+          "ž": "zh",
+          "ü": "ul",
+          "û": "uh"
+        };
+        var spans = document.getElementsByClassName('swap');
+        for (var i = 0; i < spans.length; i++) {
+          if (swap.hasOwnProperty(spans[i].innerText)) {
+            spans[i].innerText = swap[spans[i].innerText];
+          }
+        }
+        document.getElementById('swapbutton').onclick = setupNew;
+      };
+      var setupNew = function() {
+        var letters = ["dûdem (d) [0]", "gigim (g) [1]", "xataxym (x) [2]", "jegen (j) [3]", "fijyc (f) [4]", "vöjam (v) [5]", "thethat (th) [6]", "sekët (s) [7]", "zûzûmët (z) [8]", "šûžik (š) [9]", "žirik (ž) [10]", "lik (l) [11]", "röfit (r) [12]", "mömëc (m) [13]", "nyran (n) [14]", "našam (a) [15]", "xëtën (ë) [16]", "tezet (e) [17]", "tömöm (ö) [18]", "mizirat (i) [19]", "lysyc (y) [20]", "šnûk (û) [21]", "tün (ü) [22]", "cûc (c) [23]", "tytyt (t) [24]", "kyfik (k) [25]", "rnanic (â) [26]", "thnûdûk (ê) [27]", "snözem (o) [28]", "vmyn (u) [29]"];
+        var roles = ["Divöm", "Tërnön", "Jidök", "Shëšën", "Thefam", "Zathën", "Kižüt", "Thefnöm", "Vithit"];
+
+        var cyclesel = document.getElementById("cycleday");
+        cyclesel.innerHTML = '';
+        for (var i = 0; i < letters.length; i++) {
+          cyclesel.innerHTML += '<option value="' + i + '">' + letters[i] + '</option>';
+        }
+        var monthsel = document.getElementById("month");
+        monthsel.innerHTML = '';
+        for (var i = 0; i < roles.length; i++) {
+          monthsel.innerHTML += '<option value="' + i + '">' + roles[i] + '</option>';
+        }
+        var swap = {
+          "ol": "ö",
+          "el": "ë",
+          "zl": "r",
+          "zh": "ž",
+          "ul": "ü",
+          "uh": "û"
+        };
+        var spans = document.getElementsByClassName('swap');
+        for (var i = 0; i < spans.length; i++) {
+          if (swap.hasOwnProperty(spans[i].innerText)) {
+            spans[i].innerText = swap[spans[i].innerText];
+          }
+        }
+        document.getElementById('swapbutton').onclick = setupOld;
+      };
+      setupOld();
 
       var countfrom = new Date("29 Nov 2015 18:34:14 -0500");
       var minutesfactor = Math.pow(6,6) * 4;

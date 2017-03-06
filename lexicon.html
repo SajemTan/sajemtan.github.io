@@ -11,8 +11,9 @@
       <input type="text" id="search" onkeyup="doSearch();"></input>
       <span>Regex? </span>
       <input type="checkbox" id="regex" onclick="doSearch();"></input>
-      <input type="radio" id="oldortho" name="ortho" onchange="setup();" checked="checked">Old Orthography</input>
-      <input type="radio" name="ortho" onchange="setup();">Reformed Orthography</input>
+      <input type="radio" id="oldortho" name="ortho" onchange="setup(); doSearch();" checked="checked">Old Orthography</input>
+      <input type="radio" name="ortho" onchange="setup(); doSearch();">Reformed Orthography</input>
+      <a href="index.html" style="padding-left: 50px;">Sajem Tan tools index</a>
     </div>
     <br>
     <br>
