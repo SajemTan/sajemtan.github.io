@@ -49,7 +49,7 @@
         "noun-base": getlist(["noun"]).concat(getlist(["pronoun"])).concat(getlist(["color"])),
         NP: ["noun", [" ", "adjP", "NP"], [" ", "NP", "NP-conj", "NP"]],
         "NP-conj": getlist(["conjunction", "noun"]).concat(getlist(["conjunction", "both"])),
-        obl: [["", "NP", "case"], [" ", "NP", "post"]],
+        obl: [["", "noun", "case"], [" ", "NP", "post"]],
         //transitive verbs
         trans: ["trans-base", ["", "noun", "noun>trans"], ["", "adj", "adj>trans"]],
         "trans-base": getlist(["verb", "transitive"]),

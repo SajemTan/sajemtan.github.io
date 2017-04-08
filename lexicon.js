@@ -776,6 +776,7 @@ var lexicon = {
       "smit": ["be widespread", "spread"],
       "telzlnoln": ["rain"],
       "tethnym": ["become pregnant", "be pregnant"],
+      "thefam": ["accomplish a surprising amount in an afternoon"],
       "thek": ["write", "scribble", "scrawl"],
       "tho": [["archaic", "thek"], "scribble", "scrawl"],
       "tolzlnoln": ["rain heavily"],
