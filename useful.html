@@ -85,10 +85,10 @@
           <td></td>
         </tr>
         <tr>
-          <td>I am ___ years old.</td> <!-- TODO: Add age -->
-          <td>___ <span class="st">fmulzhikahsoum</span> <span class="1S st">deh</span></td>
-          <td class="st">___ fmulzhikahsoum</td>
-          <td></td>
+          <td>I am <input type="number" id="year" min="1" value="10" style="width: 50px;" onchange="nums();"></input> years old.</td>
+          <td><span class="st" id="styr"></span> <span class="st">fmulzhikahsoum</span> <span class="1S st">deh</span></td>
+          <td><!--<span class="st yr"></span> <span class="st">fmulzhikahsoum</span>--></td> <!-- I dispute this short form -Stone 1 Vithit 16 -->
+          <td>"I am a <span id="nyr"></span>-<a href="calendar.html">Sajem-Tan-year</a>-having-one."</td>
         </tr>
       </tbody>
     </table>
@@ -144,9 +144,40 @@
           }
         }
       };
+      var nums = function() {
+        var ey = parseInt(document.getElementById('year').value);
+        var sty = Math.floor(ey / 0.766947945).toString();
+        document.getElementById('nyr').innerText = sty;
+        var c, s, x;
+        var dig = {'1':'dec', '2':'fam', '3':'vulc', '4':'sluht', '5':'zlik', '6':'shen', '7':'zhat', '8':'kulk', '9':'guhn'};
+        var ns = [];
+        for (var i = sty.length; i > 0; i--) {
+          c = sty[i-1];
+          if (c != '0') {
+            s = '';
+            x = sty.length - i;
+            while (x > 0) {
+              if (x >= 3) {
+                s = 'vmelt' + s;
+                x -= 3;
+              } else if (x >= 2) {
+                s = 'thnolt' + s;
+                x -= 2;
+              } else {
+                s = 'znek' + s;
+                x -= 1;
+              }
+            }
+            ns.push(dig[c] + s);
+          }
+        }
+        ns.reverse();
+        document.getElementById('styr').innerText = (currentortho == 'old' ? ns.join(' ') : tonewortho(ns.join(' ')));
+      };
       update1();
       update2();
       ortho();
+      nums();
     </script>
   </body>
 </html>

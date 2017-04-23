@@ -228,6 +228,7 @@ var lexicon = {
     "culjim": ["ant"],
     "culjimdin": ["anthill"],
     "cult": ["axiom", "truth univerally acknowledged"],
+    "cyfek": ["algae"],
     "cyzelthnit": ["any mythical or fictional plant"],
     "dacok": ["cudgel", "club", ["archaic", "dacolk"]],
     "dacolk": ["cudgel", "club"],
