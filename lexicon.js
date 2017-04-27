@@ -556,6 +556,7 @@ var lexicon = {
     "zlantak": ["domino"],
     "zlaslolk": ["laser", "phaser", "ray gun", "energy beam"],
     "zleldat": ["screen", "monitor"],
+    "zleldattan": ["actor"],
     "zleldatznenan": ["movie", "tv show"],
     "zlislym": ["skeleton"],
     "zlisoln": ["fear", "panic", "paralysis"],
