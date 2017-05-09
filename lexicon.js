@@ -188,6 +188,7 @@ var lexicon = {
       "tyk": ["so", "as a result"],
     },
     "noun": {
+      "kehtuc": ["for example"],
     }
   },
   "idiom": {
@@ -781,6 +782,7 @@ var lexicon = {
       "safic": ["come", "arrive at the spot of the speaker", "return"],
       "saznoltjelt": ["run around"],
       "sesuht": ["sing Let It Go"],
+      "sliktan": ["agree"],
       "slnaxan": ["idly chat despite not wanting to"],
       "smit": ["be widespread", "spread"],
       "telzlnoln": ["rain"],
