@@ -9,10 +9,12 @@
     <div style="width: 100%; background-color: rgba(255, 255, 255, 0.9); position: fixed; left: 0px; top: 0px; padding: 15px;">
       <span>Search: </span>
       <input type="text" id="search" onkeyup="doSearch();"></input>
-      <span>Regex? </span>
+      <label for="regex">Regex? </label>
       <input type="checkbox" id="regex" onclick="doSearch();"></input>
-      <input type="radio" id="oldortho" name="ortho" onchange="setup(); doSearch();" checked="checked">Old Orthography</input>
-      <input type="radio" name="ortho" onchange="setup(); doSearch();">Reformed Orthography</input>
+      <input type="radio" id="oldortho" name="ortho" onchange="setup(); doSearch();" checked="checked"></input>
+      <label for="oldortho">Old Orthography</label>
+      <input type="radio" id="newortho" name="ortho" onchange="setup(); doSearch();"></input>
+      <label for="newortho">Reformed Orthography</label>
       <a href="index.html" style="padding-left: 50px;">Sajem Tan tools index</a>
     </div>
     <br>

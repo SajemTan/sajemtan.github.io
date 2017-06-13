@@ -322,6 +322,7 @@ var lexicon = {
     "kakcejyn": ["consonant"],
     "kamexamexat": ["energy (in the physics sense)", ["gloss", "energy"]],
     "kanolt": ["door", "dough, especially of bread or cookies (definition archaic)"],
+    "kazlan": ["gyrodus fish"],
     "kecyc": ["Internet", "cyberspace", "virtual reality", "dream", "Holodeck", "multiplayer game mode", "Second Life", "Tron", "something which is illusionary or simulated"],
     "kecycjin": ["meme"],
     "kecyctatulk": ["Google Glass"],
@@ -477,6 +478,7 @@ var lexicon = {
     "tulceslit": ["that which affects you in a good way"],
     "tulceslitvolt": ["vegetable oil"],
     "tuln": ["eye", "camera", "telescope"],
+    "tulnjelkelm": ["movie"],
     "tult": ["object", "thing"],
     "tultxeht": ["nothing"],
     "tulvmyzam": ["cloth", "fabric"],
@@ -734,6 +736,7 @@ var lexicon = {
       "sut": ["turns number into ordinal number"]
     },
     "valency": {
+      "gahn": ["reciprocal"],
       "jahk": ["in order to"],
       "sun": ["passive voice"]
     },
@@ -827,8 +830,10 @@ var lexicon = {
       "janim": ["disappoint", "let down"],
       "jetek": ["exchange", "switch", "switch places", "transpose"],
       "jezlan": ["excell at something"],
+      "jicuhk": ["reveal", "display"],
       "jikulfin": ["take notes", "study"],
       "juhcen": ["set on fire", "enflame"],
+      "julgic": ["ask a question"],
       "julvet": ["state a name", "identify or denominate oneself"],
       "kasyn": ["repeat", "rerun a TV episode"],
       "katolc": ["pilot", "drive"],
