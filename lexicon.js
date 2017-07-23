@@ -848,6 +848,7 @@ var lexicon = {
       "juhcen": ["set on fire", "enflame"],
       "julgic": ["ask a question"],
       "julvet": ["state a name", "identify or denominate oneself"],
+      "julvnolk": ["hold", "keep", "wear"],
       "kasyn": ["repeat", "rerun a TV episode"],
       "katolc": ["pilot", "drive"],
       "kek": ["add", "sum"],

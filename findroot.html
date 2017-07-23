@@ -7,13 +7,6 @@
   <body>
     <a href="index.html">Sajem Tan tools index</a>
     <h3>Sajem Tan unused-root-finder</h3>
-    <p>Fish's wheighted generator can be found <a href="https://files.fileswhatever.net/WordGen.php?datafile=sajemtan.yml&root=Root">here</a>.</p>
-    <span>Is </span>
-    <input type="text" id="doublecheck" onkeyup="doublecheck();"></input>
-    <span> already a word? (Reformed Orthography </span>
-    <input type="checkbox" id="isnew" onchange="doublecheck();"></input>
-    <span>) </span>
-    <span id="yesno" style="color: green;">NO</span>
     <p>Number of syllables:</p>
     <span>Minimum: </span>
     <input id="min" type="number" value="1" min="1"></input>
@@ -27,33 +20,55 @@
     <span>Number of roots to generate: </span>
     <input id="count" type="number" value="1" min="1"></input>
     <br>
+    <span>Weight the phonemems based on Fish's analysis of the language: </span>
+    <input type="checkbox" id="weight"></input>
+    <br>
     <br>
     <button onclick="find();">Generate</button>
     <h3>Result:</h3>
     <table id="out"></table>
     <script>
-      var c = ["fm", "fn", "vm", "vn", "sn", "zn", "shn", "zhn", "sln", "zln", "thm", "thn", "c", "t", "k", "d", "g", "m", "n", "f", "v", "th", "s", "z", "sh", "zh", "sl", "zl", "x", "j"];
-      var rv = ["ol", "e", "el", "i", "a", "ul", "uh", "y"];
-      var sv = ["o", "ah", "eh", "u"];
-      var coda = ["c", "t", "k", "m", "n"];
-      var make = function(mn, mx, typ) {
+      var unweighted = {
+        c: ["fm", "fn", "vm", "vn", "sn", "zn", "shn", "zhn", "sln", "zln", "thm", "thn", "shm", "zhm", "slm", "zlm", "xm", "xn", "c", "t", "k", "d", "g", "m", "n", "f", "v", "th", "s", "z", "sh", "zh", "sl", "zl", "x", "j"],
+        rv: ["ol", "e", "el", "i", "a", "ul", "uh", "y"],
+        sv: ["o", "ah", "eh", "u"],
+        coda: ["c", "t", "k", "m", "n"]
+      };
+      var weights = {
+        c: [15*110, 13*110, 20*110, 9*110, 30*110, 16*110, 7*110, 6*110, 6*110, 11*110, 1*110, 23*110, 1*110, 1*110, 1*110, 1*110, 1*110, 1*110, 143*615, 258*615, 214*615, 96*161, 65*161, 234*518, 284*518, 52*427, 43*427, 50*427, 69*427, 75*427, 30*427, 48*427, 33*427, 27*427, 53*124, 71*124],
+        rv: [152, 211, 73, 199, 245, 78, 85, 131],
+        sv: [34, 21, 24, 38],
+        coda: [143*615, 258*615, 214*615, 234*518, 284*518]
+      };
+      var weighted = {c: [], rv: [], sv: [], coda: []};
+      for (var k in weights) {
+        for (var i = 0; i < weights[k].length; i++) {
+          for (var j = 0; j < weights[k][i]; j++) {
+            weighted[k].push(unweighted[k][i]);
+          }
+        }
+      };
+      var pick = function(ls) {
+        return ls[Math.floor(Math.random() * ls.length)];
+      };
+      var make = function(mn, mx, typ, set) {
         var s = "";
         if (typ == "root") {
           for (var i = 0; i < mx; i++) {
-            s += c[Math.floor(Math.random() * c.length)];
-            s += rv[Math.floor(Math.random() * rv.length)];
+            s += pick(set.c);
+            s += pick(set.rv);
             if (i >= mn && Math.random() * (mx - mn) < 1) {
               break;
             }
           }
-          s += coda[Math.floor(Math.random() * coda.length)];
+          s += pick(set.coda);
         } else {
           if (Math.random() < 0.5) {
-            s += c[Math.floor(Math.random() * c.length)];
+            s += pick(set.c);
           }
-          s += sv[Math.floor(Math.random() * sv.length)];
+          s += pick(set.sv);
           if (Math.random() < 0.5) {
-            s += coda[Math.floor(Math.random() * coda.length)];
+            s += pick(set.coda);
           }
         }
         console.log(s);
@@ -64,34 +79,22 @@
       for (var i = 0; i < l.length; i++) {
         generateAux(l[i], true).map(function(k) { aux[k] = ""; });
       }
-      var isword = function(w) {
-        return lexicon_flat.hasOwnProperty(w) || aux.hasOwnProperty(w);
-      };
-      var doublecheck = function() {
-        var w = document.getElementById('doublecheck').value;
-        if (document.getElementById('isnew').checked) {
-          w = tooldortho(w);
-        }
-        var out = document.getElementById('yesno');
-        if (isword(w)) {
-          out.innerText = 'YES';
-          out.style.color = 'red';
-        } else {
-          out.innerText = 'NO';
-          out.style.color = 'green';
-        }
-      };
+      var mnel = document.getElementById('min');
+      var mxel = document.getElementById('max');
+      var countel = document.getElementById('count');
+      var wel = document.getElementById('weight');
       var find = function() {
-        var mn = document.getElementById('min').value;
-        var mx = document.getElementById('max').value;
+        var mn = mnel.value;
+        var mx = mxel.value;
+        var set = wel.checked ? weighted : unweighted;
         var typ = document.querySelector('input[name="type"]:checked').value;
-        var count = document.getElementById('count').value;
+        var count = countel.value;
         var r = {};
         var s;
         for (var i = 0; i < count; i++) {
-          s = make(mn, mx, typ);
-          while (isword(s) || r.hasOwnProperty(s)) {
-            s = make(mn, mx, typ);
+          s = make(mn, mx, typ, set);
+          while (lexicon_flat.hasOwnProperty(s) || aux.hasOwnProperty(s) || r.hasOwnProperty(s)) {
+            s = make(mn, mx, typ, set);
           }
           r[s] = 0;
         }
