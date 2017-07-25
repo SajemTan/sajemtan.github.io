@@ -134,7 +134,7 @@ var lexicon = {
       "ximic": [["form", "xim", "c"], "continue"]
     },
     "ol": {
-      "fmolk": [["form", "fm", "k"], "irrealis mood", "counterfactual"],
+      "fmolk": [["form", "fm", "k"], "irrealis mood", "counterfactual", "conditional", "hypothetical", "if x fmolk were to happen then y"],
       "golm": [["form", "g", "m"], "be obligated to", "must", ["see also", "sin"]],
       "goln": [["form", "g", "n"], "try to", "attempt"],
       "golt": [["form", "g", "t"], "stop"],
