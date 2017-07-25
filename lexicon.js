@@ -100,6 +100,7 @@ var lexicon = {
   "adv": {
     "evidential": {
       "femektholk": ["discovered by telepathy"],
+      "kecyckic": ["learned via stalking on social media"],
       "kic": ["carefully discerned through protracted study"],
       "shan": ["hearsay via a living person"],
       "slet": ["traditional knowledge", "lore"],
