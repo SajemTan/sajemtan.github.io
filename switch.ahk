@@ -190,6 +190,25 @@
     SendInput ZL
   return
   
+:C?*:th::
+  if (LangMode = 1)
+    SendInput ţ
+  else
+    SendInput th
+  return
+:C?*:Th::
+  if (LangMode = 1)
+    SendInput Ţ
+  else
+    SendInput Th
+  return
+:C?*:TH::
+  if (LangMode = 1)
+    SendInput Ţ
+  else
+    SendInput TH
+  return
+  
 Scrolllock::
   if (LangMode = 1) {
     LangMode := 0

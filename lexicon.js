@@ -98,6 +98,7 @@ var lexicon = {
     "xulm": ["much", "many"],
     "xyt": ["all", "each", "every", "whole"],
     "xyttucmun": ["all-encompassing"],
+    "zavan": ["ghostly", "ghastly", "spectral"],
     "zhnelm": ["bright"],
     "zlek": ["sad", "depressed"],
     "zlislym": ["creepy"],
@@ -293,6 +294,7 @@ var lexicon = {
     "fnulsnin": ["head", "neck", "everything above the shoulders"],
     "fuhdet": ["god", "personified force of nature"],
     "fuhdettethnymznolk": ["Christmas as a religious holiday"],
+    "fuhmolt": ["gallbladder"],
     "fuhn": ["dwarf, especially from Dwarf Fortress", ["gloss", "dwarf"]],
     "fynit": ["meat", "flesh", "body", ["etymology", "fenat + gygik"]],
     "fyzuln": ["sibling"],
@@ -572,6 +574,7 @@ var lexicon = {
     "xen": ["thumbs-down"],
     "xexen": ["problem"],
     "xidat": ["tail, especially one that is prehensile", ["gloss", "tail"]],
+    "xinem": ["astral projection"],
     "xolgak": ["courage", "bravery", "valor", "foolishness", "irrationality"],
     "xulkat": ["fun", "grammar", "climbing", "the enjoyment of challenges"],
     "xulkatsazyc": ["adventure"],
@@ -584,6 +587,7 @@ var lexicon = {
     "zaditkanolt": ["window"],
     "zatenym": ["troop", "group", "platoon"],
     "zatheln": ["spider", "silkworm", "syntax"],
+    "zavan": ["ghost", "spectre"],
     "zazet": ["sand", ["etymology", "zazit + zek"]],
     "zazit": ["dirt"],
     "zek": ["sandstone", "packed sand", "the natural sand found in deserts and canyons"],
@@ -958,7 +962,7 @@ var lexicon = {
       "xifem": ["overthink", "ruminate"],
       "ximuc": ["bid farewell", ["archaic", "ximulc"]],
       "ximulc": ["bid farewell"],
-      "xinem": ["teleport", "instantly travel", ["example", "zoku xinemfeh do?", "Where did you teleport?"]],
+      "xinem": ["teleport", "instantly travel", "astrally project", ["example", "zoku xinemfeh do?", "Where did you teleport?"]],
       "xulmolm": ["fumble", "bungle", "mishandle"],
       "zak": ["release", "let go of"],
       "zan": ["be", "is"],
@@ -1136,6 +1140,12 @@ var tonewortho = function(text) {
       case "zl": return "r";
       case "sh": return "\u0161";
       case "zh": return "\u017e";
+      case "th": return "\u0163";
+      case "Sl": return "L";
+      case "Zl": return "R";
+      case "Sh": return "\u0160";
+      case "Zh": return "\u017d";
+      case "Th": return "\u0162";
       default: return chr;
     }
   }).join("");
@@ -1153,9 +1163,26 @@ var tooldortho = function(text) {
       case "r": return "zl";
       case "\u0161": return "sh";
       case "\u017e": return "zh";
+      case "\u0163": return "th";
+      case "L": return "Sl";
+      case "R": return "Zl";
+      case "\u0160": return "Sh";
+      case "\u017d": return "Zh";
+      case "\u0162": return "Th";
       default: return chr;
     }
   }).join("");
+};
+//find all <span class="st"></span> and swap orthography of contents
+var swaportho = function(tonew) {
+  var ls = document.getElementsByClassName('st');
+  for (var i = 0; i < ls.length; i++) {
+    if (tonew) {
+      ls[i].innerText = tonewortho(ls[i].innerText);
+    } else {
+      ls[i].innerText = tooldortho(ls[i].innerText);
+    }
+  }
 };
 var findST = function(query) {
   for (var k in lexicon_flat) {
@@ -1171,7 +1198,7 @@ var findST = function(query) {
 };
 var formatST = function(raw, updated) {
   if (raw != null) {
-    return "<a href=\"lexicon.html#" + raw + "\">" + (updated ? tonewortho(raw) : raw) + "</a>";
+    return "<a href=\"lexicon.html#" + raw + "\" class=\"st\">" + (updated ? tonewortho(raw) : raw) + "</a>";
   } else {
     return "[none yet]";
   }

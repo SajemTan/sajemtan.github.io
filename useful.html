@@ -99,6 +99,10 @@
       </tbody>
     </table>
     <script>
+      var orthoval = document.getElementById("ortho");
+      var isnew = function() {
+        return orthoval.value == "new";
+      };
       var update1 = function() {
         var val = document.getElementById("1mode").value;
         var spans = document.getElementsByClassName("1S");
@@ -113,7 +117,7 @@
           neutrals: "dehah"
         };
         for (var i = 0; i < spans.length; i++) {
-          spans[i].innerHTML = pronouns[val];
+          spans[i].innerHTML = (isnew() ? tonewortho(pronouns[val]) : pronouns[val]);
         }
       };
       var update2 = function() {
@@ -130,25 +134,16 @@
           neutrals: "doah"
         };
         for (var i = 0; i < spans.length; i++) {
-          spans[i].innerHTML = pronouns[val];
+          spans[i].innerHTML = (isnew() ? tonewortho(pronouns[val]) : pronouns[val]);
         }
       };
-      var currentortho = "old";
+      current = "old";
       var ortho = function() {
         var val = document.getElementById("ortho").value;
-        if (val == currentortho) {
-          return "";
-        } else {
-          currentortho = val;
+        if (val != current) {
+          swaportho(val == "new");
         }
-        var spans = document.getElementsByClassName("st");
-        for (var i = 0; i < spans.length; i++) {
-          if (val == "old") {
-            spans[i].innerHTML = tooldortho(spans[i].innerHTML);
-          } else {
-            spans[i].innerHTML = tonewortho(spans[i].innerHTML);
-          }
-        }
+        current = val;
       };
       var nums = function() {
         var ey = parseInt(document.getElementById('year').value);
@@ -178,7 +173,7 @@
           }
         }
         ns.reverse();
-        document.getElementById('styr').innerText = (currentortho == 'old' ? ns.join(' ') : tonewortho(ns.join(' ')));
+        document.getElementById('styr').innerText = (isnew() ? tonewortho(ns.join(' ')) : ns.join(' '));
       };
       update1();
       update2();

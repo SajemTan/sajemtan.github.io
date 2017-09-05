@@ -18,7 +18,7 @@
     </style>
   </head>
   <body>
-    <button onclick="load(true);">I hate the old orthography!</button>
+    <button onclick="swaportho(true);">I hate the old orthography!</button>
     <table>
       <tbody>
         <tr>
@@ -189,27 +189,22 @@
         ns.reverse();
         return ns.join(' ');
       };
-      var load = function(isnew) {
-        var ls = document.getElementsByTagName("td");
-        var n = 1;
-        var find;
-        for (var i = 0; i < ls.length; i++) {
-          if (ls[i].id) {
-            find = findST(ls[i].id);
-            if (find) {
-              find = formatST(find, isnew);
-            } else if (isnew) {
-              find = tonewortho(nums(n))+'sut snac';
-            } else {
-              find = nums(n)+'sut snac';
-            }
-            ls[i].innerHTML = "<b>" + n + "</b><br><b>" + find + "</b><br><span>" + ls[i].id + "</span>";
-            ls[i].className = "elem";
-            n++;
+      var ls = document.getElementsByTagName("td");
+      var n = 1;
+      var find;
+      for (var i = 0; i < ls.length; i++) {
+        if (ls[i].id) {
+          find = findST(ls[i].id);
+          if (find) {
+            find = formatST(find, false);
+          } else {
+            find = '<span class="st">'+nums(n)+'sut snac</span>';
           }
+          ls[i].innerHTML = "<b>" + n + "</b><br><b>" + find + "</b><br><span>" + ls[i].id + "</span>";
+          ls[i].className = "elem";
+          n++;
         }
-      };
-      load(false);
+      }
     </script>
   </body>
 </html>
