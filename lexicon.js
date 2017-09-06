@@ -554,6 +554,7 @@ var lexicon = {
     "vmak": ["a piece of furniture meant for sitting upon", "a chair", ["gloss", "chair"]],
     "vmedyt": ["projectile"],
     "vmelfelc": ["wisdom", "silliness"],
+    "vmidolk": ["rose", ["etymology", "vmanduhk + jidolk"]],
     "vmyn": ["mouth"],
     "vnejyn": ["mirror"],
     "vnevnec": ["echo"],
@@ -873,6 +874,7 @@ var lexicon = {
     },
     "transitive": {
       "cejym": ["obsessively organize minute details"],
+      "cic": ["attack a system by pelting it with bizarre manufactured examples"],
       "ciculm": ["cause to explode", "blow up"],
       "cifmezen": ["transfer", "metaphorize"],
       "dafmuhm": ["point"],
