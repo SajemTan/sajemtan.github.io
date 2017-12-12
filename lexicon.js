@@ -886,7 +886,8 @@ var lexicon = {
       "xidat": ["multi-task"],
       "xolgak": ["be courageous", "be foolish"],
       "zamen": ["hope"],
-      "zhuhzhuhm": ["fly like a bird", "fly or swim along a fairly straight line or smooth curve", ["see also", "jelt"], ["gloss", "fly"]]
+      "zhuhzhuhm": ["fly like a bird", "fly or swim along a fairly straight line or smooth curve", ["see also", "jelt"], ["gloss", "fly"]],
+      "zlmelmolc": ["struggle to pronounce an unpronounceable word"]
     },
     "transitive": {
       "cejym": ["obsessively organize minute details"],
