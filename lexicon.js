@@ -396,6 +396,7 @@ var lexicon = {
     "menec": ["a false sense of safety"],
     "mesnan": ["magic"],
     "mesolk": ["victory"],
+    "metolgyxan": ["Any regularly updated summary of events usually a daily chronicle, periodical, or blog", ["gloss", "periodical"]],
     "mislek": ["fern", "mathematics"],
     "misleln": ["orange (fruit)", ["gloss", "orange"]],
     "mizizlat": ["wheelbarrow", "cart", "trolley", "pram"],
@@ -652,6 +653,7 @@ var lexicon = {
     "znimkolxak": ["unicycle"],
     "znolk": ["day"],
     "zuhfuhn": ["transitive verb"],
+    "zuhvolzlnak": ["substitute teacher"],
     "zuhzuhmelt": ["ladle", "dipper"],
     "zulzulm": ["word dump"],
     "zyzlolk": ["gas"]
