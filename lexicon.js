@@ -106,6 +106,7 @@ var lexicon = {
     "zlislym": ["creepy"],
     "znim": ["falling", ["see also", "met"]],
     "zhazhuhn": ["chaotic"],
+    "zlolznysluln": ["immortal", "longevitous"],
     "znolzhen": ["weary"],
     "zulk": ["burned"],
     "zyshen": ["cute", "adorable", "beautiful", "pretty", "nice", "kind"]
@@ -646,6 +647,7 @@ var lexicon = {
     "zlolfit": ["wing"],
     "zlolzhit": ["poop (thanks, Thunder's sister)", ["gloss", "poop"]],
     "zlolzhitthnelk": ["bathroom"],
+    "zlolznysluln": ["immortality", "longevity"],
     "zluhznyk": ["dignity", "honor"],
     "zlulc": ["lump", "dollop (of a substance)", "instance (of something more abstract)"],
     "zmet": ["buliding"],
