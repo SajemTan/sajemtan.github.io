@@ -201,10 +201,10 @@ var lexicon = {
       "mahn": ["when", "while", ["see also", "sno"]],
       "smah": ["but"],
       "tidyn": ["like", "similarly to", "occurring in comparable manner to"],
-      "tyk": ["so", "as a result"],
+      "tyk": ["so", "as a result"]
     },
     "noun": {
-      "kehtuc": ["for example"],
+      "kehtuc": ["for example"]
     }
   },
   "idiom": {
@@ -765,7 +765,7 @@ var lexicon = {
       "tutu": ["superlative", "to be the most"]
     },
     "adj>noun": {
-      "solsolm": ["-ness", "produces a noun referring to the spectrum of values of which a particular adjective is a part", ["suf-example", "duht (big)", "duhtsolsolm (bigness, size)"]],
+      "solsolm": ["-ness", "produces a noun referring to the spectrum of values of which a particular adjective is a part", ["suf-example", "duht (big)", "duhtsolsolm (bigness, size)"]]
     },
     "adj>trans": {
       "tu": ["comparative", "to be more ___ than"],
