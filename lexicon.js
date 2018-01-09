@@ -654,6 +654,7 @@ var lexicon = {
     "zlolznysluln": ["immortality", "longevity"],
     "zluhznyk": ["dignity", "honor"],
     "zlulc": ["lump", "dollop (of a substance)", "instance (of something more abstract)"],
+    "zlulzim": ["chocolate", "that which initially appears to be off-topic but is suddenly revealed to be related to actual subject"],
     "zmet": ["buliding"],
     "znenan": ["tale", "story"],
     "znimkolxak": ["unicycle"],
