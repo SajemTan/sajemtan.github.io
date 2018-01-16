@@ -530,6 +530,7 @@ var lexicon = {
     "tizholn": ["ocean"],
     "tizlnin": ["hail"],
     "tolcuhkek": ["forcefield"],
+    "tolkin": ["author", "writer, especially of fantasy novels"],
     "tolmolm": ["slope"],
     "tolzen": ["mist", "fog"],
     "tolzlneln": ["water"],
