@@ -870,6 +870,7 @@ var lexicon = {
       "jelt": ["fly or swim along a meandering route", ["see also", "zhuhzhuhm"], ["gloss", "fly"]],
       "jelten": ["cower", "hide"],
       "jezlan": ["be excellent"],
+      "jymin": ["select a location by spinning a globe", "teleport by pointing at a map"],
       "kegak": ["act cowardly", "be unwilling to do the right thing", "be prudent or rational"],
       "kevin": ["word dump", "post a large amount of text, usually a list"],
       "kexekdolkatduhden": ["throw off a conversation by inserting random emojis"],
