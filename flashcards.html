@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <title>Sajem Tan Flashcards</title>
+    <script type="text/javascript" src="lexicon.js"></script>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" type="image/png" href="flag.png">
+    <style>
+      #card span {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        font-size: 30pt;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="card" style="width: 100%; height: 80%;">
+    </div>
+    <div id="controls">
+      <input type="radio" id="oldortho" name="ortho" onchange="setortho(true);" checked="checked"></input>
+      <label for="oldortho">Old Orthography</label>
+      <input type="radio" id="newortho" name="ortho" onchange="setortho(false);"></input>
+      <label for="newortho">Reformed Orthography</label>
+      <br>
+      <input type="radio" id="st" name="lang" onchange="setlang(true);" checked="checked"></input>
+      <label for="oldortho">Sajem Tan -> English</label>
+      <input type="radio" id="en" name="lang" onchange="setlang(false);"></input>
+      <label for="newortho">English -> Sajem Tan</label>
+      <br>
+      <span>Use only these words:</span>
+      <textarea id="useonly" onchange="wordset();"></textarea>
+      <br>
+      <a href="index.html">Sajem Tan tools index</a>
+    </div>
+    <script>
+      var lexicon_flat_arr = [];
+      for (var k in lexicon_flat) {
+        lexicon_flat_arr.push([k, lexicon_flat[k]]);
+      }
+      lexicon_flat_arr.sort(function(a, b) { return sortAlpha(a[0], b[0]); });
+      var CUR = 0;
+      var OK = [];
+      var ortho = true; // old = true, reformed = false
+      var lang = true; // ST = true, en = false
+      var card = document.getElementById('card');
+      var lsel = document.getElementById('useonly');
+      var wordset = function() {
+        var ls = lsel.value.split(/\s+/);
+        OK = [];
+        for (var i = 0; i < lexicon_flat_arr.length; i++) {
+          if (ls.includes(lexicon_flat_arr[i][0])) {
+            OK.push(i);
+          }
+        }
+        if (!OK.includes(CUR)) {
+          pickword();
+        }
+      };
+      var pickword = function() {
+        if (OK.length > 0) {
+          CUR = OK[Math.floor(Math.random() * OK.length)];
+        } else {
+          CUR = Math.floor(Math.random() * lexicon_flat_arr.length);
+        }
+      };
+      var setortho = function(o) { ortho = o; display(); };
+      var setlang = function(l) { lang = l; display(); };
+      var display = function() {
+        var s;
+        if (lang) {
+          s = lexicon_flat_arr[CUR][0];
+          if (!ortho) {
+            s = tonewortho(s);
+          }
+        } else {
+          s = lexicon_flat_arr[CUR][1][0].defs[0];
+        }
+        card.innerHTML = '<span>' + s + '</span>';
+        card.onclick = showflip;
+      };
+      var flipclick = function() { pickword(); display(); };
+      var showflip = function() {
+        var s;
+        if (!lang) {
+          s = lexicon_flat_arr[CUR][0];
+          if (!ortho) {
+            s = tonewortho(s);
+          }
+        } else {
+          s = lexicon_flat_arr[CUR][1][0].defs.join('; ');
+        }
+        card.innerHTML = '<span>' + s + '</span>';
+        card.onclick = flipclick;
+      };
+      pickword();
+      display();
+    </script>
+  </body>
+</html>
