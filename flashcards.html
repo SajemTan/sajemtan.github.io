@@ -7,6 +7,7 @@
     <style>
       #card span {
         position: absolute;
+        text-align: center;
         top: 40%;
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
@@ -28,17 +29,14 @@
       <input type="radio" id="en" name="lang" onchange="setlang(false);"></input>
       <label for="newortho">English -> Sajem Tan</label>
       <br>
-      <span>Use only these words:</span>
+      <span>Use only these words (separated by spaces or newlines):</span>
       <textarea id="useonly" onchange="wordset();"></textarea>
       <br>
       <a href="index.html">Sajem Tan tools index</a>
+      <button onclick="display();">Unflip card</button>
     </div>
     <script>
-      var lexicon_flat_arr = [];
-      for (var k in lexicon_flat) {
-        lexicon_flat_arr.push([k, lexicon_flat[k]]);
-      }
-      lexicon_flat_arr.sort(function(a, b) { return sortAlpha(a[0], b[0]); });
+      var lex = queryLexPath([], false, true);
       var CUR = 0;
       var OK = [];
       var ortho = true; // old = true, reformed = false
@@ -48,8 +46,8 @@
       var wordset = function() {
         var ls = lsel.value.split(/\s+/);
         OK = [];
-        for (var i = 0; i < lexicon_flat_arr.length; i++) {
-          if (ls.includes(lexicon_flat_arr[i][0])) {
+        for (var i = 0; i < lex.keys.length; i++) {
+          if (ls.includes(lex.keys[i])) {
             OK.push(i);
           }
         }
@@ -61,7 +59,7 @@
         if (OK.length > 0) {
           CUR = OK[Math.floor(Math.random() * OK.length)];
         } else {
-          CUR = Math.floor(Math.random() * lexicon_flat_arr.length);
+          CUR = Math.floor(Math.random() * lex.keys.length);
         }
       };
       var setortho = function(o) { ortho = o; display(); };
@@ -69,12 +67,12 @@
       var display = function() {
         var s;
         if (lang) {
-          s = lexicon_flat_arr[CUR][0];
+          s = lex.keys[CUR];
           if (!ortho) {
             s = tonewortho(s);
           }
         } else {
-          s = lexicon_flat_arr[CUR][1][0].defs[0];
+          s = lex[lex.keys[CUR]][0].defs[0];
         }
         card.innerHTML = '<span>' + s + '</span>';
         card.onclick = showflip;
@@ -83,12 +81,12 @@
       var showflip = function() {
         var s;
         if (!lang) {
-          s = lexicon_flat_arr[CUR][0];
+          s = lex.keys[CUR];
           if (!ortho) {
             s = tonewortho(s);
           }
         } else {
-          s = lexicon_flat_arr[CUR][1][0].defs.join('; ');
+          s = lex[lex.keys[CUR]][0].defs.join('; ');
         }
         card.innerHTML = '<span>' + s + '</span>';
         card.onclick = flipclick;
