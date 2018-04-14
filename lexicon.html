@@ -101,6 +101,31 @@
           for (var j = 0; j < df.defs.length; j++) {
             ul.appendChild(mkel('li', df.defs[j]));
           }
+          var ls;
+          for (var k in df) {
+            ls = df[k];
+            if (k == 'archaic') {
+              for (var l = 0; l < ls.length; l++) {
+                ul.appendChild(mkel('li', "<b>Archaic: </b>See " + makeLink(ls[l], update)));
+              }
+            } else if (k == 'see also') {
+              for (var l = 0; l < ls.length; l++) {
+                ul.appendChild(mkel('li', "<b>See Also: </b>" + makeLink(ls[l], update)));
+              }
+            } else if (k == 'example') {
+              for (var l = 0; l < ls.length; l++) {
+                ul.appendChild(mkel('li', "<b>Example: </b>" + ls[l][0] + " (<i>" + ls[l][1] + "</i>)"));
+              }
+            } else if (k == 'suf-example') {
+              for (var l = 0; l < ls.length; l++) {
+                ul.appendChild(mkel('li', "<b>Example: </b>" + ls[l][0] + " ➔ " + ls[l][1]));
+              }
+            }
+          }
+          if (df.path[0] == 'aux') {
+            var tenses = generateAux(word[0], false);
+            ul.appendChild(mkel('li', "<b>Past Tenses:</b> <i id=\"" + tenses.near + "\">near:</i> " + dispWord(tenses.near, update) + ", <i id=\"" + tenses.mid + "\">mid:</i> " + dispWord(tenses.mid, update) + ", <i id=\"" + tenses.far + "\">far:</i> " + dispWord(tenses.far, update)));
+          }
         }
         /*var ret = "<td><b>" + dispWord(word[0], update) + "</b></td><td>";
         for (var i = 0; i < word[1].length; i++) {
