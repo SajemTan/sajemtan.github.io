@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>Sajem Tan Dictionary Entry Formatter</title>
+    <script type="text/javascript" src="lexicon.js"></script>
+    <link rel="shortcut icon" type="image/png" href="flag.png">
+  </head>
+  <body>
+    <textarea id="in"></textarea>
+    <button onclick="out();">go</button>
+    <ul id="out"></ul>
+    <script>
+      var elin = document.getElementById('in');
+      var elout = document.getElementById('out');
+      var out = function() {
+        var inls = elin.value.split('\n');
+        var ls = [];
+        var tmp;
+        var mode;
+        var word;
+        var def;
+        for (var i = 0; i < inls.length; i++) {
+          tmp = inls[i].split(' ');
+          mode = tmp[0].toLowerCase()
+          if (isNewOrtho(mode)) {
+            mode = tooldortho(mode);
+          }
+          word = tmp[1].toLowerCase()
+          if (isNewOrtho(word)) {
+            word = tooldortho(word);
+          }
+          def = tmp.slice(3).join(' ');
+          if (def[0] == '"' && def[-1] == '"') {
+            def = def.slice(1,-1);
+          }
+          ls.push('<li><b>'+mode+'</b> "'+word+'": ["'+def+'"],');
+        }
+        ls.sort();
+        elout.innerHTML = ls.join('\n');
+      };
+    </script>
+  </body>
+</html>
