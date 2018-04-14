@@ -15,6 +15,11 @@
       <label for="oldortho">Old Orthography</label>
       <input type="radio" id="newortho" name="ortho" onchange="setup(); doSearch();"></input>
       <label for="newortho">Reformed Orthography</label>
+      <select id="searchwhat" onchange="doSearch();">
+        <option value="all">Everything</option>
+        <option value="root">Roots</option>
+        <option value="def">Definitions</options>
+      </select>
       <a href="index.html" style="padding-left: 50px;">Sajem Tan tools index</a>
       <br>
       <span>Please keep in mind that the listed parts of speech are merely how the word was first used. You can change them!</span>
@@ -34,18 +39,22 @@
     </table>
     <p id="matches"></p>
     <script>
+      var search_all = [];
+      var search_root = [];
+      var search_defs = [];
+      var search_nodes = [];
       var lexicon_flat_arr = [];
       for (var k in lexicon_flat) {
         lexicon_flat_arr.push([k, lexicon_flat[k]]);
       }
       lexicon_flat_arr.sort(function(a, b) { return sortAlpha(a[0], b[0]); });
-      var searchMatch = function(domNode, queryString, isRegex) {
+      var searchMatch = function(txt, queryString, isRegex) {
         function decodeHtml(html) {
           var txt = document.createElement("textarea");
           txt.innerHTML = html;
           return txt.value;
         }
-        var str = decodeHtml(domNode.outerHTML);
+        var str = decodeHtml(txt);
         var find = decodeHtml(queryString);
         if (!isRegex) {
           return str.toLowerCase().includes(find.toLowerCase());
@@ -56,10 +65,19 @@
       var doSearch = function() {
         var searchstr = document.getElementById("search").value;
         var isRegex = document.getElementById("regex").checked;
-        var l = document.getElementById("defs").childNodes;
+        var l = search_nodes;
+        var srch;
+        var mode = document.getElementById('searchwhat').value;
+        if (mode == 'all') {
+          srch = search_all;
+        } else if (mode == 'root') {
+          srch = search_root;
+        } else if (mode == 'def') {
+          srch = search_defs;
+        }
         var matches = 0
         for (var i = 0; i < l.length; i++) {
-          l[i].style.display = searchMatch(l[i], searchstr, isRegex) ? "" : "none";
+          l[i].style.display = searchMatch(srch[i], searchstr, isRegex) ? "" : "none";
           if (l[i].style.display == "") { matches++; }
         }
         document.getElementById("matches").innerHTML = matches + " matches for " + searchstr;
@@ -99,6 +117,7 @@
           ret.appendChild(ul);
           for (var j = 0; j < df.defs.length; j++) {
             ul.appendChild(mkel('li', df.defs[j]));
+            ul.lastChild.className = 'def';
           }
           var ls;
           for (var k in df) {
@@ -198,6 +217,21 @@
         var ortho = !document.getElementById("oldortho").checked;
         for (var i = 0; i < lexicon_flat_arr.length; i++) {
           defs.appendChild(makeRow(lexicon_flat_arr[i], ortho));
+        }
+        search_nodes = document.getElementById("defs").childNodes;
+        var s;
+        var node;
+        var df;
+        for (var i = 0; i < search_nodes.length; i++) {
+          s = '';
+          node = search_nodes[i];
+          search_all.push(node.outerHTML);
+          search_root.push(node.id + ' ' + tonewortho(node.id));
+          df = node.getElementsByClassName('def');
+          for (var j = 0; j < df.length; j++) {
+            s += df[j].innerHTML + ' ';
+          }
+          search_defs.push(s);
         }
       };
       setup();
