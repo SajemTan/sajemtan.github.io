@@ -181,11 +181,9 @@
         document.body.innerHTML = s;
       };
       var setup = function() {
-        var s = "";
         for (var i = 0; i < lexicon_flat_arr.length; i++) {
-          s += makeRow(lexicon_flat_arr[i], !document.getElementById("oldortho").checked);
+          document.getElementById('defs').innerHTML += makeRow(lexicon_flat_arr[i], !document.getElementById("oldortho").checked);
         }
-        document.getElementById('defs').innerHTML = s;
       };
       setup();
     </script>
