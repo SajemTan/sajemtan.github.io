@@ -30,8 +30,7 @@
           <th>Definition</th>
         </tr>
       </thead>
-      <tbody id="defs">
-      </tbody>
+      <tbody id="defs"></tbody>
     </table>
     <p id="matches"></p>
     <script>
@@ -127,41 +126,6 @@
             ul.appendChild(mkel('li', "<b>Past Tenses:</b> <i id=\"" + tenses.near + "\">near:</i> " + dispWord(tenses.near, update) + ", <i id=\"" + tenses.mid + "\">mid:</i> " + dispWord(tenses.mid, update) + ", <i id=\"" + tenses.far + "\">far:</i> " + dispWord(tenses.far, update)));
           }
         }
-        /*var ret = "<td><b>" + dispWord(word[0], update) + "</b></td><td>";
-        for (var i = 0; i < word[1].length; i++) {
-          var df = word[1][i];
-          ret += "<p><b>" + df.path.join(" > ") + "</b></p><ul>";
-          for (var j = 0; j < df.defs.length; j++) {
-            ret += "<li>" + df.defs[j] + "</li>";
-          }
-          if (df.hasOwnProperty("archaic")) {
-            for (var i = 0; i < df.archaic.length; i++) {
-              ret += "<li><b>Archaic: </b>See " + makeLink(df["archaic"][i], update) + "</li>";
-            }
-          }
-          if (df.hasOwnProperty("see also")) {
-            for (var i = 0; i < df["see also"].length; i++) {
-              ret += "<li><b>See Also: </b>" + makeLink(df["see also"][i], update) + "</li>";
-            }
-          }
-          if (df.path[0] == "aux") {
-            var tenses = generateAux(word[0], false);
-            ret += "<li><b>Past Tenses:</b> <i id=\"" + tenses.near + "\">near:</i> " + dispWord(tenses.near, update) + ", <i id=\"" + tenses.mid + "\">mid:</i> " + dispWord(tenses.mid, update) + ", <i id=\"" + tenses.far + "\">far:</i> " + dispWord(tenses.far, update) + "</li>";
-          }
-          if (df.hasOwnProperty("example")) {
-            for (var i = 0; i < df.example.length; i++) {
-              ret += "<li><b>Example: </b>" + df.example[i][0] + " (<i>" + df.example[i][1] + "</i>)</li>";
-            }
-          }
-          if (df.hasOwnProperty("suf-example")) {
-            for (var i = 0; i < df["suf-example"].length; i++) {
-              ret += "<li><b>Example: </b>" + df["suf-example"][i][0] + " ➔ " + df["suf-example"][i][1] + "</li>";
-            }
-          }
-          ret += "</ul>";
-        }
-        ret += "</td></tr>";
-        retel.innerHTML = ret;*/
         return retel;
       };
       var setupAlt = function() {
@@ -233,7 +197,6 @@
         var defs = document.getElementById('defs');
         var ortho = !document.getElementById("oldortho").checked;
         for (var i = 0; i < lexicon_flat_arr.length; i++) {
-          //defs.innerHTML += makeRow(lexicon_flat_arr[i], !document.getElementById("oldortho").checked);
           defs.appendChild(makeRow(lexicon_flat_arr[i], ortho));
         }
       };
