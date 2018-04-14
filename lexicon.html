@@ -79,8 +79,30 @@
       var makeLink = function(word, update) {
         return "<a href=\"#\" onclick=\"setSearch('" + word + "')\">" + dispWord(word, update) + "</a>";
       };
+      var mkel = function(tag, html) {
+        var ret = document.createElement(tag);
+        ret.innerHTML = html;
+        return ret;
+      };
       var makeRow = function(word, update) {
-        var ret = "<tr id=\"" + word[0] + "\" data-json=\"" + escape(JSON.stringify(word)) + "\"><td><b>" + dispWord(word[0], update) + "</b></td><td>";
+        var retel = document.createElement('tr');
+        retel.id = word[0];
+        retel.setAttribute('data-json', escape(JSON.stringify(word)));
+        retel.appendChild(mkel('td', "<b>" + dispWord(word[0], update) + "</b>"));
+        var ret = document.createElement('td');
+        retel.appendChild(ret);
+        var ul;
+        var df;
+        for (var i = 0; i < word[1].length; i++) {
+          df = word[1][i];
+          ret.appendChild(mkel('p', "<b>" + df.path.join(" > ") + "</b>"));
+          ul = document.createElement('ul');
+          ret.appendChild(ul);
+          for (var j = 0; j < df.defs.length; j++) {
+            ul.appendChild(mkel('li', df.defs[j]));
+          }
+        }
+        /*var ret = "<td><b>" + dispWord(word[0], update) + "</b></td><td>";
         for (var i = 0; i < word[1].length; i++) {
           var df = word[1][i];
           ret += "<p><b>" + df.path.join(" > ") + "</b></p><ul>";
@@ -113,7 +135,9 @@
           }
           ret += "</ul>";
         }
-        return ret + "</td></tr>";
+        ret += "</td></tr>";
+        retel.innerHTML = ret;*/
+        return retel;
       };
       var setupAlt = function() {
         //TODO incorporate "example"?
@@ -181,8 +205,11 @@
         document.body.innerHTML = s;
       };
       var setup = function() {
+        var defs = document.getElementById('defs');
+        var ortho = !document.getElementById("oldortho").checked;
         for (var i = 0; i < lexicon_flat_arr.length; i++) {
-          document.getElementById('defs').innerHTML += makeRow(lexicon_flat_arr[i], !document.getElementById("oldortho").checked);
+          //defs.innerHTML += makeRow(lexicon_flat_arr[i], !document.getElementById("oldortho").checked);
+          defs.appendChild(makeRow(lexicon_flat_arr[i], ortho));
         }
       };
       setup();

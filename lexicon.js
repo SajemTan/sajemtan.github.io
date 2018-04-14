@@ -880,7 +880,7 @@ var lexicon = {
     "noun>noun": {
       "ah": ["plural"],
       "ahah": ["infinite", "an infinite number of"],
-      "-ehc": ["marks the name of a language"],
+      "ehc": ["marks the name of a language"],
       "fun": ["small"],
       "jot": ["future", ["suf-example", "tetan (tetan)", "tetanjot (a tetan in the future)"]],
       "kah": ["energetic", "coffee"],
