@@ -1015,6 +1015,7 @@ var lexicon = {
       "dathnyc": ["encounter", "stumble upon"],
       "deket": ["delete", "remove", "erase"],
       "delgem": ["select", "curate", "anthologize", "choose", "decide"],
+      "doltan": ["pronounce"],
       "dolzec": ["conceptually return to a source", "renew creativity by reviewing old inspirations"],
       "duhden": ["distract"],
       "dultham": ["buy", "purchase", "pay for (object takes -thot)"],
