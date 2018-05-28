@@ -64,6 +64,7 @@ var lexicon = {
     "nymem": ["clumsy"],
     "nynak": ["sour"],
     "sajem": ["common", "communal", "public"],
+    "selset": ["cozy", "comfy"],
     "semet": ["numerical"],
     "shit": ["high-quality"],
     "shyxeht": ["arbitrary"],
@@ -218,12 +219,15 @@ var lexicon = {
     }
   },
   "idiom": {
+    "femekvah gyvnam": ["to consider", ["etymology", "to cook with one's thoughts"]],
     "fman tidyn gamyk": ["to stand in awe unable to move, like you've been petrified"],
     "jo tetanah": ["why not?", "let's do it!"],
+    "midacum femekah": ["to be confused", ["etymology", "one's thoughts are a puzzle"]],
     "slet [main verb] dulc": ["once upon a time", "it was said of old"],
     "telzlnolnfeh tulnah": ["crying", "weeping"]
   },
   "interjection": {
+    "jit": ["(extreme happiness)"],
     "jolfnim": ["huzzah"],
     "mik": ["whoa", "woah"],
     "shuht": ["stop talking and die"],
@@ -302,11 +306,12 @@ var lexicon = {
     "dyjult": ["a stringed musical instrument, especially a guitar"],
     "dyznek": ["two-handed sword", ["see also", "zhan"], ["gloss", "sword"]],
     "famat": ["farm"],
-    "fasnat": ["powdered donut", "a holiday that originally had meaning but now people just celebrate it for the food or other superficial characteristics"],
+    "fasnat": ["powdered donut", "a holiday that originally had meaning but now people just celebrate it for the food or other superficial characteristics", "soap"],
     "femek": ["mind", "thought", "Sherlock Holmes"],
     "femektam": ["gender", "gender identity"],
     "femekukmunkanolt": ["a door that you keep wanting to push but it's actually a pull door"],
     "fenat": ["animal", "land animal, particularly mammals and reptiles"],
+    "fenolk": ["magical ingedient", "typographical error"],
     "fic": ["here", "now"],
     "fijyc": ["rainbow"],
     "fithnelm": ["lighthouse", "beacon"],
@@ -425,6 +430,7 @@ var lexicon = {
     "kygek": ["chopstick", "an eating utensil used to grasp food from the outside instead of cut or stab it"],
     "kyguhk": ["chopstick", ["archaic", "kygek"]],
     "kygykkolxak": ["pedalpub"],
+    "kygykzazet": ["quicksand"],
     "kygyn": ["eater", "one who eats"],
     "kyvydyc": ["crack", "tear", "hole"],
     "madam": ["history"],
@@ -605,6 +611,7 @@ var lexicon = {
     "tyslit": ["trumpet"],
     "tysolsolm": ["width"],
     "tythemek": ["a mythical centipede with human hands, and the teeth and dangling thing of a deep-sea anglerfish", "bad idea"],
+    "tytoltduhttulnah": ["l o n g   e y e s"],
     "tytoltsolsolm": ["width", ["archaic", "tysolsolm"]],
     "tytyt": ["clover"],
     "tyzyshyk": ["custom", "praxis", "way"],
@@ -736,7 +743,19 @@ var lexicon = {
     "zuhzuhmelt": ["ladle", "dipper"],
     "zulzulm": ["word dump"],
     "zyshennuhtitthnelk": ["Hallmark channel bakery"],
-    "zyzlolk": ["gas"]
+    "zyzlolk": ["gas"],
+    // I at this point give up on alphabetizing everything. -Thefam (3 Tërnön 11)
+    "sazlin": ["cotton candy", "deadly poison", "something which appears desirable but is in fact not", "a Trojan Horse"],
+    "vysyzlyt": ["joke orthography"],
+    "vanysleln": ["collection of loosely connected thoughts", "hodgepodge", "book containing scattered writings", "zibaldone"],
+    "xyt": ["(slightly informal/non-standard) all, everything, everyone"],
+    "voldem": ["non-Sajem Tan word that is phonotactically valid"],
+    "slulvizhit": ["cosplay"],
+    "selset": ["sushi"],
+    "zlulven": ["sandwich"],
+    "canim": ["lighthouse"],
+    "midac": ["puzzle"],
+    "celtulnsnizhynzicuhmfun": ["kidney bean", ["etymology", "edible little urine container"]]
   },
   "number": {
     "decimal": {
@@ -918,6 +937,7 @@ var lexicon = {
   },
   "verb": {
     "experiencer intransitive": {
+      "fenolk": ["make a typographical error"],
       "fik": ["die"],
       "golcic": ["diminish"],
       "julnim": ["have a pleasant dream"],
@@ -1022,6 +1042,7 @@ var lexicon = {
       "dulthamukmun": ["sell"],
       "dyfnyn": ["measure"],
       "femek": ["deduce", "realize"],
+      "fenolknacolm": ["tease someone for making a typographical error"],
       "fmam": ["test", "explore", "push (a boundary)", "probe"],
       "fmamegyn": ["throw"],
       "fmyvu": [["archaic", "fmyvuhk"], "make", "create"],
@@ -1097,6 +1118,7 @@ var lexicon = {
       "vesnen": ["share"],
       "vexit": ["enter", "join", "log on", "sign in"],
       "vin": ["exit", "leave", "log out", "sign off"],
+      "vysyzlyt": ["adopt a joke orthography"],
       "vyt": ["catch", "capture"],
       "xafec": ["elongate a word while saying it"],
       "xafolm": ["wield (with an instrumental object)", "attack (with a non-case-marked direct object)"],
