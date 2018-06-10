@@ -755,7 +755,12 @@ var lexicon = {
     "zlulven": ["sandwich"],
     "canim": ["lighthouse"],
     "midac": ["puzzle"],
-    "celtulnsnizhynzicuhmfun": ["kidney bean", ["etymology", "edible little urine container"]]
+    "celtulnsnizhynzicuhmfun": ["kidney bean", ["etymology", "edible little urine container"]],
+    "duldulk": ["lip-buzzed instrument", "brass instrument, especially a trombone (definition archaic)"],
+    "dedyk": ["flute"],
+    "deldolk": ["piano", "keyboard instrument"],
+    "dedek": ["harp"],
+    "didak": ["Oboe"]
   },
   "number": {
     "decimal": {
@@ -1022,7 +1027,8 @@ var lexicon = {
       "zamen": ["hope"],
       "zhizhek": ["sniffle, especially repeatedly"],
       "zhuhzhuhm": ["fly like a bird", "fly or swim along a fairly straight line or smooth curve", ["see also", "jelt"], ["gloss", "fly"]],
-      "zlmelmolc": ["struggle to pronounce an unpronounceable word"],
+      "zlmelmolc": ["struggle to pronounce an unpronounceable word", ["archaic", "zlmelslmolc"]],
+      "zlmelslmolc": ["struggle to pronounce an unpronounceable word"],
       "zhyshyn": ["conceal one's past to make it look like one is not an idiot"]
     },
     "transitive": {

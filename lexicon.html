@@ -7,7 +7,13 @@
   </head>
   <body onload="doSearch();">
     <div style="width: 100%; background-color: rgba(255, 255, 255, 0.9); position: fixed; left: 0px; top: 0px; padding: 15px;">
-      <span>Search: </span>
+      <span>Search</span>
+      <select id="searchwhat" onchange="doSearch();">
+        <option value="all">Everything</option>
+        <option value="root">Roots</option>
+        <option value="def">Definitions</options>
+      </select>
+      <span>for</span>
       <input type="text" id="search" onkeyup="doSearch();"></input>
       <label for="regex">Regex? </label>
       <input type="checkbox" id="regex" onclick="doSearch();"></input>
@@ -15,11 +21,6 @@
       <label for="oldortho">Old Orthography</label>
       <input type="radio" id="newortho" name="ortho" onchange="setup(); doSearch();"></input>
       <label for="newortho">Reformed Orthography</label>
-      <select id="searchwhat" onchange="doSearch();">
-        <option value="all">Everything</option>
-        <option value="root">Roots</option>
-        <option value="def">Definitions</options>
-      </select>
       <a href="index.html" style="padding-left: 50px;">Sajem Tan tools index</a>
       <br>
       <span>Please keep in mind that the listed parts of speech are merely how the word was first used. You can change them!</span>
