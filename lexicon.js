@@ -760,7 +760,15 @@ var lexicon = {
     "dedyk": ["flute"],
     "deldolk": ["piano", "keyboard instrument"],
     "dedek": ["harp"],
-    "didak": ["Oboe"]
+    "didak": ["Oboe"],
+    "nizlelk": ["nerd"],
+    "nenulm": ["geek"],
+    "nysnam": ["wizard"],
+    "snizlelk": ["snerd"],
+    "snenulm": ["sgeek", "skeek"],
+    "snysnam": ["swizard"],
+    "gacek": ["flamingo"],
+    "zlifnulgac": ["demonopocephalous flamingo"]
   },
   "number": {
     "decimal": {
@@ -999,6 +1007,7 @@ var lexicon = {
       "slnaxan": ["idly chat despite not wanting to"],
       "slolslac": ["crawl"],
       "smit": ["be widespread", "spread"],
+      "tafnoln": ["use a markov chain for entertainment"],
       "tazlagislesuhvim": ["write My Immortal"],
       "telzlnoln": ["rain"],
       "tethnym": ["become pregnant", "be pregnant"],
@@ -1008,6 +1017,7 @@ var lexicon = {
       "timem": ["sleep"],
       "tishnam": ["rest", ["etymology", "tishnim"]],
       "tolzlnoln": ["rain heavily"],
+      "tyfnyn": ["cook with your finger"],
       "vaslnulm": ["cease", "flee"],
       "vejyt": ["play music", "read music"],
       "vijet": ["write music"],
