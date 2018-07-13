@@ -1,3 +1,75 @@
+/* HOW TO ADD STUFF TO THE LEXICON
+   Thefam, 3 Kizhult 30
+   
+   The lexicon is laid out like so:
+   lexicon
+     adj (adjectives)
+       place of articulation
+       manner of articulation
+     adv (adverbs)
+       evidential
+     aux (auxiliaries)
+       i
+       ol
+     color
+     conjunction
+       both
+       clause (specific to clauses)
+       noun (specific to noun phrases)
+     idiom
+     interjection
+     noun
+     number
+       decimal
+       senary
+     participle
+     post (postpositions)
+     prefix
+     pronoun
+     suffix
+       any
+       aspect
+       case
+       number
+       valency
+       - any that convert between 2 different parts of speech like adjective -> verb would be under adj>verb
+     verb
+       experiencer intransitive
+       experiencer transitive
+       intransitive
+       transitive
+   
+   Figure out where the new word should go, or where the old word already is
+   Everything must be in the original romanization
+   Most things are in English alphabetical order for simplicity, but this is not required
+   
+   An entry looks like this:
+   "word": ["definition 1", "definition 2", ["property", "argument"], "definition 3"],
+   Only definition 1 is required
+   Currently recognized properties:
+     archaic
+       ["archaic", "other word"]
+       redirects from this entry to another entry (example: becek)
+     see also
+       ["see also", "other word"]
+       redirects to related word (example: met)
+     example
+       ["example", "Sajem Tan sentence", "English sentence"]
+       gives an example usage (example: solm)
+     etymology
+       ["etymology", "comment"]
+       gives an etymological comment (example: dan)
+     suf-example
+       ["suf-example", "word (English)", "word-with-suffix (English)"]
+       gives an example of a suffix in use (example: meht)
+     form
+       ["form", "initial segment", "final segment"]
+       auxiliaries only, specifies the parts before an after the vowel which don't change
+     gloss
+       ["gloss", "word"]
+       specifies what should be displayed by the glosser (default is the first definition)
+   Other properties may be added, but they will have no effect until you tell me about them
+*/
 var lexicon = {
   "adj": {
     // I'm putting these sections here to help us recognise that these are these specific terms. You may remove them if you see it necessary.
