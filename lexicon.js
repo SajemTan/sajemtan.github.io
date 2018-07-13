@@ -176,7 +176,7 @@ var lexicon = {
     "xafec": ["fulvous"],
     "xatat": ["magnetic"],
     "xen": ["incorrect"],
-    "xolt": ["real"],
+    "xolt": ["real", "true"],
     "xulm": ["much", "many"],
     "xyt": ["all", "each", "every", "whole"],
     "xyttucmun": ["all-encompassing"],
@@ -915,7 +915,7 @@ var lexicon = {
     "zult": ["after", "once", "soon after", "in accordance with", "following"]
   },
   "prefix": {
-    "xuhm-": ["how", "how wonderful", "to what extent", ["example", "dothot xuhmgisnolmsho dovmeh gisnolmnoc?", "how painful is the injury to you?, how much does it hurt?"]]
+    "xuhm-": ["how", ["example", "xuhmzyshen", "how nice"], "to what extent", ["example", "dothot xuhmgisnolmsho dovmeh gisnolmnoc?", "how painful is the injury to you?, how much does it hurt?"], ["see also", "xuhm"]]
   },
   "pronoun": {
     "deh": ["1st person neutral", "I"],
