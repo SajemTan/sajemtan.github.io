@@ -887,7 +887,7 @@ var lexicon = {
     "jafitulzhnolm": ["map"],
     "slaslat": ["guacamole"],
     "slaslatnesit": ["avocado"],
-    "gamik": ["surprise", "shock"],
+    "gamik": ["surprise", "shock", "wonder", "awe"],
     "gamikseshulfen": ["serendipity"],
     "vuhzulmsolsolm": ["difficulty"],
     "gygikzic": ["beer", "smoothie", "smooth soup/stew"],
@@ -1079,6 +1079,7 @@ var lexicon = {
     "experiencer intransitive": {
       "fenolk": ["make a typographical error"],
       "fik": ["die"],
+      "gamik": ["marvel", "experience wonder"],
       "golcic": ["diminish"],
       "julnim": ["have a pleasant dream"],
       "kasyn": ["recur"],
