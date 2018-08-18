@@ -215,6 +215,7 @@
       };
       var setup = function() {
         var defs = document.getElementById('defs');
+        defs.innerHTML = '';
         var ortho = !document.getElementById("oldortho").checked;
         for (var i = 0; i < lexicon_flat_arr.length; i++) {
           defs.appendChild(makeRow(lexicon_flat_arr[i], ortho));
