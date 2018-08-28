@@ -23,10 +23,18 @@
   <input id="con" type="checkbox">Don't convert "con ... om"</input>
   <p id="ipa"></p>
   <script type="text/javascript">
-    var oldipa = ["d", "g", "x", "\u028e", "f", "v", "\u03b8", "s", "z", "\u0283", "\u0292", "\u026c", "\u026e", "m", "n", "\u00e6", "\u0153", "e", "\u00f8", "i", "y", "\u028c", "\u0264", "t\u0361s", "t", "k", "\u0251", "\u025b", "\u0275", "u"];
-    var newipa = ["d", "g", "x", "j", "f", "v", "\u03b8", "s", "z", "\u0283", "\u0292", "\u026c", "\u026e", "m", "n", "\u00e6", "\u0153", "e", "\u00f8", "i", "y", "\u028c", "\u028a", "t\u0361s", "t", "k", "\u0251", "\u025b", "o", "u"];
-    var oldorth = ["d", "g", "x", "j", "f", "v", "th", "s", "z", "sh", "zh", "sl", "zl", "m", "n", "a", "el", "e", "ol", "i", "y", "uh", "ul", "c", "t", "k", "ah", "eh", "o", "u"];
-    var neworth = ["d", "g", "x", "j", "f", "v", "\u0163", "s", "z", "š", "ž", "l", "r", "m", "n", "a", "ë", "e", "ö", "i", "y", "û", "ü", "c", "t", "k", "â", "ê", "o", "u"];
+    var oldipa = ["d", "g", "x", "\u028e", "f", "v", "\u03b8", "s", "z", "\u0283", "\u0292", "\u026c", "\u026e", "m", "n", "\u00e6", "\u0153", "e", "\u00f8", "i", "y", "\u028c", "\u0264", "t\u0361s", "t", "k", "\u0251", "\u025b", "\u0275", "u",
+      "d", "g", "x", "\u028e", "f", "v", "\u03b8", "s", "z", "\u0283", "\u0292", "\u026c", "\u026e", "m", "n", "\u00e6", "\u0153", "e", "\u00f8", "i", "y", "\u028c", "\u0264", "t\u0361s", "t", "k", "\u0251", "\u025b", "\u0275", "u",
+      "\u03b8", "\u0283", "\u0292", "\u026c", "\u026e", "\u0153", "\u00f8", "\u028c", "\u0264", "\u0251", "\u025b"];
+    var newipa = ["d", "g", "x", "j", "f", "v", "\u03b8", "s", "z", "\u0283", "\u0292", "\u026c", "\u026e", "m", "n", "\u00e6", "\u0153", "e", "\u00f8", "i", "y", "\u028c", "\u028a", "t\u0361s", "t", "k", "\u0251", "\u025b", "o", "u",
+      "d", "g", "x", "j", "f", "v", "\u03b8", "s", "z", "\u0283", "\u0292", "\u026c", "\u026e", "m", "n", "\u00e6", "\u0153", "e", "\u00f8", "i", "y", "\u028c", "\u028a", "t\u0361s", "t", "k", "\u0251", "\u025b", "o", "u",
+      "\u03b8", "\u0283", "\u0292", "\u026c", "\u026e", "\u0153", "\u00f8", "\u028c", "\u028a", "\u0251", "\u025b"];
+    var oldorth = ["d", "g", "x", "j", "f", "v", "th", "s", "z", "sh", "zh", "sl", "zl", "m", "n", "a", "el", "e", "ol", "i", "y", "uh", "ul", "c", "t", "k", "ah", "eh", "o", "u",
+      "D", "G", "X", "J", "F", "V", "Th", "S", "Z", "Sh", "Zh", "Sl", "Zl", "M", "N", "A", "El", "E", "Ol", "I", "Y", "Uh", "Ul", "C", "T", "K", "Ah", "Eh", "O", "U",
+      "TH", "SH", "ZH", "SL", "ZL", "EL", "OL", "UH", "UL", "AH", "EH"];
+    var neworth = ["d", "g", "x", "j", "f", "v", "\u0163", "s", "z", "š", "ž", "l", "r", "m", "n", "a", "ë", "e", "ö", "i", "y", "û", "ü", "c", "t", "k", "â", "ê", "o", "u",
+      "D", "G", "X", "J", "F", "V", "\u0162", "S", "Z", "Š", "Ž", "L", "R", "M", "N", "A", "Ë", "E", "Ö", "I", "Y", "Û", "Ü", "C", "T", "K", "Â", "Ê", "O", "U",
+      "\u0162", "Š", "Ž", "L", "R", "Ë", "Ö", "Û", "Ü", "Â", "Ê"];
     
     function getList(value) {
       if (value == "oldipa") { return oldipa; }
@@ -35,8 +43,8 @@
       if (value == "neworth") { return neworth; }
     }
     
-    var conregexold = /(con .* om|[szeu][hl]|th|ol|ah|.)/;
-    var conregexnew = /(con .* om|.)/;
+    var conregexold = /(con .* om|[szeu][hl]|th|ol|ah|.)/i;
+    var conregexnew = /(con .* om|.)/i;
     
     function parse() {
       var input = document.getElementById("orth").value.toLowerCase();
@@ -60,7 +68,11 @@
         }
         input = output.join('');
       } else {
-        for (var i = 0; i < inlist.length; i++) {
+        var upto = inlist.length;
+        if (document.getElementById("from").value.slice(3) == "ipa") {
+          upto = 30;
+        }
+        for (var i = 0; i < upto; i++) {
           input = input.replace(new RegExp(inlist[i], "g"), outlist[i]);
         }
       }
