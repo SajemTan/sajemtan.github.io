@@ -893,7 +893,11 @@ var lexicon = {
     "gygikzic": ["beer", "smoothie", "smooth soup/stew"],
     "tangygikok": ["a soup/stew with chunks"],
     "sazycfenatvmak": ["saddle"],
-    "solsolmxaslem": ["gradient"]
+    "solsolmxaslem": ["gradient"],
+    "kixadan": ["clown", "comedian"],
+    "semetthek": ["digit", "number (symbol)", ["see also", "semet"]],
+    "zmetmon": ["city"],
+    "sezelc": ["suitcase", ["etymology", "geselt + sazyc"]]
   },
   "number": {
     "decimal": {
@@ -1229,6 +1233,7 @@ var lexicon = {
       "kyvydyc": ["verb to tear"],
       "ma": [["archaic", "man"], "thank"],
       "man": ["thank"],
+      "mesolk": ["win"],
       "misnem": ["be injured by another's carelessness"],
       "muhctolgelculm": ["remove something from the public memory"],
       "nacolm": ["poke", "get someone's attention", "stab"],
@@ -1267,6 +1272,7 @@ var lexicon = {
       "tizen": ["enable"],
       "tolthim": ["want", "desire"],
       "tolzlnoln": ["inundate"],
+      "ukzhut": ["change", "transform"],
       "vafak": ["join"],
       "vaslnulm": ["cease"],
       "vazolt": ["regard with disdain"],
