@@ -20,6 +20,7 @@
     <option value="newipa"> Reformed IPA</option>
   </select>
   <input id="switch" type="button" value="Switch" onclick="parse()">
+  <input id="con" type="checkbox">Don't convert "con ... om"</input>
   <p id="ipa"></p>
   <script type="text/javascript">
     var oldipa = ["d", "g", "x", "\u028e", "f", "v", "\u03b8", "s", "z", "\u0283", "\u0292", "\u026c", "\u026e", "m", "n", "\u00e6", "\u0153", "e", "\u00f8", "i", "y", "\u028c", "\u0264", "t\u0361s", "t", "k", "\u0251", "\u025b", "\u0275", "u"];
@@ -34,13 +35,34 @@
       if (value == "neworth") { return neworth; }
     }
     
+    var conregexold = /(con .* om|[szeu][hl]|th|ol|ah|.)/;
+    var conregexnew = /(con .* om|.)/;
+    
     function parse() {
       var input = document.getElementById("orth").value.toLowerCase();
       var inlist = getList(document.getElementById("from").value);
       var outlist = getList(document.getElementById("to").value);
       
-      for (var i = 0; i < inlist.length; i++) {
-        input = input.replace(new RegExp(inlist[i], "g"), outlist[i]);
+      if (document.getElementById("con").checked) {
+        if (document.getElementById("from").value == "oldorth") {
+          input = input.split(conregexold);
+        } else {
+          input = input.split(conregexnew);
+        }
+        console.log(input);
+        var output = [];
+        for (var i = 0; i < input.length; i++) {
+          if (inlist.includes(input[i])) {
+            output.push(outlist[inlist.indexOf(input[i])]);
+          } else {
+            output.push(input[i]);
+          }
+        }
+        input = output.join('');
+      } else {
+        for (var i = 0; i < inlist.length; i++) {
+          input = input.replace(new RegExp(inlist[i], "g"), outlist[i]);
+        }
       }
       
       document.getElementById("ipa").innerHTML = input;
