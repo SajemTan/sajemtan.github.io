@@ -101,6 +101,7 @@ var lexicon = {
     "cagyn": ["lazy", "lackadasical"],
     "can": ["bored"],
     "celk": ["lightened"],
+    "cen": ["linear"],
     "cenetulnyslin": ["inconsistent", "spontaneous"],
     "cimuht": ["equal", "same"],
     "danec": ["borrowed", "copied", "imitated"],
@@ -897,7 +898,8 @@ var lexicon = {
     "kixadan": ["clown", "comedian"],
     "semetthek": ["digit", "number (symbol)", ["see also", "semet"]],
     "zmetmon": ["city"],
-    "sezelc": ["suitcase", ["etymology", "geselt + sazyc"]]
+    "sezelc": ["suitcase", ["etymology", "geselt + sazyc"]],
+    "cen": ["line", "row"]
   },
   "number": {
     "decimal": {
@@ -949,6 +951,7 @@ var lexicon = {
     "xo": ["marks an archaic word or a current word used in an archaic sense"]
   },
   "post": {
+    "cen": ["along"],
     "daket": ["near"],
     "dom": ["because"],
     "feln": ["knowing persons or places", ["see also", "shyn"], ["see also", "zet"]],
