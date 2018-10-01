@@ -908,7 +908,7 @@ var lexicon = {
     "sezelc": ["suitcase", ["etymology", "geselt + sazyc"]],
     "cen": ["line", "row"],
     "zelzelm": ["dictionary or glossary", "a document that defines terminology"],
-    "sazlidat": ["rabbit", "bunny", "cottontail", ["etymology", "sazlin + xidat"]"],
+    "sazlidat": ["rabbit", "bunny", "cottontail", ["etymology", "sazlin + xidat"]],
     "tolthimgolt": ["the point at which a demand or wish is satisfied"],
     "thymyn": ["minute (Sajem Tannic measurement ≈3.11 minutes)"],
     "cicsofun": ["quesadilla"],
