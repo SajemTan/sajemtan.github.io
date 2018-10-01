@@ -314,7 +314,7 @@ var lexicon = {
     "midacum femekah": ["to be confused", ["etymology", "one's thoughts are a puzzle"]],
     "slet [main verb] dulc": ["once upon a time", "it was said of old"],
     "telzlnolnfeh tulnah": ["crying", "weeping"],
-    "tolthim golt": ["to feel satisfied"; ["example", "zeveczheh tolthimeht golt deh", "I am satisfied with the translation"]],
+    "tolthim golt": ["to feel satisfied", ["example", "zeveczheh tolthimeht golt deh", "I am satisfied with the translation"]],
     "xyt sno": ["always"]
   },
   "interjection": {
