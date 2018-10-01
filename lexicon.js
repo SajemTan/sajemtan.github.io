@@ -990,7 +990,7 @@ var lexicon = {
     "kecek": ["short hair"],
     "fynitkecek": ["body hair"],
     "tesyjytelk": ["belly"],
-    "tesyjytelkxaxatym belly button"],
+    "tesyjytelkxaxatym": ["belly button"],
     "tizelnezhitin": ["breast"],
     "tatolnit": ["shoulder"],
     "fnyn": ["finger"],
