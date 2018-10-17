@@ -1,0 +1,110 @@
+<html>
+  <head>
+    <title>Etymological Dictionary of the Languages of Sajem Din</title>
+    <script type="text/javascript" src="lexicon.js"></script>
+    <script type="text/javascript" src="etymology.js"></script>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" type="image/png" href="flag.png">
+  </head>
+  <body onload="doSearch();">
+    <div style="width: 100%; background-color: rgba(255, 255, 255, 0.9); position: fixed; left: 0px; top: 0px; padding: 15px;">
+      <span>Search</span>
+      <select id="searchwhat" onchange="doSearch();">
+        <option value="all">Everything</option>
+        <option value="root">Roots</option>
+        <option value="def">Definitions</options>
+      </select>
+      <span>for</span>
+      <input type="text" id="search" onkeyup="doSearch();"></input>
+      <span>in</span>
+      <select id="searchlang" onchange="doSearch();">
+        <option value="all">All Languages</option>
+      </select>
+      <a href="index.html" style="padding-left: 50px;">Sajem Tan tools index</a>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Root</th>
+          <th>Definition</th>
+        </tr>
+      </thead>
+      <tbody id="defs"></tbody>
+    </table>
+    <p id="matches"></p>
+    <script>
+      var searchlang = document.getElementById("searchlang");
+      var searchkey = document.getElementById("search");
+      var searchmode = document.getElementById("searchwhat");
+      for (var k = 0; k < Languages.length; k++) {
+        searchlang.innerHTML += '<option value="'+Languages[k]+'">'+Languages[k]+'</option>';
+      }
+      searchlang.value = "all";
+      
+      propagate();
+      
+      var makeline = function(wd, lang, entry) {
+        var s = "<tr><td><b>" + wd + '</b><br/ ><span>' + lang + '</span></td><td>';
+        for (var i = 0; i < entry.length; i++) {
+          if (entry[i].hasOwnProperty('path')) {
+            s += "<p><b>" + entry[i].path.join(" > ") + "</b></p>";
+            s += '<ul class="defs"><li>' + entry[i].defs.join('</li><li>') + '</li></ul>';
+          } else if (entry[i].hasOwnProperty('from')) {
+            s += '<p>Source: <i>'+entry[i].lang+'</i> '+entry[i].from + '</p>';
+          } else if (entry[i].hasOwnProperty('to')) {
+            s += '<p>Descendant: <i>'+entry[i].lang+'</i> '+entry[i].to + '</p>';
+          } else if (entry[i].hasOwnProperty('ipa')) {
+            s += '<p>Pronunciation: ['+entry[i].ipa + ']</p>';
+          }
+        }
+        return s + '</td></tr>';
+      };
+      
+      var lines = [];
+      for (var l = 0; l < Languages.length; l++) {
+        for (var w in Lexicon[Languages[l]]) {
+          lines.push(makeline(w, Languages[l], Lexicon[Languages[l]][w]));
+        }
+      }
+      lines.sort();
+      entries = document.getElementById('defs');
+      entries.innerHTML = lines.join('\n');
+      
+      var doSearch = function() {
+        var lang = searchlang.value;
+        var key = searchkey.value;
+        var mode = searchmode.value;
+        var mtch;
+        var row;
+        for (var i = 0; i < entries.children.length; i++) {
+          mtch = false;
+          row = entries.children[i];
+          if (lang == 'all' || row.firstChild.lastChild.innerText == lang) {
+            if (mode == 'all') {
+              mtch = row.innerHTML.includes(key);
+            } else if (mode == 'root') {
+              mtch = row.firstChild.firstChild.includes(key);
+            } else if (mode == 'def') {
+              var dfs = row.getElementsByClassName('defs');
+              for (var i = 0; i < dfs.length; i++) {
+                if (dfs[i].innerHTML.includes(key)) {
+                  mtch = true;
+                  break;
+                }
+              }
+            }
+          }
+          if (mtch) {
+            row.style.display = "";
+          } else {
+            row.style.display = "none";
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
