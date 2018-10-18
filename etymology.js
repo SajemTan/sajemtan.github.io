@@ -19,25 +19,33 @@ var SoundChanges = {
     ],
     "Pleb Tan": [],
     "Tolzen Tan": [
-      [/a(?!([fvszh]|th|$))/, "ah"],
-      [/e(?!([fvszh]|th|$))/, "ê"],
-      [/i(?!([fvsz]|th|$))/, "î"],
-      [/u(?!([fvszhl]|th|$))/, "w"],
-      [/ah(?=([fvsz]|th|$))/, "â"],
-      [/eh(?=([fvsz]|th|$))/, "ei"],
-      [/[ou]l/, "ö"],
-      [/a(?!h)/, "ä"],
-      ["ah", "a"],
-      ["sl", "l"],
-      ["zl", "ʁ"],
-      [/i(?=[lʁ])/, "e"],
-      ["[td]{2}", "tt"],
-      ["[fv]{2}", "ff"],
-      ["[sz]{2}", "ss"],
-      ["[kg]{2}", "kk"],
-      ["uh", "a"],
-      [/ö(?=([lʁtdszxfvcmnkgj]|[szt]h){2})/, "ê"],
-      [/x(?=[iyu])/, "ch"],
+      ["([fs]|[st]h|sl)(?=[mn])", "h"],
+      ["([vz]|zh|zl)(?=[mn])", ""],
+      ["x", "h"],
+      ["zl", "r"],
+      ["th", "ţ"],
+      ["sh", "š"],
+      ["zh", "ž"],
+      ["sl", "hl"],
+      ["uh|ah", "A"],
+      ["a", "A"],
+      ["eh?", "E"],
+      ["i", "I"],
+      ["[oe]l", "Ö"],
+      ["o", "O"],
+      ["ul?", "U"],
+      ["A(?=[tkcfsţhš]|h?[mn])", "â"],
+      ["A", "a"],
+      ["E(?=[tkcfsţhš]|h?[mn])", "ê"],
+      ["E", "e"],
+      ["I(?=[tkcfsţhš]|h?[mn])", "î"],
+      ["I", "i"],
+      ["O(?=[tkcfsţhš]|h?[mn])", "ô"],
+      ["O", "o"],
+      ["Ö(?=[tkcfsţhš]|h?[mn])", "ë"],
+      ["Ö", "ö"],
+      ["U(?=[tkcfsţhš]|h?[mn])", "û"],
+      ["U", "u"],
     ]
   },
   "Pleb Tan": {
@@ -49,25 +57,31 @@ var SoundChanges = {
       ["sh", "\u0283"],
       ["zh", "\u0292"],
       ["th", "\u03b8"],
-      [/c(?=[ie])/, "s"],
+      ["c(?=[ie])", "s"],
       ["c", "k"],
       ["j", "d\u0361\u0292"]
     ]
   },
   "Tolzen Tan": {
     "IPA": [
-      ["\u00e4", "\u00e6"],
-      ["a", "ɑ"],
-      ["â", "ɒ"],
+      ["ţ", "θ"],
+      ["š", "ʃ"],
+      ["ž", "ʒ"],
+      ["hl", "ɬ"],
+      ["r", "l"],
+      ["hm", "m̥"],
+      ["hn", "n̥"],
+      ["â", "ä"],
+      ["a", "æ"],
       ["ê", "ɛ"],
+      ["e", "e̞"],
+      ["ë", "ɞ"],
+      ["ö", "ɵ"],
       ["î", "ɪ"],
-      ["ô", "c"],
-      ["w", "ʊ"],
-      ["ö", "ø"],
-      ["y", "ɨ"],
-      ["ch", "ç"],
-      ["th", "θ"],
-      ["x", "h"]
+      ["y", "ʉ"],
+      ["c", "t͡s"],
+      ["ô", "ɔ"],
+      ["û", "ʊ"]
     ]
   }
 };
@@ -88,6 +102,12 @@ var changeword = function(wd, chlst) {
   return wd;
 };
 
+var regexify = function(chlst) {
+  return chlst.map(function(x) {
+    return [new RegExp(x[0], "gu"), x[1]];
+  });
+};
+
 // Call this once all lexicon files have been loaded to generate all sound change results
 var propagate = function() {
   for (var l = 0; l < Languages.length; l++) {
@@ -96,7 +116,7 @@ var propagate = function() {
     var langlst = Object.keys(next);
     for (var k = 0; k < langlst.length; k++) {
       var tolang = langlst[k];
-      var chlst = next[tolang];
+      var chlst = regexify(next[tolang]);
       var wdlst = Object.keys(Lexicon[lang]);
       for (var w = 0; w < wdlst.length; w++) {
         var wd = wdlst[w];
