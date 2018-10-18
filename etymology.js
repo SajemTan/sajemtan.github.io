@@ -21,7 +21,6 @@ var SoundChanges = {
     "Tolzen Tan": [
       ["([fs]|[st]h|sl)(?=[mn])", "h"],
       ["([vz]|zh|zl)(?=[mn])", ""],
-      ["x", "h"],
       ["zl", "r"],
       ["th", "ţ"],
       ["sh", "š"],
@@ -34,6 +33,7 @@ var SoundChanges = {
       ["[oe]l", "Ö"],
       ["o", "O"],
       ["ul?", "U"],
+      ["x", "h"],
       ["A(?=[tkcfsţhš]|h?[mn])", "â"],
       ["A", "a"],
       ["E(?=[tkcfsţhš]|h?[mn])", "ê"],
@@ -89,7 +89,7 @@ var SoundChanges = {
 var Lexicon = {
   "Pleb Tan": {},
   "Tolzen Tan": {
-    "keichêk": [{"path":[], "defs":["feel", "emote"]}]
+    "kêhêk": [{"path":["verb"], "defs":["feel", "emote", "used to express all emotions"]}]
   }
 };
 
