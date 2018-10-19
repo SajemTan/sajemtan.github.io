@@ -1,6 +1,7 @@
 var Languages = ["B'artedhom", "Sajem Tan", "Pleb Tan", "Sajem Gavmötëc", "Tolzen Tan"];
 
 var SoundChanges = {
+  "B'artedhom": {},
   "Sajem Tan": {
     "IPA": [
       ["th", "\u03b8"],
