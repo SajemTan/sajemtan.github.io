@@ -19,6 +19,21 @@ var SoundChanges = {
       ["ol", "\u00f8"]
     ],
     "Pleb Tan": [],
+    "Sajem Gavmötëc": [
+      ["eh", "ë"],
+      ["ah", "a"],
+      ["n", "ng"],
+      ["x", "c"],
+      ["uh", "å"],
+      ["ol", "ö"],
+      ["sl", "l"],
+      ["zl", "r"],
+      ["el", "ë"],
+      ["ul", "ù"],
+      ["([aåeëioöuùy]|ij)th(?=[aåeëioöuùy]|ij)", "$1ð"],
+      ["th", "þ"],
+      ["y", "ij"]
+    ],
     "Tolzen Tan": [
       ["([fs]|[st]h|sl)(?=[mn])", "h"],
       ["([vz]|zh|zl)(?=[mn])", ""],
@@ -65,13 +80,16 @@ var SoundChanges = {
   },
   "Sajem Gavmötëc": {
     "IPA": [
-      ["(?<=![aåeëioöuù])l|l(?![aåeëioöuù])", "ɬ"],
+      ["l(?![aåeëioöuù]|ij)", "ɬ"],
+      ["([^aåeëioöuùj])l", "$1ɬ"],
+      ["([^i]|^)jl", "$1jɬ"],
       ["a", "ɑ"],
       ["å", "ɤ"],
       ["c", "t͡s"],
       ["ë", "œ"],
-      ["ij", "ij"],
+      ["ij", "Y"],
       ["j", "d͡ʒ"],
+      ["Y", "ij"],
       ["ng", "ŋ"],
       ["ö", "ɵ"],
       ["r", "ɹ̪"],
@@ -123,6 +141,11 @@ var Lexicon = {
 };
 
 Lexicon["Sajem Tan"] = lexicon_flat;
+for (var k in lexicon_flat) {
+  if (JSON.stringify(lexicon_flat[k]).includes('"archaic"')) {
+    delete Lexicon["Sajem Tan"][k];
+  }
+}
 
 var changeword = function(wd, chlst) {
   for (var i = 0; i < chlst.length; i++) {
