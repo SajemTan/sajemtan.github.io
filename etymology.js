@@ -1,4 +1,4 @@
-var Languages = ["Sajem Tan", "Pleb Tan", "Tolzen Tan"];
+var Languages = ["B'artedhom", "Sajem Tan", "Pleb Tan", "Sajem Gavmötëc", "Tolzen Tan"];
 
 var SoundChanges = {
   "Sajem Tan": {
@@ -62,6 +62,26 @@ var SoundChanges = {
       ["j", "d\u0361\u0292"]
     ]
   },
+  "Sajem Gavmötëc": {
+    "IPA": [
+      ["(?<=![aåeëioöuù])l|l(?![aåeëioöuù])", "ɬ"],
+      ["a", "ɑ"],
+      ["å", "ɤ"],
+      ["c", "t͡s"],
+      ["ë", "œ"],
+      ["ij", "ij"],
+      ["j", "d͡ʒ"],
+      ["ng", "ŋ"],
+      ["ö", "ɵ"],
+      ["r", "ɹ̪"],
+      ["š", "ʃ"],
+      ["þ", "θ"],
+      ["ð", "ð"],
+      ["ù", "ʊ"],
+      ["z", "dz"],
+      ["ž", "ʒ"]
+    ]
+  },
   "Tolzen Tan": {
     "IPA": [
       ["ţ", "θ"],
@@ -87,7 +107,15 @@ var SoundChanges = {
 };
 
 var Lexicon = {
+  "B'artedhom": {
+    "son": [{"path":["noun"], "defs":["child", "daughter"]}],
+    "d'usamat": [{"path":["noun"], "defs":["wheeled cart"]}]
+  },
   "Pleb Tan": {},
+  "Sajem Gavmötëc": {
+    "sån": [{"path":["noun"], "defs":["child", "daughter"]}],
+    "þùsem": [{"path":["noun"], "defs":["wheeled cart"]}]
+  },
   "Tolzen Tan": {
     "kêhêk": [{"path":["verb"], "defs":["feel", "emote", "used to express all emotions"]}]
   }
