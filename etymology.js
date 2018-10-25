@@ -32,7 +32,9 @@ var SoundChanges = {
       ["ul", "ù"],
       ["([aåeëioöuùy]|ij)th(?=[aåeëioöuùy]|ij)", "$1ð"],
       ["th", "þ"],
-      ["y", "ij"]
+      ["y", "ij"],
+      ["sh", "š"],
+      ["zh", "ž"]
     ],
     "Tolzen Tan": [
       ["([fs]|[st]h|sl)(?=[mn])", "h"],
@@ -80,9 +82,8 @@ var SoundChanges = {
   },
   "Sajem Gavmötëc": {
     "IPA": [
-      ["l(?![aåeëioöuù]|ij)", "ɬ"],
-      ["([^aåeëioöuùj])l", "$1ɬ"],
-      ["([^i]|^)jl", "$1jɬ"],
+      ["l", "ɬ"],
+      ["([aåeëioöuù]|ij)ɬ([aåeëioöuù]|ij)", "$1l$2"],
       ["a", "ɑ"],
       ["å", "ɤ"],
       ["c", "t͡s"],
