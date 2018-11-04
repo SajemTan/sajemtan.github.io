@@ -1,4 +1,4 @@
-var Languages = ["B'artedhom", "Sajem Tan", "Pleb Tan", "Sajem Gavmötëc", "Tolzen Tan"];
+var Languages = ["B'artedhom", "Sajem Tan", "Ðab Tan", "Pleb Tan", "Sajem Gavmötëc", "Tolzen Tan"];
 
 var SoundChanges = {
   "B'artedhom": {},
@@ -17,6 +17,24 @@ var SoundChanges = {
       ["a", "\u00e6"],
       ["el", "\u0153"],
       ["ol", "\u00f8"]
+    ],
+    "Ðab Tan": [
+      ["y", "i"],
+      ["el", "w"],
+      ["ol", "u"],
+      ["ul", "u"],
+      ["uh", "w"],
+      ["ah", "a"],
+      ["eh", "e"],
+      ["x", "h"],
+      ["c", "s"],
+      ["sl", "x"],
+      ["j", "i"],
+      ["zl", "j"],
+      ["th", "þ"],
+      ["[fþsxh]n", "t"],
+      ["[fþsxh]m", "p"],
+      ["([dgzjv])([mn])", "$1w$2"]
     ],
     "Pleb Tan": [],
     "Sajem Gavmötëc": [
@@ -64,6 +82,15 @@ var SoundChanges = {
       ["Ö", "ö"],
       ["U(?=[tkcfsţš]|h?[mn]|h(?!l))", "û"],
       ["U", "u"],
+    ]
+  },
+  "Ðab Tan": {
+    "IPA": [
+      ["w", "ə"],
+      ["x", "ʃ"],
+      ["j", "ʒ"],
+      ["þ", "θ"],
+      ["i(?=[aeiouw])", "i̯"]
     ]
   },
   "Pleb Tan": {
@@ -131,6 +158,7 @@ var Lexicon = {
     "son": [{"path":["noun"], "defs":["child", "daughter"]}],
     "d'usamat": [{"path":["noun"], "defs":["wheeled cart"]}]
   },
+  "Ðab Tan": {},
   "Pleb Tan": {},
   "Sajem Gavmötëc": {
     "sån": [{"path":["noun"], "defs":["child", "daughter"]}],
@@ -145,6 +173,11 @@ Lexicon["Sajem Tan"] = lexicon_flat;
 for (var k in lexicon_flat) {
   if (JSON.stringify(lexicon_flat[k]).includes('"archaic"')) {
     delete Lexicon["Sajem Tan"][k];
+  }
+}
+for (var i = 0; i < Languages.length; i++) {
+  if (!Lexicon.hasOwnProperty(Languages[i])) {
+    Lexicon[Languages[i]] = {};
   }
 }
 
