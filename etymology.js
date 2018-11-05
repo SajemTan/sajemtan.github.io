@@ -28,13 +28,16 @@ var SoundChanges = {
       ["eh", "e"],
       ["x", "h"],
       ["c", "s"],
-      ["sl", "x"],
+      ["s[hl]", "x"],
       ["j", "i"],
-      ["zl", "j"],
+      ["z[hl]", "j"],
       ["th", "þ"],
       ["[fþsxh]n", "t"],
       ["[fþsxh]m", "p"],
-      ["([dgzjv])([mn])", "$1w$2"]
+      ["([zjv])([mn])", "$1w$2"],
+      ["(.)\\1", "$1"],
+      ["mt", "nt"],
+      ["np", "mp"]
     ],
     "Pleb Tan": [],
     "Sajem Gavmötëc": [

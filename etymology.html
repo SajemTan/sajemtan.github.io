@@ -10,9 +10,9 @@
     <div style="width: 100%; background-color: rgba(255, 255, 255, 0.9); position: fixed; left: 0px; top: 0px; padding: 15px;">
       <span>Search</span>
       <select id="searchwhat" onchange="doSearch();">
-        <option value="all">Everything</option>
         <option value="root">Roots</option>
         <option value="def">Definitions</options>
+        <option value="all">Everything</option>
       </select>
       <span>for</span>
       <input type="text" id="search" onkeyup="doSearch();"></input>
@@ -73,6 +73,16 @@
       lines.sort();
       entries = document.getElementById('defs');
       entries.innerHTML = lines.join('\n');
+      rowList = [];
+      var row;
+      for (var i = 0; i < entries.children.length; i++) {
+        row = entries.children[i];
+        rowList.push([row.firstChild.lastChild.innerText, //lang
+                      row.firstChild.firstChild.innerText, //root
+                      row.lastChild.innerHTML, //~defs (could be improved)
+                      row.innerHTML,
+                      row]);
+      }
       
       var doSearch = function() {
         var lang = searchlang.value;
@@ -80,28 +90,24 @@
         var mode = searchmode.value;
         var mtch;
         var row;
-        for (var i = 0; i < entries.children.length; i++) {
+        for (var i = 0; i < rowList.length; i++) {
           mtch = false;
-          row = entries.children[i];
-          if (lang == 'all' || row.firstChild.lastChild.innerText == lang) {
-            if (mode == 'all') {
-              mtch = row.innerHTML.includes(key);
+          row = rowList[i];
+          if (lang == 'all' || row[0] == lang) {
+            if (!key) {
+              mtch = true;
+            } else if (mode == 'all') {
+              mtch = row[3].includes(key);
             } else if (mode == 'root') {
-              mtch = row.firstChild.firstChild.includes(key);
+              mtch = row[1].includes(key);
             } else if (mode == 'def') {
-              var dfs = row.getElementsByClassName('defs');
-              for (var i = 0; i < dfs.length; i++) {
-                if (dfs[i].innerHTML.includes(key)) {
-                  mtch = true;
-                  break;
-                }
-              }
+              mtch = row[2].includes(key);
             }
           }
           if (mtch) {
-            row.style.display = "";
+            row[4].style.display = "";
           } else {
-            row.style.display = "none";
+            row[4].style.display = "none";
           }
         }
       };
