@@ -1,6 +1,27 @@
-var Languages = ["B'artedhom", "Sajem Tan", "Ðab Tan", "Pleb Tan", "Sajem Gavmötëc", "Tolzen Tan"];
+var Languages = ["Sajem Sulslem", "Tetan Tan", "B'artedhom", "Sajem Tan", "Ðab Tan", "Pleb Tan", "Sajem Gavmötëc", "Tolzen Tan"];
 
 var SoundChanges = {
+  "Sajem Sulslem": {},
+  "Tetan Tan": {
+    "IPA": [
+      ["ā", "aː"],
+      ["ē", "eː"],
+      ["ī", "iː"],
+      ["ō", "oː"],
+      ["ū", "uː"],
+      ["mh", "m̥"],
+      ["nh", "n̥"],
+      ["ŋh", "ŋ̊"],
+      ["^g", "ʀ"],
+      ["^b", "ʙ"],
+      ["th", "θ"],
+      ["dh", "ð"],
+      ["sh", "ʃ"],
+      ["zh", "ʒ"],
+      ["hi", "ç"],
+      ["y", "ʝ"]
+    ],
+  },
   "B'artedhom": {},
   "Sajem Tan": {
     "IPA": [
@@ -157,6 +178,38 @@ var SoundChanges = {
 };
 
 var Lexicon = {
+  "Sajem Sulslem": {
+    "gâmuki̯": [{"path":["noun"], "defs":["tree"]}],
+    "tututi̯": [{"path":["noun"], "defs":["clover"]}],
+    "doφâ̯": [{"path":["???"], "defs":[]}],
+    "dêni̯": [{"path":["???"], "defs":[]}],
+    "o": [{"path":["infix"], "defs":["(replaces vowel nucleus of final syllable)"]}],
+    "tʰêφi̯": [{"path":["???"], "defs":["mineral (?)"]}],
+    "p": [{"path":["???"], "defs":[]}],
+    "min": [{"path":["???"], "defs":[]}],
+    "âmi̯": [{"path":["???"], "defs":[]}],
+    "nomi̯": [{"path":["???"], "defs":[]}],
+    "xumâ̯": [{"path":["adj"], "defs":["much, many"]}],
+    "zoti̯": [{"path":["???"], "defs":["suspicion or disinterest", "seem", "seemingly", "(zolt, zeltyt, vazolt)"]}],
+    "oti̯": [{"path":["???"], "defs":["hindrance"]}],
+    "oti̯": [{"path":["???"], "defs":["denotes qualities (cf. zežöt, fûmöt, etc.)"]}],
+    "êki̯": [{"path":["???"], "defs":["surface", "consciousness", "plants"]}],
+    "u": [{"path":["suffix"], "defs":["nominalizing suffix", "similar to Sajem Tan -so and -zhnu", "(goni > goln \"try\", go-u-ni > guni > gyn \"worker\"; vâjêmi > vajem \"only one of\", vâjê-u-mi > vâjomi > vajolm \"hermit\")"]}],
+    "vâ": [{"path":["adj"], "defs":["resourceful", "sneaky", "self-sufficient", "(vajem, vazolt [vâ + zoti \"suspicion, disinterest\", literally \"that which is disinterested and sneaky\"], -vâ [instrumental])"]}],
+  },
+  "Tetan Tan": {
+    "zexu": [{"path":["???"], "defs":["this word is"]}],
+    "da": [{"path":["conj"], "defs":["and"]}],
+    "ein": [{"path":["???"], "defs":["to mean something"]}],
+    "d'ein": [{"path":["???"], "defs":["and means(in conjunction with zexu)"]}],
+    "vum": [{"path":["noun"], "defs":["spaceship"]}],
+    "dī": [{"path":["noun"], "defs":["language"]}],
+    "āshauxaun": [{"path":["noun"], "defs":["hat"]}],
+    "deimhu": [{"path":["noun"], "defs":["tetan"]}],
+    "ōdaunhao": [{"path":["noun"], "defs":["axe"]}],
+    "auhūm": [{"path":["noun"], "defs":["bag"]}],
+    "dheg": [{"path":["noun"], "defs":["planet", "world"]}],
+  },
   "B'artedhom": {
     "son": [{"path":["noun"], "defs":["child", "daughter"]}],
     "d'usamat": [{"path":["noun"], "defs":["wheeled cart"]}]
