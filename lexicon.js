@@ -1319,9 +1319,9 @@ var lexicon = {
       "eht": ["habitual"],
       "fe": [["archaic", "feh"], "durative"],
       "feh": ["durative"],
-      "fu": ["aspect signifying that an action has no definite beginning or end"],
-      "keht": ["aspect signifying that an action has a definite end but it is unclear if there was a definite point when it began"],
-      "maht": ["aspect signifying that an action has a definite beginning but it is unclear if it will ever end"],
+      "fu": ["aspect signifying that an action has no definite beginning or end", ["archaic", "um"]],
+      "keht": ["aspect signifying that an action has a definite end but it is unclear if there was a definite point when it began", ["archaic", "um"]],
+      "maht": ["aspect signifying that an action has a definite beginning but it is unclear if it will ever end", ["archaic", "um"]],
       "sho": ["continuous"],
       "um": ["gnomic"]
     },
