@@ -1323,7 +1323,7 @@ var lexicon = {
       "keht": ["aspect signifying that an action has a definite end but it is unclear if there was a definite point when it began", ["archaic", "um"]],
       "maht": ["aspect signifying that an action has a definite beginning but it is unclear if it will ever end", ["archaic", "um"]],
       "sho": ["continuous"],
-      "um": ["gnomic"]
+      "um": ["gnomic", "unmarked"]
     },
     "case": {
       "gu": ["instrumental I -- tools that fit in the hand", ["gloss", "insturmental I"]],
