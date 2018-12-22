@@ -2,21 +2,22 @@
   <title>Sajem Tan Romanization to IPA</title>
   <meta charset="UTF-8">
   <link rel="shortcut icon" type="image/png" href="flag.png">
+  <script type="text/javascript" src="orthography.js"></script>
 </head>
 <body>
   <a href="index.html" style="display: block">Sajem Tan tools index</a>
   <textarea id="orth" rows="4" cols="50"></textarea><br>
   <select id="from">
-    <option value="oldorth"> Original Orthography</option>
-    <option value="neworth"> Reformed Orthography</option>
+    <option value="oldortho"> Original Orthography</option>
+    <option value="newortho"> Reformed Orthography</option>
     <option value="oldipa"> Original IPA</option>
     <option value="newipa"> Reformed IPA</option>
     <option value="hebrew"> Hebrew</option>
   </select>
   &rarr;
   <select id="to">
-    <option value="oldorth"> Original Orthography</option>
-    <option value="neworth"> Reformed Orthography</option>
+    <option value="oldortho"> Original Orthography</option>
+    <option value="newortho"> Reformed Orthography</option>
     <option value="oldipa"> Original IPA</option>
     <option value="newipa"> Reformed IPA</option>
     <option value="hebrew"> Hebrew</option>
@@ -25,6 +26,7 @@
   <input id="con" type="checkbox">Don't convert "con ... om"</input>
   <p id="ipa" style="white-space: pre;"></p>
   <script type="text/javascript">
+    /*
     var charsets = {
       oldipa: ["\u03b8", "\u0283", "\u0292", "\u026c", "\u026e", "\u0251", "\u025b", "\u0153", "\u00f8", "\u028c", "\u0264",
         "d", "g", "x", "\u028e", "f", "v", "s", "z", "m", "n", "e", "y", "i", "t\u0361s", "t", "k", "\u0275", "u", "\u00e6"],
@@ -117,6 +119,15 @@
         input = input.slice(0, -1);
       }
       OUT.innerHTML = input;
+    }
+    */
+    var FROM = document.getElementById("from");
+    var TO = document.getElementById("to");
+    var IN = document.getElementById("orth");
+    var OUT = document.getElementById("ipa");
+    var CON = document.getElementById("con");
+    function parse() {
+      OUT.innerHTML = convert(IN.value, FROM.value, TO.value, CON.checked);
     }
   </script>
 </body>
