@@ -80,16 +80,18 @@ function parseString(string, ortho, skip_con) {
   var incon = false;
   for (var i = 0; i < splitted.length; i++) {
     if (incon && i < splitted.length-1 &&
+        chardict.hasOwnProperty(splitted[i]) &&
         chardict[splitted[i]][0] == "o" &&
+        chardict.hasOwnProperty(splitted[i+1]) &&
         chardict[splitted[i+1]][0] == "m") {
       incon = false;
     }
     if (incon) {
       parsed[parsed.length-1][0] += splitted[i];
     } else if (skip_con && parsed.length >= 3 &&
-               parsed[parsed.length-3] == "c" &&
-               parsed[parsed.length-2] == "o" &&
-               parsed[parsed.length-1] == "n") {
+               parsed[parsed.length-3][0] == "c" &&
+               parsed[parsed.length-2][0] == "o" &&
+               parsed[parsed.length-1][0] == "n") {
       parsed.push([splitted[i]]);
       incon = true;
     } else {
@@ -127,4 +129,18 @@ function convertPage(srcorth, destorth, skip_con) {
   for (var i = 0; i < ls.length; i++) {
     ls[i].textContent = convert(ls[i].textContent, srcorth, destorth, skip_con);
   }
+}
+
+function makeSelector(id) {
+  var ret = document.createElement("select");
+  ret.id = id;
+  var handle;
+  var s = "";
+  for (var i = 0; i < Orthographies.handles.length; i++) {
+    handle = Orthographies.handles[i];
+    s += '<option value="'+handle+'">'+Orthographies.names[handle]+'</option>';
+  }
+  ret.innerHTML = s;
+  ret.value = "oldortho";
+  return ret;
 }

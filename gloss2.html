@@ -1,0 +1,193 @@
+<html>
+  <head>
+    <title>Sajem Tan Glosser</title>
+    <script type="text/javascript" src="lexicon.js"></script>
+    <script type="text/javascript" src="orthography.js"></script>
+    <link rel="shortcut icon" type="image/png" href="flag.png">
+    <style>
+      span {
+        white-space: pre;
+      }
+      div, table {
+        display: inline-block;
+      }
+      td {
+        border: 1px solid black;
+      }
+      table {
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="index.html">Sajem Tan tools index</a><br>
+    <textarea id="sen" type="text"></textarea>
+    <br>
+    <button onclick="gloss();">Gloss</button>
+    <div id="ortho" style="display: inline-block;"></div>
+    <select id="mode">
+      <option value="min">Min-gloss</option>
+      <option value="max">Max-gloss</option>
+      <option value="all">All Options</option>
+    </select>
+    <p>Min-gloss glosses the shortest possible segments (same behavior as the original glosser).<br>Max-gloss finds the largest possible segments.<br>All Options will gloss every possible division of morphemes.</p>
+    <hr/>
+    <p id="out"></p>
+    <script>
+      var ORTHO = makeSelector("orthmode");
+      document.getElementById("ortho").appendChild(ORTHO);
+      var INPUT = document.getElementById("sen");
+      var OUTPUT = document.getElementById("out");
+      var MODE = document.getElementById("mode");
+
+      var searchTree = {};
+      function insertWord(w, gloss) {
+        var l = parseString(w, "oldortho", false);
+        var d = searchTree;
+        for (var i = 0; i < l.length; i++) {
+          if (!d.hasOwnProperty(l[i][0])) {
+            d[l[i][0]] = {};
+          }
+          d = d[l[i][0]];
+        }
+        if (!d.hasOwnProperty("")) {
+          d[""] = '<a href="lexicon.html#' + w + '">' + gloss + '</a>';
+        }
+      }
+      function getGloss(word) { //word is assumed to exist
+        for (var i = 0; i < lexicon_flat[word].length; i++) {
+          if (lexicon_flat[word][i].hasOwnProperty("archaic")) {
+            return "";
+          } else if (lexicon_flat[word][i].hasOwnProperty("gloss")) {
+            return lexicon_flat[word][i].gloss;
+          }
+        }
+        return lexicon_flat[word][0].defs[0];
+      }
+      for (var k in lexicon_flat) {
+        if (k.includes(" ")) {
+          continue;
+        }
+        var gloss = getGloss(k);
+        if (gloss) {
+          insertWord(k, gloss);
+        }
+      }
+      var auxList = Object.keys(queryLexPath(["aux"], false)).map(function(a) { return generateAux(a, false); });
+      for (var i = 0; i < auxList.length; i++) {
+        var gl = getGloss(auxList[i].pres);
+        insertWord(auxList[i].near, gl+"-nearPST");
+        insertWord(auxList[i].mid, gl+"-midPST");
+        insertWord(auxList[i].far, gl+"-farPST");
+      }
+      function find(ls, mode) {
+        if (mode == "min") {
+          var i = 0;
+          var d = searchTree;
+          while (!d.hasOwnProperty("") && i < ls.length) {
+            if (d.hasOwnProperty(ls[i])) {
+              d = d[ls[i]];
+              i++;
+            } else {
+              return [-1, ""];
+            }
+          }
+          if (d.hasOwnProperty("")) {
+            return [i, d[""]];
+          } else {
+            return [-1, ""];
+          }
+        } else {
+          var ret = (mode == "max" ? [-1, ""] : []);
+          var i = 0;
+          var d = searchTree;
+          while (i <= ls.length) {
+            if (d.hasOwnProperty("")) {
+              if (mode == "max") {
+                ret = [i, d[""]];
+              } else {
+                ret.push([i, d[""]]);
+              }
+            }
+            if (d.hasOwnProperty(ls[i])) {
+              d = d[ls[i]];
+              i++;
+            } else {
+              return ret;
+            }
+          }
+          return ret;
+        }
+      }
+      function glossWord(w) {
+        var mode = MODE.value;
+        if (mode != "all") {
+          var ret = [];
+          while (w.length > 0) {
+            var next = find(w, mode);
+            if (next[0] == -1) {
+              ret.push("<span>"+w[0]+"</span>");
+              w.splice(0, 1);
+            } else {
+              ret.push(next[1]);
+              w.splice(0, next[0]);
+            }
+          }
+          return ret.join('-');
+        } else {
+          var ret = [];
+          var stack = [[0, []]];
+          while (stack.length > 0) {
+            var cur = stack.pop();
+            if (cur[0] == w.length) {
+              ret.push('<tr><td>' + cur[1].join('</td><td>') + '</td></tr>');
+            } else {
+              var fnd = find(w.slice(cur[0]), mode);
+              if (fnd.length == 0) {
+                if (cur[1][cur[1].length-1][0] != '<') {
+                  cur[1][cur[1].length-1] += w[cur[0]];
+                } else {
+                  cur[1].push(w[cur[0]]);
+                }
+                stack.push([cur[0]+1, cur[1]]);
+              } else {
+                for (var i = 0; i < fnd.length; i++) {
+                  stack.push([cur[0]+fnd[i][0], cur[1].concat(fnd[i][1])]);
+                }
+              }
+            }
+          }
+          return '<table><tbody>' + ret.join('\n') + '</tbody></table>';
+        }
+      }
+      var gloss = function() {
+        var prs = parseString(INPUT.value, ORTHO.value, true);
+        var ls = [];
+        var i = 0;
+        var curS = "";
+        var curL = [];
+        for (var i = 0; i < prs.length; i++) {
+          if (Alphabet.includes(prs[i][0])) {
+            if (curS.length > 0) {
+              ls.push("<span>"+curS+"</span>");
+              curS = "";
+            }
+            curL.push(prs[i][0]);
+          } else {
+            if (curL.length > 0) {
+              ls.push(glossWord(curL));
+              curL = [];
+            }
+            curS += prs[i][0];
+          }
+        }
+        if (curS.length > 0) {
+          ls.push("<span>"+curL+"</span>");
+        } else if (curL.length > 0) {
+          ls.push(glossWord(curL));
+        }
+        OUTPUT.innerHTML = ls.join('');
+      };
+    </script>
+  </body>
+</html>
