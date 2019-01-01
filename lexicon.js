@@ -309,6 +309,7 @@ var lexicon = {
       "xok": ["one of", "xor", "exclusive or"]
     },
     "clause": {
+      "dom": ["because"],
       "mahn": ["when", "while", ["see also", "sno"]],
       "smah": ["but"],
       "tidyn": ["like", "similarly to", "occurring in comparable manner to"],
@@ -1214,7 +1215,11 @@ var lexicon = {
     "maceln": ["headmate"],
     "macelnak": ["tupperware or similar plastic container"],
     "tuhkykytgyn": ["server (as in computer science)", "server (as in a Discord server)"],
-    "tolthimnoc": ["request"]
+    "tolthimnoc": ["request"],
+    "javmyc": ["maw"],
+    "shmithulnthnu": ["permission"],
+    "sajemjyt": ["town square"],
+    "fmythnelkulsim": ["commune"]
   },
   "number": {
     "decimal": {
@@ -1269,7 +1274,6 @@ var lexicon = {
   "post": {
     "cen": ["along"],
     "daket": ["near"],
-    "dom": ["because"],
     "feln": ["knowing persons or places", ["see also", "shyn"], ["see also", "zet"]],
     "kac": ["before", "earlier than"],
     "kafmym": ["in", "inside"],
@@ -1475,6 +1479,7 @@ var lexicon = {
       "femek": ["exclaim \"Elementary my dear Watson!\""],
       "femekahso": ["think", "contemplate"],
       "fman": ["stand guard", "stand firm", "watch one's surroundings"],
+      "golt": ["end"],
       "gynolm": ["proselytize on behalf of gynaecology"],
       "janemvin": ["hide"],
       "jelt": ["fly or swim along a meandering route", ["see also", "zhuhzhuhm"], ["gloss", "fly"]],
@@ -1552,7 +1557,7 @@ var lexicon = {
       "doltan": ["pronounce"],
       "dolzec": ["conceptually return to a source", "renew creativity by reviewing old inspirations"],
       "duhden": ["distract"],
-      "duhkmik": ["ban", "shun", "blacklist", "reject", "exile"],
+      "duhxmik": ["ban", "shun", "blacklist", "reject", "exile"],
       "dultham": ["buy", "purchase", "pay for (object takes -thot)"],
       "dulthamukmun": ["sell"],
       "dyfnyn": ["measure"],
@@ -1614,11 +1619,12 @@ var lexicon = {
       "sesult": ["yell"],
       "shasholc": ["partake"],
       "shelgin": ["perceive"],
+      "shmithuln": ["allow", "permit"],
       "sidulc": ["lift", "pull", "raise", "lead"],
       "slin": ["fight"],
       "slitacuhn": ["look down at someone's head"],
       "slnolxem": ["sing"],
-      "snam": ["give", "transfer (indirect object takes -thot)", ["example", "Thefnolmthot tanzlulc snamdah Kizhult.", "Bee gave a sentence to Bear."]],
+      "snam": ["give", "transfer (indirect object takes -thot)", ["example", "Thefnolmthot tanzlulc snamdah Kizhult.", "Bee gave a sentence to Bear."], "donate", "contribute"],
       "soldyc": ["describe"],
       "soljesolm": ["color-code", "organize by color"],
       "tah": [["archaic", "tan"], "speak", "vomit"],
