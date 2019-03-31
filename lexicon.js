@@ -1462,7 +1462,7 @@ var lexicon = {
     "noun>intrans": {
       "so": ["to have x"],
       "xeht": ["to not have x"]
-    }
+    },
     "noun>noun": {
       "ah": ["plural"],
       "ahah": ["infinite", "an infinite number of"],
