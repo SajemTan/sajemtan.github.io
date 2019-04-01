@@ -315,7 +315,7 @@ var lexicon = {
       "meh": ["as long as", "if", "on the condition that"],
       "smah": ["but"],
       "tidyn": ["like", "similarly to", "occurring in comparable manner to"],
-      "tyk": ["so", "as a result"],
+      "tyk": ["so", "as a result"]
     },
     "noun": {
       "kehtuc": ["for example"]
