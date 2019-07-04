@@ -1602,6 +1602,7 @@ var lexicon = {
       "kevin": ["word dump", "post a large amount of text, usually a list"],
       "kexekdolkatduhden": ["throw off a conversation by inserting random emojis"],
       "kishnulm": ["turn", "rotate"],
+      "najan": ["meow"],
       "nam": ["absent-mindedly chew on a raw linguina"],
       "safic": ["come", "arrive at the spot of the speaker", "return"],
       "saznoltjelt": ["run around"],

@@ -17,6 +17,8 @@
       <input type="text" id="search" onkeyup="doSearch();"></input>
       <label for="regex">Regex? </label>
       <input type="checkbox" id="regex" onclick="doSearch();"></input>
+      <label for="archaic">Show Archaic? </label>
+      <input type="checkbox" id="archaic" onclick="doSearch();"></input>
       <input type="radio" id="oldortho" name="ortho" onchange="setup(); doSearch();" checked="checked"></input>
       <label for="oldortho">Old Orthography</label>
       <input type="radio" id="newortho" name="ortho" onchange="setup(); doSearch();"></input>
@@ -76,9 +78,17 @@
         } else if (mode == 'def') {
           srch = search_defs;
         }
+        var incarch = document.getElementById("archaic").checked;
         var matches = 0
         for (var i = 0; i < l.length; i++) {
-          l[i].style.display = searchMatch(srch[i], searchstr, isRegex) ? "" : "none";
+          if(!incarch && l[i].className == "archaic")
+          {
+            l[i].style.display = "none";
+          }
+          else
+          {
+            l[i].style.display = searchMatch(srch[i], searchstr, isRegex) ? "" : "none";
+          }
           if (l[i].style.display == "") { matches++; }
         }
         document.getElementById("matches").innerHTML = matches + " matches for " + searchstr;
@@ -126,6 +136,7 @@
             if (k == 'archaic') {
               for (var l = 0; l < ls.length; l++) {
                 ul.appendChild(mkel('li', "<b>Archaic: </b>See " + makeLink(ls[l], update)));
+                retel.className = "archaic";
               }
             } else if (k == 'see also') {
               for (var l = 0; l < ls.length; l++) {
