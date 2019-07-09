@@ -1071,7 +1071,8 @@ var lexicon = {
     "fmelslnuht": ["salmon"],
     "kasnelzlolm": ["crocodile"],
     "gevmulksoljemvithit": ["crow"],
-    "kesaselkuhtuln": ["forest"],
+    "kesaselkuhtuln": ["view from within a forest", "forest (definition archaic)", ["see also", "kesaselkuht"]],
+    "kesaselkuht": ["forest"],
     "kesaselkuhtulnzultolm": ["deer"],
     "thelkuhm": ["dolphin"],
     "cetim": ["eagle"],
@@ -1316,7 +1317,8 @@ var lexicon = {
     "cimuhtsazemnoc": ["unit of measure", "arbitrary unit", "the result of dividing equally", ["gloss", "unit"]],
     "velzyn": ["wolf"],
     "voltmuhc": ["garden"],
-    "xifemgolt": ["that which stops rumination or consideration", "mental satisfaction", "epiphany", "realization"]
+    "xifemgolt": ["that which stops rumination or consideration", "mental satisfaction", "epiphany", "realization"],
+    "cejak": ["loud noise", "alarm", "spooky noise"]
   },
   "number": {
     "decimal": {
@@ -1562,6 +1564,7 @@ var lexicon = {
       "zanekukmun": ["decompose", "rot", "decay", "ferment"],
       "zanolcam": ["stand (of an object)"],
       "zhnelm": ["glow", "give off light"],
+      "zik": ["flow", "stream"],
       "zim": ["form a spiral-based fractal"],
       "znim": ["fall (unconstrained motion under influence of gravity)"],
       "zult": ["do something in accordance with someone or something else"]
