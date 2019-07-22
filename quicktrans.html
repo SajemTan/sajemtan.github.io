@@ -1,22 +1,364 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Sajem Tan Translation Speeder-Upper</title>
-    <meta charset="UTF-8" />
-    <link rel="shortcut icon" type="image/png" href="flag.png">
-  </head>
-  <body>
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            <textarea rows="20" columns="80"></textarea>
-          </td>
-          <td>
-            <p>There should be some grammar here...</p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <iframe src="lexicon.html" width="100%" height="50%"/>
-  </body>
+<head>
+<title>Sajem Tan Translation Helper</title>
+<script type="text/javascript" src="lexicon.js"></script>
+<script type="text/javascript" src="orthography.js"></script>
+<meta charset="UTF-8" />
+<link rel="shortcut icon" type="image/png" href="flag.png">
+<style>
+body {
+background: #ffd42a;
+font-family: 'Trebuchet MS', sans-serif;
+font-size: 15px;
+margin: 0 auto;
+}
+a {
+color: inherit;
+text-decoration-style: dashed;
+}
+a:hover {
+color: #ffd42a;
+}
+a:active {
+color: #000;
+}
+h1 {
+font-size: 24px;
+}
+input {
+background: #eee;
+border: 1px dashed #550020;
+border-radius: 5px;
+color: inherit;
+font-family: inherit;
+font-size: 15px;
+padding: 5px;
+}
+.content {
+background: #550020;
+border-radius: 10px;
+color: #550020;
+margin: 5px auto;
+padding: 10px;
+text-align: center;
+width: fit-content;
+}
+.title {
+color: #ffd42a;
+font-size: 25px;
+font-weight: bold;
+margin: 10px;
+}
+.container {
+display: flex;
+}
+.gram {
+background: #fff;
+border-radius: 5px;
+border-right: 10px solid #fff;
+height: 240px;
+margin: 10px;
+overflow-x: hidden;
+text-align: left;
+width: 400px;
+}
+.gram select {
+border: 0;
+color: inherit;
+float: left;
+font-family: inherit;
+font-size: 12px;
+height: 100%;
+width: 140px;
+}
+.grambox {
+float: right;
+width: calc(100% - 155px);
+height: 100%;
+overflow-y: scroll;
+}
+.grambox .padding {
+padding-bottom: 25px;
+}
+.dict {
+background: #fff;
+border-radius: 5px;
+border-right: 10px solid #fff;
+height: 220px;
+margin: 10px;
+overflow-x: hidden;
+overflow-y: scroll;
+padding: 10px;
+text-align: left;
+width: 280px;
+word-break: break-word;
+}
+#search {
+margin-bottom: 20px;
+width: 150px;
+}
+.gloss {
+border: 0;
+}
+.gloss td {
+padding: 0px;
+padding-right: 5px;
+}
+.hl {
+color: #cca300;
+}
+.vertical {
+display: flex;
+align-items: center;
+height: 100%;
+}
+.block {
+display: block;
+}
+.senary {
+background: #fff;
+border-radius: 5px;
+height: 210px;
+margin: 10px;
+padding: 10px;
+text-align: left;
+width: 200px;
+}
+.tboxwrap {
+width: min-content;
+}
+.tbox {
+background: #eee;
+/*border: 1px dashed #550020;*/
+border: 0;
+border-radius: 5px;
+color: #550020;
+font-family: inherit;
+font-size: 20px;
+height: 150px;
+line-height: 30px;
+margin: 10px;
+padding: 10px;
+resize: none;
+width: 480px;
+}
+button {
+background: #eee;
+border: 0;
+border-radius: 5px;
+color: #550020;
+font-family: inherit;
+font-size: 15px;
+height: 40px;
+margin: 10px;
+width: 150px;
+}
+button:hover {
+border: 1px solid #cc0000;
+color: #cc0000;
+cursor: pointer;
+}
+button:active {
+background: #cccccc;
+}
+#base10, #base6 {
+margin-top: 10px;
+width: calc(100% - 12px);
+}
+.footer a {
+color: #ffd42a;
+font-size: 12px;
+padding-left: 10px;
+padding-right: 10px;
+text-decoration: none;
+}
+.footer a:hover {
+text-decoration: underline;
+text-decoration-style: dashed;
+}
+</style>
+</head>
+<body>
+<div class="content">
+<span class="title">Sajem Tan Translation Helper</span>
+<div class="container">
+<div class="gram">
+<select size="4">
+<option onmouseup="Scroll(1)">Personal Pronouns</option>
+<option onmouseup="Scroll(2)">Durative Aspect</option>
+<option onmouseup="Scroll(3)">Gnomic Aspect</option>
+<option onmouseup="Scroll(4)">Habitual Aspect</option>
+<option onmouseup="Scroll(5)" selected>Continuous Aspect</option>
+<option onmouseup="Scroll(6)">Adjectives</option>
+<option onmouseup="Scroll(7)">Copula</option>
+</select>
+<script>
+var Scroll = function(section) {
+document.getElementById(section).scrollIntoView();
+};
+</script>
+<div class="grambox">
+<div class="padding">
+<h1 id="1">Personal Pronouns</h1>
+<h1 id="2">Durative Aspect</h1>
+<h1 id="3">Gnomic Aspect</h1>
+<h1 id="4">Habitual Aspect</h1>
+<h1 id="5">Continuous Aspect</h1>
+<p><span class="hl"><b>-&scaron;o</b></span></p>
+<p>Expresses continuous actions.</p>
+Kygyk<span class="hl">&scaron;o</span> s&ecirc;.
+<table class="gloss">
+<tr>
+<td>Kygyk</td>
+<td><span class="hl">-&scaron;o</span></td>
+<td>s&ecirc;.</td>
+</tr>
+<tr>
+<td>consume</td>
+<td>CONT</td>
+<td>I</td>
+</tr>
+</table>
+"I <span class="hl">am</span> eating."
+<h1 id="6">Adjectives</h1>
+<h1 id="7">Copula</h1>
+</div>
+</div>
+</div>
+<div class="dict">
+<input type="text" id="search" onkeyup="doSearch();"></input>
+<div id="defs"></div>
+<script>
+var search_all = [];
+var search_root = [];
+var search_defs = [];
+var search_nodes = [];
+var lexicon_flat_arr = [];
+for (var k in lexicon_flat) {
+lexicon_flat_arr.push([k, lexicon_flat[k]]);
+}
+lexicon_flat_arr.sort(function(a, b) { return sortAlpha(a[0], b[0]); });
+var searchMatch = function(txt, queryString, isRegex) {
+function decodeHtml(html) {
+var txt = document.createElement("textarea");
+txt.innerHTML = html;
+return txt.value;
+}
+var str = decodeHtml(txt);
+var find = decodeHtml(queryString);
+return str.match(queryString) != null;
+};
+var doSearch = function() {
+var searchstr = document.getElementById("search").value;
+var l = search_nodes;
+var srch = search_all;
+var matches = 0
+for (var i = 0; i < l.length; i++) {
+l[i].style.display = searchMatch(srch[i], searchstr) ? "" : "none";
+}
+};
+var setSearch = function(str) {
+document.getElementById("search").value = str;
+doSearch();
+}
+var makeLink = function(word, update) {
+return "<a href=\"#\" onclick=\"setSearch('" + word + "')\">" + tonewortho(word) + "</a>";
+};
+var mkel = function(tag, html, cls) {
+var ret = document.createElement(tag);
+ret.innerHTML = html;
+if(cls)
+{
+ret.className = cls;
+}
+return ret;
+};
+var makeRow = function(word, update) {
+var retel = document.createElement('tr');
+var ret = mkel('td', "<b>" + tonewortho(word[0]) + "</b>", "root");
+retel.appendChild(ret);
+var ul;
+var df;
+for (var i = 0; i < word[1].length; i++) {
+df = word[1][i];
+ret.appendChild(mkel('i', " " + df.path.join(" > ") + " ", "part-of-speech"));
+var line = df.defs.join(", ");
+var ls;
+for (var k in df) {
+ls = df[k];
+if (k == 'archaic') {
+for (var l = 0; l < ls.length; l++) {
+line += ", Archaic: See " + makeLink(ls[l], update);
+}
+} else if (k == 'see also') {
+for (var l = 0; l < ls.length; l++) {
+line += ", See Also: " + makeLink(ls[l], update);
+}
+} else if (k == 'example') {
+for (var l = 0; l < ls.length; l++) {
+line += ", Example: " + ls[l][0] + " (<i>" + ls[l][1] + "</i>)";
+}
+} else if (k == 'suf-example') {
+for (var l = 0; l < ls.length; l++) {
+line += ", Example: " + ls[l][0] + " ? " + ls[l][1];
+}
+}
+}
+ret.appendChild(mkel('span', line, "definition"));
+}
+return retel;
+};
+var setup = function() {
+var defs = document.getElementById('defs');
+defs.innerHTML = '';
+for (var i = 0; i < lexicon_flat_arr.length; i++) {
+defs.appendChild(makeRow(lexicon_flat_arr[i]));
+}
+search_nodes = document.getElementById("defs").childNodes;
+var s;
+var node;
+var df;
+for (var i = 0; i < search_nodes.length; i++) {
+s = '';
+node = search_nodes[i];
+search_all.push(node.outerHTML);
+df = node.getElementsByClassName('def');
+for (var j = 0; j < df.length; j++) {
+s += df[j].innerHTML + ' ';
+}
+search_defs.push(s);
+}
+};
+setup();
+</script>
+</div>
+</div>
+<div class="container">
+<div class="senary">
+<div class="vertical">
+<div class="block">
+Enter a base-10 number in the first box. The base-6 number will be rendered in the second box. Only integers are supported.
+<input type="text" id="base10" onkeyup="document.getElementById('base6').value = parseInt(document.getElementById('base10').value, 10).toString(6);"></input><br />
+<input type="text" id="base6"></input>
+</div>
+</div>
+</div>
+<div class="tboxwrap">
+<textarea id="tbox" class="tbox" spellcheck="false"></textarea>
+<button onclick="document.getElementById('tbox').value = convert(document.getElementById('tbox').value, 'oldortho', 'newortho', false);">Convert Ortho</button>
+<button onclick="copy()">Copy</button>
+<script>
+var copy = function() {
+document.getElementById('tbox').select();
+document.execCommand('copy');
+};
+</script>
+</div>
+</div>
+<div class="footer">
+<a href="https://mr-martian.github.io/Sajem_Tan/" target="_blank">utilities</a><a href="https://mr-martian.github.io/Sajem_Tan/refgram.pdf" target="_blank">refgram</a><a href="https://sajemtan.miraheze.org/wiki/Main_Page" target="_blank">wiki</a><a href="https://sajemtan.miraheze.org/wiki/Snat_Sajem_Tan" target="_blank">snat</a><a href="https://en.wikiversity.org/wiki/Sajem_Tan" target="_blank">wikiversity</a>
+</div>
+</div>
+</body>
 </html>
