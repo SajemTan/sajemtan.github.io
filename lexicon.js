@@ -642,7 +642,7 @@ var lexicon = {
     "tamatthuhfam": ["Tin"],
     "tan": ["honey", "vomit", "language"],
     "tanik": ["saxophone"],
-    "tanzlulc": ["utterance", "short speech", "sentence", "dollop of honey"],
+    "tanzlulc": ["utterance", "short speech", "sentence", "dollop of honey", "message"],
     "tat": ["dad", "any male being or an object personified as being male", ["see also", "mam"]],
     "tatulk": ["glasses", "spectacles", "contact lenses", "monocle", "eyewear"],
     "telzlnoln": ["rain"],
@@ -1318,7 +1318,8 @@ var lexicon = {
     "velzyn": ["wolf"],
     "voltmuhc": ["garden"],
     "xifemgolt": ["that which stops rumination or consideration", "mental satisfaction", "epiphany", "realization"],
-    "cejak": ["loud noise", "alarm", "spooky noise"]
+    "cejak": ["loud noise", "alarm", "spooky noise"],
+    "delgemnoc": ["setting"]
   },
   "number": {
     "decimal": {
@@ -1703,7 +1704,7 @@ var lexicon = {
       "juhcen": ["set on fire", "enflame"],
       "julgic": ["ask a question"],
       "julvet": ["state a name", "identify or denominate oneself"],
-      "julvnolk": ["hold", "keep", "wear", "wait", "hold on"],
+      "julvnolk": ["hold", "keep", "wear", "wait", "hold on", "save (a file)"],
       "julvolt": ["name", "give a name", "assign a name"],
       "kasyn": ["repeat", "rerun a TV episode"],
       "katolc": ["pilot", "drive", "ride"],
