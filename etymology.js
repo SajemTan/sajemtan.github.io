@@ -1,4 +1,4 @@
-var Languages = ["Sajem Sulslem", "Tetan Tan", "B'artedhom", "Sajem Tan", "Ðab Tan", "Pleb Tan", "Sajem Gavmötëc", "Tolzen Tan"];
+var Languages = ["Sajem Sulslem", "Tetan Tan", "B'artedhom", "Sajem Tan", "Ðab Tan", "Pleb Tan", "Sajem Gavmötëc", "Tolzen Tan", "Zhan Tan"];
 
 var SoundChanges = {
   "Sajem Sulslem": {},
@@ -106,6 +106,18 @@ var SoundChanges = {
       ["Ö", "ö"],
       ["U(?=[tkcfsţš]|h?[mn]|h(?!l))", "û"],
       ["U", "u"],
+    ],
+    "Zhan Tan": [
+      ["[ea]h", "a"],
+      ["k(?=.)", "q"],
+      ["[eo]l", "ô"],
+      ["th", "ç"],
+      ["^[sz]l", "tl"],
+      ["([aeiouô][hl]?)z([aeiouô][hl]?)", "$1ks$2"],
+      ["ul", "ü"],
+      ["uh", "û"],
+      ["sl", "l"],
+      ["zl", "r"]
     ]
   },
   "Ðab Tan": {
@@ -173,6 +185,19 @@ var SoundChanges = {
       ["c", "t͡s"],
       ["ô", "ɔ"],
       ["û", "ʊ"]
+    ]
+  },
+  "Zhan Tan": {
+    "IPA": [
+      ["l", "ɬ"],
+      ["r", "ɮ"],
+      ["ç", "θ"],
+      ["sh", "ʃ"],
+      ["zh", "ʒ"],
+      ["ô", "ø̞"],
+      ["û", "ʌ"],
+      ["ü", "ʊ"],
+      ["c", "t͡s"]
     ]
   }
 };
