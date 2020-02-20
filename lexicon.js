@@ -238,7 +238,7 @@ var lexicon = {
       "tholm": ["known by definition, tautology, or common knowledge/sense", ["gloss", "common sense"]],
       "voln": ["understood through the reversal of a previously deep belief"],
       "zolt": ["seem to", ["etymology", "zeltyt"]],
-      "thuln": ["known/felt by feelings or emotions", ["example", "thuln tycum cejanymfunah.", "I feel like cell phones are bad."]
+      "thuln": ["known/felt by feelings or emotions", ["example", "thuln tycum cejanymfunah.", "I feel like cell phones are bad."]]
     },
     "cenetulnyslin": ["inconsistantly", "at random", "spontaniously"],
     "geshekzlulcmunjuc": ["a long time ago", "it's been a long time since"],
