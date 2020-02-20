@@ -375,7 +375,7 @@ var lexicon = {
     "cesyt": ["particle"],
     "cethnyt": ["musical instrument", "wind instrument"],
     "cic": ["cheese"],
-    "cicin": ["mango”],
+    "cicin": ["mango"],
     "cifnolvnin": ["leader"],
     "cifnolvninxecultnacolm": ["political slander"],
     "cigym": ["rubber duckie"],
