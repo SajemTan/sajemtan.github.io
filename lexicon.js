@@ -1462,7 +1462,7 @@ var lexicon = {
     "jaxinvmatthnu": ["school work", "studies"],
     "thehkshikxeht": ["paralysis"],
     "timemthehkshikxeht": ["sleep paralysis"],
-    "duukmon", ["opposite (of that)"]
+    "duukmon": ["opposite (of that)"]
   },
   "number": {
     "decimal": {

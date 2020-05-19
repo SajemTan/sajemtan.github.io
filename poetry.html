@@ -1,0 +1,246 @@
+<html>
+  <head>
+    <title>Vithitvmeh Vithengyn</title>
+    <script type="text/javascript" src="lexicon.js"></script>
+    <link rel="shortcut icon" type="image/png" href="flag.png">
+    <style>
+#out {
+  white-space: pre;
+}
+    </style>
+  </head>
+  <body>
+    <a href="index.html">Sajem Tan tools index</a>
+    <br/>
+    <span>Syllables per line (separate with commas):</span>
+    <input type="text" id="syls"/>
+    <br>
+    <button onclick="disp();">Generate a poem</button>
+    <input type="checkbox" id="newortho">Use the Reformed Orthography</input>
+    <p id="out"></p>
+    <script>
+var getlist = function(pth) {
+  return queryLexPath(pth, false, true).keys.map(
+    function(word) {
+      var n = 0;
+      for (var i = 0; i < word.length; i++) {
+        if ("aeiouy".includes(word[i])) {
+          n++;
+        }
+      }
+      return {
+        minsyl: n,
+        leaf: true,
+        text: word
+      };
+    }
+  );
+};
+var getlists = function(pths) {
+  var ret = [];
+  for (var i = 0; i < pths.length; i++) {
+    ret = ret.concat(getlist(pths[i]));
+  }
+  return ret;
+};
+
+var senmap = {};
+
+var roots = ["adj", "adv", "noun", "trans", "etrans", "intrans", "eintrans", "post"];
+var verbs = ["trans", "etrans", "intrans", "eintrans"];
+
+var pos_types = {
+  "adj": [["adj"], ["number", "decimal"], ["number", "senary"], ["color"]],
+  "adv": [["adv"]],
+  "noun": [["noun"], ["pronoun"], ["color"]],
+  "trans": [["verb", "transitive"]],
+  "etrans": [["verb", "experiencer transitive"]],
+  "intrans": [["verb", "intransitive"]],
+  "eintrans": [["verb", "experiencer intransitive"]],
+  "verb": [["verb"]],
+  "post": [["post"]],
+  "sen-conj": [["conjunction", "clause"], ["conjunction", "both"]],
+  "NP-conj": [["conjunction", "noun"], ["conjunction", "both"]],
+  "aspect": [["suffix", "aspect"]],
+  "case": [["suffix", "case"]],
+  "suffix-any": [["suffix", "any"]]
+};
+var syntax = {
+  para: [["sen", "\n", "para"], ["sen"]],
+  sen: [["VP"], ["VP", "\n", "obl"], ["sen", "\n", "sen-conj", "sen"]],
+  VP: [["NP", "\n", "trans-V", "\n", "NP"],
+       ["NP", "\n", "NP", "\n", "etrans-V"],
+       ["intrans-V", "\n", "NP"], 
+       ["NP", "\n", "eintrans-V"]],
+  adjP: [["adj"], ["adv", "adjP"]],
+  NP: [["noun"], ["adjP", "NP"], ["NP", "\n", "NP-conj", "NP"]],
+  obl: [["noun", "-", "case"], ["NP", "post"]]
+};
+
+verbs.forEach(function(vb) {
+  var n = vb + "-V";
+  syntax[n] = [[vb, "-", "aspect"], ["adv", n], [n, "aux"]];
+});
+
+for (var pos in pos_types) {
+  senmap[pos + "-base"] = getlists(pos_types[pos]);
+  var minsyl = Math.min.apply([], senmap[pos + "-base"].map(x => x.minsyl));
+  senmap[pos] = [
+    {minsyl: minsyl, leaf: false, pattern: [pos + "-base"]},
+    {minsyl: minsyl + 1, leaf: false, pattern: ["root", pos + "-base"], joiner: ""},
+    {minsyl: minsyl + 1, leaf: false, pattern: [pos + "-base", "suffix-any"], joiner: ""}
+  ];
+}
+senmap["aux"] = [].concat.apply([], getlist(["aux"]).map(
+  function(a) {
+    return generateAux(a.text, true).map(function(f) {
+      return {minsyl: a.minsyl, leaf: true, text: f};
+    });
+  }
+));
+
+for (var key in lexicon.suffix) {
+  if (key.includes(">")) {
+    var ls = key.split(">");
+    var from = ls[0];
+    var to = ls[1];
+    senmap[key] = getlist(["suffix", "key"]);
+    senmap[to].push({minsyl: 2, leaf: false, pattern: [from, key], joiner: ""});
+  }
+}
+
+var sum = function(ls) {
+  return ls.reduce(function(x, y) { return x + y; }, 0);
+};
+
+var get_min = function(obj) {
+  if (typeof(obj.minsyl) == "number") {
+    return obj.minsyl;
+  } else {
+    return sum(obj.minsyl);
+  }
+};
+
+var syntax_order = ["adjP", "trans-V", "etrans-V", "intrans-V", "eintrans-V", "NP", "obl", "VP", "sen", "para"];
+syntax_order.forEach(function(key) {
+  senmap[key] = [];
+  syntax[key].forEach(function(pat) {
+    var minsylls = [];
+    var minsyl = 0;
+    var joiner = " ";
+    var realpat = [];
+    pat.forEach(function(part) {
+      if (part == "-") {
+        joiner = "-";
+      } else if (part == "\n") {
+        minsylls.push(minsyl);
+        minsyl = 0;
+        realpat.push(part);
+      } else {
+        realpat.push(part);
+        minsyl += Math.min.apply([], senmap[part].map(get_min));
+      }
+    });
+    minsylls.push(minsyl);
+    senmap[key].push({
+      minsyl: minsylls,
+      leaf: false,
+      joiner: joiner == "-" ? "" : " ",
+      pattern: realpat
+    });
+  });
+});
+
+var all_mins = {};
+for (var key in senmap) {
+  all_mins[key] = Math.min.apply([], senmap[key].map(get_min));
+}
+
+var left_mins = {};
+for (var key in senmap) {
+  left_mins[key] = Math.min.apply([], senmap[key].map(function(ms) {
+    if (typeof(ms) == "number") {
+      return ms;
+    } else {
+      return ms[0];
+    }
+  }));
+}
+
+var build_word_breaks = function(orig_limits) {
+  var tree = ["para"];
+  var limits = orig_limits;
+  var remaining = sum(limits) - all_mins.para;
+  var text = "";
+
+  while (tree.length > 0) {
+    var cur = tree[0];
+    tree = tree.slice(1);
+    
+  }
+};
+
+var build_1_sentence = function(syllables) {
+  var tree = ["sen"];
+  total = syllables - all_mins.sen;
+  var text = [];
+  while (tree.length > 0) {
+    console.log(tree);
+    var cur = tree[0];
+    tree = tree.slice(1);
+    if (!senmap.hasOwnProperty(cur)) {
+      text.push(cur);
+      continue;
+    }
+    var lim = total + all_mins[cur];
+    var ops = senmap[cur].filter(obj => get_min(obj) <= lim);
+    var choice = ops[Math.floor(Math.random() * ops.length)];
+    total = lim - get_min(choice);
+    if (choice.leaf) {
+      text.push(choice.text);
+    } else if (choice.joiner == "") {
+      tree = choice.pattern.concat(tree);
+    } else {
+      var ls = [];
+      choice.pattern.forEach(function(part) {
+        if (part != "\n") {
+          if (ls.length > 0) {
+            ls.push(" ");
+          }
+          ls.push(part);
+        }
+      });
+      tree = ls.concat(tree);
+    }
+  }
+  if (total != 0) {
+    return build_1_sentence(syllables);
+  } else {
+    return text.join("");
+  }
+};
+
+var valid_syl_count = RegExp("\\s*(\\d+\\s*,\\s*)*\\d\\s*");
+
+var get_poem = function(newortho) {
+  var counts = document.getElementById("syls").value;
+  if (counts.match(valid_syl_count)[0] != counts) {
+    return "Unable to parse syllable counts.";
+  }
+  var ls = JSON.parse("[" + counts + "]");
+  if (ls.find(x => x < 3) != undefined) {
+    return "Unable to generate lines with fewer than 3 syllables.";
+  }
+  var text = ls.map(build_1_sentence).join("\n");
+  if (newortho) {
+    text = tonewortho(text);
+  }
+  return text;
+};
+
+var disp = function() {
+  document.getElementById("out").innerHTML = get_poem(document.getElementById("newortho").checked);
+}
+    </script>
+  </body>
+</html>
