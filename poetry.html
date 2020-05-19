@@ -99,13 +99,13 @@ senmap["aux"] = [].concat.apply([], getlist(["aux"]).map(
   }
 ));
 
-for (var key in lexicon.suffix) {
-  if (key.includes(">")) {
-    var ls = key.split(">");
+for (var suf_type in lexicon.suffix) {
+  if (suf_type.includes(">")) {
+    var ls = suf_type.split(">");
     var from = ls[0];
     var to = ls[1];
-    senmap[key] = getlist(["suffix", "key"]);
-    senmap[to].push({minsyl: 2, leaf: false, pattern: [from, key], joiner: ""});
+    senmap[suf_type] = getlist(["suffix", suf_type]);
+    senmap[to].push({minsyl: 2, leaf: false, pattern: [from, suf_type], joiner: ""});
   }
 }
 
