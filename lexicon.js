@@ -328,7 +328,7 @@ var lexicon = {
     },
     "snymsoljem": ["white"],
     "gevmulksoljem": ["black"],
-    "fnadycsoljem": ["clear", "transparant"],
+    "fnadycsoljem": ["clear", "transparent"],
     "thnamolkmahksoljem" : ["dark red"],
     "kaksnitin": ["brown"]
   },
