@@ -150,6 +150,10 @@
               for (var l = 0; l < ls.length; l++) {
                 ul.appendChild(mkel('li', "<b>Example: </b>" + ls[l][0] + " ➔ " + ls[l][1]));
               }
+            } else if (k == 'etymology') {
+              for (var l = 0; l < ls.length; l++) {
+                ul.appendChild(mkel('li', "<b>Etymology: </b>" + ls[l]));
+              }
             }
           }
           if (df.path[0] == 'aux') {
