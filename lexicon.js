@@ -1541,7 +1541,7 @@ var lexicon = {
     "zelvetjinxeht": ["shade"],
     "zhanthuhfam": ["steel"],
     "zlnyfolvik": ["board"],
-    "znöksazemnoc": ["Hour (Sajem Tannic measurement ≈112 minutes)"],
+    "znolksazemnoc": ["Hour (Sajem Tannic measurement ≈112 minutes)"],
     "sholmak": ["interval"]
   },
   "number": {
