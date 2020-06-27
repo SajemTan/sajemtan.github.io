@@ -1428,7 +1428,7 @@ var lexicon = {
     "dulznuhk": ["slit"],
     "slingynmon": ["military"],
     "thuhfamzlamen": ["wire"],
-    "xeloln": ["turtle"],
+    "xesloln": ["turtle"],
     "tuhtatjidolk": ["dandelion"],
     "naket": ["sack", "pouch (of fabric)", "bag"],
     "fnulsninaket": ["hat", "toque", ["etymology", "fnulsnin + naket"]],
