@@ -202,7 +202,7 @@
         }
       };
       var toST = function() {
-        var ms = timediff(document.getElementById('calcday').value + ' ' + document.getElementById('calctime').value + ' -0000');
+        var ms = timediff(document.getElementById('calcday').value + ' ' + document.getElementById('calctime').value + '-0000');
         var dt = splitdiff(ms);
         var ls = Object.keys(dt);
         for (var i = 0; i < ls.length; i++) {
