@@ -175,6 +175,7 @@ var lexicon = {
     "slnuhm": ["gray", "grey", "dull", "indeterminate", "incomplete", "boring", "plain", "numinous"],
     "smit": ["overused", "cliche"],
     "snedelm": ["obscured", "obfuscated"],
+    "snolm": ["low", ["etymology", "snom"]],
     "snymmeht": ["cloudy", "overcast"],
     "snysuhn": ["fluffy", "soft"],
     "solcek": ["long, as in physical length"],
@@ -215,7 +216,9 @@ var lexicon = {
     "vmelfelc": ["crazy"],
     "vnejyn": ["reflective", "mirror-like"],
     "vulznicennoc": ["wound", "twisted"],
+    "vycshikmeht": ["ready (to do something)"],
     "vynit": ["long (time)", "slow", "delayed"],
+    "vynitukmun": ["early"],
     "xafec": ["fulvous"],
     "xamet": ["funny", ["etymology", "xaxat-meht"]],
     "xananso": ["alive", "living"],
@@ -230,6 +233,7 @@ var lexicon = {
     "xyttucmun": ["all-encompassing"],
     "zanekukmunnoc": ["rotten"],
     "zavan": ["ghostly", "ghastly", "spectral"],
+    "zhezlat": ["dappled", "pied", "multicolored", "variegated", "particolored"],
     "zhneltac": ["loose", "cheap", "bendy", "elastic"],
     "zhnelm": ["bright"],
     "zhonacoln": ["automatic"],
@@ -275,8 +279,10 @@ var lexicon = {
     "tolcen": ["efficiently"],
     "vajem": ["only"],
     "vyn": ["still", "yet", ["etymology", "vynit"]],
+    "vynacen": ["even", ["example", "vynacen znolk sno", "even in the daytime"]],
     "zeltyt": ["seemingly"],
-    "zezholt": ["done with good intentions"]
+    "zezholt": ["done with good intentions"],
+    "zultzelvetdat": ["the next morning"]
   },
   "aux": {
     "i": {
@@ -824,7 +830,7 @@ var lexicon = {
     "xolgak": ["courage", "bravery", "valor", "foolishness", "irrationality"],
     "xolcifnolvninah": ["the Academie Française", ["etymology", "xo-cifnolvninah"]],
     "xuhm": ["extent", "number", "amount", "degree", ["etymology", "xüm"]],
-    "xuhmku": ["how much, how many, to what extent"],
+    "xuhmku": ["how much (usage as standalone noun archaic)", "how many", "to what extent", ["see also", "xuhm"]],
     "xulkat": ["fun", "grammar", "climbing", "the enjoyment of challenges"],
     "xulkatsazyc": ["adventure"],
     "xyduht": ["monkey"],
@@ -1510,7 +1516,7 @@ var lexicon = {
     "kishnulmcetolc": ["screw"],
     "kyguhkfuhmolt": ["stomach", "intestines"],
     "mizhnikcetolcfun": ["sewing needle"],
-    "mizhnikzlulc": ["stich"],
+    "mizhnikzlulc": ["stitch"],
     "molmelcslafyc": ["covered walkway"],
     "nitolc": ["imprint", "impression"],
     "nitolccetolc": ["nail"],
@@ -1541,8 +1547,18 @@ var lexicon = {
     "zelvetjinxeht": ["shade"],
     "zhanthuhfam": ["steel"],
     "zlnyfolvik": ["board"],
-    "znolksazemnoc": ["Hour (Sajem Tannic measurement ≈112 minutes)"],
-    "sholmak": ["interval"]
+    "znolksazemnoc": ["hour (Sajem Tannic measurement ≈112 Earth minutes)"],
+    "sholmak": ["interval"],
+    "zhezlat": ["bunting"],
+    "zhezlatthuhfinfunvithit": ["bunting"],
+    "thuhfinfunvithit": ["thuhfinfunvithit"],
+    "fijyczhezlat": ["painted bunting"],
+    "melsulnzhezlat": ["snow bunting"],
+    "nynyzhynzhezlat": ["indigo bunting"],
+    "shekelkukmun": ["bunting"],
+    "snanolmzmetmun": ["college", "university"],
+    "vulcduhfnetzlulven": ["Reuben sandwich"],
+    "zandin": ["life purpose", "end", "intention", "life goal"]
   },
   "number": {
     "decimal": {
@@ -1623,7 +1639,7 @@ var lexicon = {
     "zyshen": ["help"]
   },
   "prefix": {
-    "xuhm": ["how", ["example", "xuhmzyshen", "how nice"], "to what extent", ["example", "dothot xuhmgisnolmsho dovmeh gisnolmnoc?", "how painful is the injury to you?, how much does it hurt?"], ["see also", "xuhm"]],
+    "xuhm": ["how (prefix usage archaic)", ["example", "xuhmzyshen", "how nice"], "to what extent", ["example", "dothot xuhmgisnolmsho dovmeh gisnolmnoc?", "how painful is the injury to you?, how much does it hurt?"], ["see also", "xuhm"]],
     "duht": ["great"]
   },
   "pronoun": {
@@ -1669,7 +1685,8 @@ var lexicon = {
       "mun": ["very", "extremely", "maximal intensification"],
       "uk": ["non-", "un-", "other than", "different from", ["see also", "xeht"]],
       "ukmun": ["anti-", "opposite of", ["see also", "xeht"]],
-      "xeht": ["lacking", "lack of", "no", "not", ["see also", "molt"], ["see also", "uk"]]
+      "xeht": ["lacking", "lack of", "no", "not", ["see also", "molt"], ["see also", "uk"]],
+      "xuhmku": ["how", "to what extent", ["suf-example", "zyshen (beautiful)", "zyshenxuhmku (how beautiful)"]]
     },
     "aspect": {
       "da": [["archaic", "dah"], "perfective"],
