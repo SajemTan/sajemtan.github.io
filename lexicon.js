@@ -1643,9 +1643,9 @@ var lexicon = {
     "duht": ["great"]
   },
   "pronoun": {
-    "deh": ["1st person neutral", "I"],
-    "do": ["2nd person neutral", "you"],
-    "du": ["3rd person neutral", "he", "she", "it", "this", "that"],
+    "deh": ["1st person neutral", "I", "this"],
+    "do": ["2nd person neutral", "you", "that"],
+    "du": ["3rd person neutral", "he", "she", "it", "that over yonder"],
     "seh": ["1st person animate", "I"],
     "sehth": [["archaic", "seh"], "1st person animate"],
     "theh": ["1st person inanimate", "I"],
