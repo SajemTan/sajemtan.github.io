@@ -225,6 +225,7 @@ var lexicon = {
     "xanek": ["difficult"],
     "xatat": ["magnetic"],
     "xaxnak": ["fuzzy", "furry"],
+    "xelgek": ["fulish"],
     "xen": ["incorrect"],
     "xolt": ["real", "true"],
     "xulkat": ["amusing"],
@@ -1558,7 +1559,9 @@ var lexicon = {
     "shekelkukmun": ["bunting"],
     "snanolmzmetmun": ["college", "university"],
     "vulcduhfnetzlulven": ["Reuben sandwich"],
-    "zandin": ["life purpose", "end", "intention", "life goal"]
+    "zandin": ["life purpose", "end", "intention", "life goal"],
+    "xelgek": ["fulishness", ["see also", "xolgak"], ["see also", "xelgekso"]],
+    "xelgekso": ["fule"]
   },
   "number": {
     "decimal": {
