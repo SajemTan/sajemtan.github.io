@@ -1,6 +1,6 @@
 /* HOW TO ADD STUFF TO THE LEXICON
    Thefam, 3 Kizhult 30
-   
+
    The lexicon is laid out like so:
    lexicon
      adj (adjectives)
@@ -38,14 +38,14 @@
        experiencer transitive
        intransitive
        transitive
-   
+
    Figure out where the new word should go, or where the old word already is
    Everything must be in the original romanization
    Most things are in English alphabetical order for simplicity, but this is not required
    (EDIT Cyfek, 5 Telzlnoln 23: Nouns are the only catagory which aren't ordered. Please keep everything else in English alphabetical order, unless they have a specific order [e.g. numbers]. It really helps with adding additional definitions.)
 
 
-   
+
    An entry looks like this:
    "word": ["definition 1", "definition 2", ["property", "argument"], "definition 3"],
    Only definition 1 is required
@@ -103,6 +103,7 @@ var lexicon = {
     },
     "cagyn": ["lazy", "lackadasical"],
     "can": ["bored"],
+    "cejuln": ["audible"],
     "celk": ["lightened"],
     "cen": ["linear"],
     "cenetulnyslin": ["inconsistent", "spontaneous"],
@@ -113,6 +114,7 @@ var lexicon = {
     "danec": ["borrowed", "copied", "imitated"],
     "dasnan": ["natural", "cosmic"],
     "decec": ["only"],
+    "delgem": ["preferred", "favorite", "of choice"],
     "devajec": ["fertile", "ready (to receive something)"],
     "dijec": ["connected"],
     "duhden": ["distracted"],
@@ -182,6 +184,7 @@ var lexicon = {
     "soljesolm": ["multimodal", "multipurpose", "proceding in many manners", "manifold"],
     "solm": ["fast", "swift", "quick (of moving objects)", ["example", "solm zanum zhimahnso.", "The feathered one is fast."], ["see also", "theln"]],
     "suhzhnolm": ["pleasant"],
+    "tagyn": ["mediocre", "average", "okay", "so-so"],
     "tasluhm": ["pure (metaphorically or metaphysically)", "wholesome"],
     "tat": ["male", "masculine"],
     "temen": ["salty"],
@@ -267,6 +270,7 @@ var lexicon = {
       "thuln": ["known/felt by feelings or emotions", ["example", "thuln tycum cejanymfunah.", "I feel like cell phones are bad."]]
     },
     "cenetulnyslin": ["inconsistantly", "at random", "spontaniously"],
+    "fmolthyt": ["done as a responsibility"],
     "geshekzlulcah": ["times", ["example", "vyk geshekzlulcah", "thrice"]],
     "geshekzlulcmunjuc": ["a long time ago", "it's been a long time since"],
     "janan": ["it's funny that/how"],
@@ -283,6 +287,7 @@ var lexicon = {
     "vynacen": ["even", ["example", "vynacen znolk sno", "even in the daytime"]],
     "zeltyt": ["seemingly"],
     "zezholt": ["done with good intentions"],
+    "zhivelc": ["bisected", "half-and-half"],
     "zultzelvetdat": ["the next morning"]
   },
   "aux": {
@@ -362,16 +367,22 @@ var lexicon = {
     }
   },
   "idiom": {
+    "celkehk zanzhnu": ["waxing (of a celestial body)"],
+    "celkmun zanzhnu": ["full (of a celestial body)"],
     "femekvah gyvnam": ["consider", ["etymology", "cook with one's thoughts"]],
     "fman tidyn gamyk": ["stand in awe unable to move, like you've been petrified"],
     "jaxin vmat": ["do school work", "study", ["example", "jaxin vmatfeh theh", "I have to study"], ["see also", "jikulfin"], ["see also", "snamolm"]],
     "jo tetanah": ["why not?", "let's do it!"],
+    "kakehk zanzhnu": ["waning (of a celestial body)"],
+    "kakmun zanzhnu": ["new (of a celestial body)"],
     "kikim snam": ["suggest"],
     "midacum femekah": ["be confused", ["etymology", "one's thoughts are a puzzle"]],
     "slet [main verb] dulc": ["once upon a time", "it was said of old"],
     "telzlnolnfeh tulnah": ["crying", "weeping"],
     "tolthim golt": ["feel satisfied", ["example", "zeveczheh tolthimeht golt deh", "I am satisfied with the translation"]],
-    "xyt sno": ["always"]
+    "vnisytvmeh zanzhnu": ["phase of the moon"],
+    "xyt sno": ["always"],
+    "zhivelc vnisyt": ["half moon"]
   },
   "interjection": {
     "dit": ["indeed"],
@@ -833,6 +844,8 @@ var lexicon = {
     "xuhm": ["extent", "number", "amount", "degree", ["etymology", "xüm"]],
     "xuhmku": ["how much (usage as standalone noun archaic)", "how many", "to what extent", ["see also", "xuhm"]],
     "xulkat": ["fun", "grammar", "climbing", "the enjoyment of challenges"],
+    "xulkatgyn": ["grammarian"],
+    "xulkatjelkelm": ["reference grammar"],
     "xulkatsazyc": ["adventure"],
     "xyduht": ["monkey"],
     "xykuhk": ["shield"],
@@ -1366,7 +1379,7 @@ var lexicon = {
     "voltmuhc": ["garden"],
     "xifemgolt": ["that which stops rumination or consideration", "mental satisfaction", "epiphany", "realization"],
     "cejak": ["loud noise", "alarm", "spooky noise"],
-    "delgemnoc": ["setting"],
+    "delgemnoc": ["setting", "options setting"],
     "culmat": ["right (the direction relative to the person being addressed)"],
     "duldoltthnu": ["observation"],
     "dulthamkam": ["payment", "assets"],
@@ -1561,7 +1574,22 @@ var lexicon = {
     "vulcduhfnetzlulven": ["Reuben sandwich"],
     "zandin": ["life purpose", "end", "intention", "life goal"],
     "xelgek": ["fulishness", ["see also", "xolgak"], ["see also", "xelgekso"]],
-    "xelgekso": ["fule"]
+    "xelgekso": ["fule"],
+    "dateln": ["rigid hinged flat, such as a gate, trapdoor, box lid, etc."],
+    "vmyndateln": ["jaw", "upper part of chin"],
+    "zelvetdatukmun": ["sunset"],
+    "gamikzelvet": ["supernova", "nova"],
+    "zlaslolktefmim": ["reference mark", "asterisk"],
+    "foldak": ["air", "sky"],
+    "ficznolk": ["today"],
+    "slnagenzhasik": ["night sky"],
+    "fmuhzhithak": ["persimmon"],
+    "zlulzimzic": ["drinking chocolate", "cocoa", "hot chocolate"],
+    "dulkulttuln": ["binoculars"],
+    "cakmon": ["sub-second (=144 Earth milliseconds)"],
+    "thymuntuc": ["second (≈5.19 Earth seconds)"],
+    "vnisytzik": ["lunar tide"],
+    "zanzhnu": ["how something is"]
   },
   "number": {
     "decimal": {
@@ -1816,7 +1844,7 @@ var lexicon = {
       "zanek": ["grow", "develop"],
       "zanekukmun": ["decompose", "rot", "decay", "ferment"],
       "zanolcam": ["stand (of an object)"],
-      "zhnelm": ["glow", "give off light"],
+      "zhnelm": ["glow", "give off light", "shine"],
       "zik": ["flow", "stream"],
       "zim": ["form a spiral-based fractal"],
       "zixmyn": ["leak", "spurt"],
@@ -1844,12 +1872,14 @@ var lexicon = {
     "intransitive": {
       "cenetulnyslin": ["be inconsistent"],
       "dat": ["rise", "get up", "move upwards", "take off"],
+      "datukmun": ["set (of the sun)"],
       "doln": ["make a loud, deep sound", "grumble", "rumble"],
       "duhden": ["deviate from the topic of conversation", "be unproductive"],
       "femek": ["exclaim \"Elementary my dear Watson!\""],
       "femekahso": ["think", "contemplate"],
       "fman": ["stand guard", "stand firm", "watch one's surroundings"],
       "fnolt": ["pause", "stop but not finish"],
+      "gamik": ["appear suddenly"],
       "golt": ["end"],
       "gynolm": ["proselytize on behalf of gynaecology"],
       "janemvin": ["hide"],
@@ -1949,6 +1979,7 @@ var lexicon = {
       "felnzhut": ["inform (regarding people or places)"],
       "femek": ["deduce", "realize"],
       "fenolknacolm": ["tease someone for making a typographical error"],
+      "fizeln": ["jokingly declare that Sajem Tan is naturalistic based on cursory similarity to"],
       "fmam": ["test", "explore", "push (a boundary)", "probe"],
       "fmamegyn": ["throw"],
       "fmigek": ["burrow", "drill a hole"],
@@ -1979,7 +2010,7 @@ var lexicon = {
       "juhcenzhuhzhim": ["smoke"],
       "julgic": ["ask a question"],
       "julvet": ["state a name", "identify or denominate oneself"],
-      "julvnolk": ["hold", "keep", "wear", "wait", "hold on", "save (a file)"],
+      "julvnolk": ["hold", "keep", "wear", "wait", "hold on", "save (a file)", "bring", "carry"],
       "julvolt": ["name", "give a name", "assign a name"],
       "kasyn": ["repeat", "rerun a TV episode"],
       "katolc": ["pilot", "drive", "ride"],
@@ -2085,6 +2116,7 @@ var lexicon = {
       "zevec": ["translate"],
       "zeslit": ["encourage"],
       "zheljuhk": ["boil"],
+      "zhivelc": ["bisect"],
       "zholsat": ["defend", "protect"],
       "zisnam": ["cover with", "paint", "coat", ["etymology", "zic + snam"]],
       "zixmyn": ["puncture (a pressurized object)"],
