@@ -1589,7 +1589,13 @@ var lexicon = {
     "cakmon": ["sub-second (=144 Earth milliseconds)"],
     "thymuntuc": ["second (≈5.19 Earth seconds)"],
     "vnisytzik": ["lunar tide"],
-    "zanzhnu": ["how something is"]
+    "zanzhnu": ["how something is"],
+    "nesitukmun": ["vegetable"],
+    "slidolm": ["shape", "form", "range", "area of effect"],
+    "cizlem": ["shelf", "balcony"],
+    "solshnec": ["a kind of visual signature initially used by tannite artists involving a variety of color and icon symbolisms that convey ideas", ["etymology", "soljem + jelshnec"]],
+    "solshnectan": ["the set of symbolisms used in solshnecah"],
+    "xyslijoln": ["squirrel"]
   },
   "number": {
     "decimal": {
@@ -2024,6 +2030,7 @@ var lexicon = {
       "kyvydyc": ["tear"],
       "ma": [["archaic", "man"], "thank"],
       "man": ["thank"],
+      "masek": ["rub", "brush against"],
       "mesolk": ["win"],
       "mizhnik": ["sew"],
       "muhctolgelculm": ["remove something from the public memory"],
