@@ -1601,7 +1601,8 @@ var lexicon = {
     "ticeln": ["aspen"],
     "takolm": ["goal", "aim"],
     "vmynthethat": ["voice"],
-    "duhtukmunjafit": ["lowland"]
+    "duhtukmunjafit": ["lowland"],
+    "slackahtak": ["race"]
   },
   "number": {
     "decimal": {
@@ -1807,7 +1808,7 @@ var lexicon = {
       "vuk": ["amidst", "in the middle of"],
       "vehk": ["into the middle of"],
       "joc": ["after", "following", "behind"],
-      "jahc": ["(motion) after", "behind", "following"],
+      "jahc": ["(motion) after", "behind", "following", "across", "past"],
       "juc": ["before", "in front of"],
       "jehc": ["(motion) before", "to the front of"],
       "sloc": ["on the surface of"],
@@ -1980,7 +1981,7 @@ var lexicon = {
       "danec": ["borrow", "copy", "duplicate", "record", "keep a record of"],
       "dathnyc": ["encounter", "stumble upon"],
       "deket": ["delete", "remove", "erase"],
-      "delgem": ["select", "curate", "anthologize", "choose", "decide"],
+      "delgem": ["select", "curate", "anthologize", "choose", "decide", "settle"],
       "delsym": ["swear", "make a deal", "agree", ["see also", "sliktan"]],
       "dijec": ["connect"],
       "doltan": ["pronounce"],
@@ -2119,7 +2120,7 @@ var lexicon = {
       "xecultnacolm": ["poke with lies", "get attention through lies", "hurt someone with dishonesty"],
       "xenexen": ["apologize", ["example", "Xenexenfeh theh Vithitthot mu xulm duhdenfeh theh omzheh.", "I apologize to Bird for making so much pasta."]],
       "xexengoltzhut": ["solve", "fix"],
-      "xexensitukzhut": ["prepare", "set up (quirky case: object takes -thot)"],
+      "xexensitukzhut": ["prepare", "set up (quirky case: object takes -thot)", "establish", "appoint"],
       "xifem": ["overthink", "ruminate"],
       "xifemgolt": ["realize (object: the thing realized)", "finally understand", ["gloss", "realize"], ["example", "Du xifemgoltfeh theh.", "I realized it."]],
       "ximuc": ["bid farewell", ["archaic", "ximulc"]],
@@ -2138,6 +2139,7 @@ var lexicon = {
       "zhivelc": ["bisect"],
       "zholsat": ["defend", "protect"],
       "zisnam": ["cover with", "paint", "coat", ["etymology", "zic + snam"]],
+      "zisnamkah": ["conquer", "surpass", "defeat"],
       "zixmyn": ["puncture (a pressurized object)"],
       "zlafmelk": ["miss a target, especially when aiming a projectile weapon like a gun, a bow, or a laser", ["gloss", "miss"]],
       "zlan": ["assign gender"],
