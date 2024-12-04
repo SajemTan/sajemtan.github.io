@@ -1602,7 +1602,11 @@ var lexicon = {
     "takolm": ["goal", "aim"],
     "vmynthethat": ["voice"],
     "duhtukmunjafit": ["lowland"],
-    "slackahtak": ["race"]
+    "slackahtak": ["race"],
+    "kevuhm": ["pangolin (scaly anteater)"],
+    "dulzlic": ["galaxy"],
+    "tezetdulzlic": ["quasar", "active galaxy"],
+    "toltak": ["flicker"]
   },
   "number": {
     "decimal": {
@@ -1939,6 +1943,7 @@ var lexicon = {
       "timem": ["sleep"],
       "tishnam": ["rest", ["etymology", "tishnim"]],
       "tolgelculm": ["conceal one's past to make it look like one has no experience what so ever", "sandbag in some field"],
+      "toltak": ["flicker"],
       "tolzlnoln": ["rain heavily"],
       "tyfnyn": ["cook with your finger"],
       "vaslnulm": ["cease", "flee"],
