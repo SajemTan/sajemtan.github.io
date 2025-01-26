@@ -1567,7 +1567,6 @@ var lexicon = {
     "sholmak": ["interval"],
     "zhezlat": ["bunting"],
     "zhezlatthuhfinfunvithit": ["bunting"],
-    "thuhfinfunvithit": ["thuhfinfunvithit"],
     "fijyczhezlat": ["painted bunting"],
     "melsulnzhezlat": ["snow bunting"],
     "nynyzhynzhezlat": ["indigo bunting"],
