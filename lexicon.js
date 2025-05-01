@@ -2073,6 +2073,7 @@ var lexicon = {
       "shelgin": ["perceive"],
       "shmithuln": ["allow", "permit"],
       "shmithulnsnam": ["offer"],
+      "sholmin": ["draw (as in art)"],
       "shynzhut": ["inform (regarding abstract things)"],
       "sidulc": ["lift", "pull", "raise", "lead", "open"],
       "sidulcukmun": ["push", "lower", "close", "shut"],
