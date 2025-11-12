@@ -1,3 +1,4 @@
+<!doctype html>
 <html>
   <head>
     <title>Gregorian to Sajem Tan Calendar Converter</title>
@@ -19,9 +20,12 @@
           <td>
             <span>Date: </span>
             <input type="date" id="calcday"></input>
-            <br>
-            <span> Time (UTC): </span>
+            <br/>
+            <span>Time (UTC): </span>
             <input type="time" id="calctime"></input>
+            <br/>
+            <span>Timestamp: </span>
+            <span id="timestamp"></span>
           </td>
           <td>
             <p><b>Year:</b> <input id="year" type="number"></input></p>
@@ -53,6 +57,7 @@
           <th>Translation</th>
           <th>Aniversary of</th>
           <th>Year of original occurence</th>
+          <th>Next occurrence</th>
         </tr>
         <tr>
           <td><span class="st">Divolm</span> 0</td>
@@ -60,6 +65,9 @@
           <td>new year day</td>
           <td>the beginning of this project</td>
           <td>0</td>
+          <td>
+            <button onclick="nextOccurrence(0)">Next Occurrence</button>
+          </td>
         </tr>
         <tr>
           <td><span class="st">Thefnolm</span> 28</td>
@@ -67,6 +75,9 @@
           <td>grammar day</td>
           <td>the completion of the first draft of the Reference Grammar</td>
           <td>1</td>
+          <td>
+            <button onclick="nextOccurrence(268)">Next Occurrence</button>
+          </td>
         </tr>
         <tr>
           <td><span class="st">Divolm</span> 28</td>
@@ -74,6 +85,9 @@
           <td>flag day</td>
           <td>the establishment of the official flag</td>
           <td>2</td>
+          <td>
+            <button onclick="nextOccurrence(108)">Next Occurrence</button>
+          </td>
         </tr>
         <tr>
           <td><span class="st">Zatheln</span> 33</td>
@@ -81,6 +95,9 @@
           <td>silence day</td>
           <td>the day when Fern and Bird were banned from using @everyone and @here on Discord</td>
           <td>2</td>
+          <td>
+            <button onclick="nextOccurrence(113)">Next Occurrence</button>
+          </td>
         </tr>
         <tr>
           <td><span class="st">Zatheln</span> 8</td>
@@ -88,15 +105,18 @@
           <td>laugh day</td>
           <td>the day of the Great Awakening when Fog, Stone, and Wind began to unravel the mystery of the Honey</td>
           <td>2</td>
+          <td>
+            <button onclick="nextOccurrence(248)">Next Occurrence</button>
+          </td>
         </tr>
       </tbody>
     </table>
     <script>
       var isOld = true;
-      var swap = function() {
+      function swap() {
         swaportho(isOld);
         isOld = !isOld;
-      };
+      }
       var letters = ["duhdem (d) [0]", "gigim (g) [1]", "xataxym (x) [2]", "jegen (j) [3]", "fijyc (f) [4]", "voljam (v) [5]", "thethat (th) [6]", "sekelt (s) [7]", "zuhzuhmelt (z) [8]", "shuhzhik (sh) [9]", "zhizlik (zh) [10]", "slik (sl) [11]", "zlolfit (zl) [12]", "molmelc (m) [13]", "nyzlan (n) [14]", "nasham (a) [15]", "xelteln (el) [16]", "tezet (e) [17]", "tolmolm (ol) [18]", "mizizlat (i) [19]", "slysyc (y) [20]", "shnuhk (uh) [21]", "tuln (ul) [22]", "cuhc (c) [23]", "tytyt (t) [24]", "kyfik (k) [25]", "zlnanic (ah) [26]", "thnuhduhk (eh) [27]", "snolzem (o) [28]", "vmyn (u) [29]"];
       var roles = ["Divolm", "Telzlnoln", "Jidolk", "Shelsheln", "Thefam", "Zatheln", "Kizhult", "Thefnolm", "Vithit"];
 
@@ -119,16 +139,16 @@
       var cyclesfactor = 30;
       var monthsfactor = 40;
       var rolesfactor = 9;
-      var timediff = function(datestring) {
-        var calc = new Date(datestring);
+      function timediff(datestring) {
+        let calc = new Date(datestring);
         return calc.getTime() - countfrom.getTime();
-      };
-      var getSTdays = function() {
-        var mode = document.querySelector('input[name="mode"]:checked').value;
-        var days = 0;
+      }
+      function getSTdays() {
+        let mode = document.querySelector('input[name="mode"]:checked').value;
+        let days = 0;
         if (mode == "month") {
-          var m = parseInt(document.getElementById('month').value);
-          var days = parseInt(document.getElementById('monthday').value);
+          let m = parseInt(document.getElementById('month').value);
+          days = parseInt(document.getElementById('monthday').value);
           while (days % rolesfactor != m) {
             days += monthsfactor;
           }
@@ -138,42 +158,42 @@
           days = parseInt(document.getElementById('day').value);
         }
         return days;
-      };
-      var sync = function() {
-        var days = getSTdays();
+      }
+      function sync() {
+        let days = getSTdays();
         document.getElementById('month').value = days % rolesfactor;
         document.getElementById('monthday').value = days % monthsfactor;
         document.getElementById('cycle').value = (days - (days % cyclesfactor)) / cyclesfactor;
         document.getElementById('cycleday').value = days % cyclesfactor;
         document.getElementById('day').value = days;
-      };
-      var toms = function(dt) {
-        var ret = dt['year'] * yearsfactor + getSTdays();
+      }
+      function toms(dt) {
+        let ret = dt['year'] * yearsfactor + getSTdays();
         ret = ret * daysfactor + dt['hour'];
         ret = ret * hoursfactor + dt['minute'];
         ret = ret * minutesfactor + dt['millisecond'];
         return countfrom.getTime() + ret;
       }
-      var splitdiff = function(milliseconds) {
-        var ret = {};
+      function splitdiff(milliseconds) {
+        let ret = {};
 
-        var myrs = 0;
-        var yrmls = minutesfactor * hoursfactor * daysfactor * yearsfactor;
+        let myrs = 0;
+        let yrmls = minutesfactor * hoursfactor * daysfactor * yearsfactor;
         while (milliseconds < 0) {
           myrs++;
           milliseconds += yrmls;
         }
 
         ret['millisecond'] = milliseconds % minutesfactor;
-        var minutes = (milliseconds - (milliseconds % minutesfactor)) / minutesfactor;
+        let minutes = (milliseconds - (milliseconds % minutesfactor)) / minutesfactor;
 
         ret['minute'] = minutes % hoursfactor;
-        var hours = (minutes - (minutes % hoursfactor)) / hoursfactor;
+        let hours = (minutes - (minutes % hoursfactor)) / hoursfactor;
 
         ret['hour'] = hours % daysfactor;
-        var days = (hours - (hours % daysfactor)) / daysfactor;
+        let days = (hours - (hours % daysfactor)) / daysfactor;
 
-        var mdays = days % yearsfactor;
+        let mdays = days % yearsfactor;
         ret['year'] = (days - mdays) / yearsfactor;
         ret['year'] -= myrs;
         ret['day'] = mdays;
@@ -187,37 +207,63 @@
         ret['month'] = mdays % rolesfactor;
 
         return ret;
-      };
-      var setcalc = function(when) {
+      }
+      function setcalc(when) {
         if (when == 'now') {
-          var d = new Date();
-          var s = d.toISOString();
+          let d = new Date();
+          setTimestamp(d);
+          let s = d.toISOString();
           document.getElementById('calcday').value = s.slice(0,10);
           document.getElementById('calctime').value = s.slice(11,16);
           toST();
         } else {
-          var s = when.toISOString();
+          let s = when.toISOString();
           document.getElementById('calcday').value = s.slice(0,10);
           document.getElementById('calctime').value = s.slice(11,16);
         }
-      };
-      var toST = function() {
-        var ms = timediff(document.getElementById('calcday').value + ' ' + document.getElementById('calctime').value + '-0000');
-        var dt = splitdiff(ms);
-        var ls = Object.keys(dt);
-        for (var i = 0; i < ls.length; i++) {
-          var k = ls[i];
+      }
+      function toST() {
+        let ms = timediff(document.getElementById('calcday').value + ' ' + document.getElementById('calctime').value + '-0000');
+        let dt = splitdiff(ms);
+        let ls = Object.keys(dt);
+        for (let i = 0; i < ls.length; i++) {
+          let k = ls[i];
           document.getElementById(k).value = dt[k];
         }
-      };
-      var toGreg = function() {
-        var dt = {};
-        var l = ['year', 'month', 'monthday', 'cycle', 'cycleday', 'day', 'hour', 'minute', 'millisecond'];
-        for (var i = 0; i < l.length; i++) {
+      }
+      function toGreg() {
+        let dt = {};
+        let l = ['year', 'month', 'monthday', 'cycle', 'cycleday', 'day', 'hour', 'minute', 'millisecond'];
+        for (let i = 0; i < l.length; i++) {
           dt[l[i]] = parseInt(document.getElementById(l[i]).value);
         }
-        var d = new Date(toms(dt));
+        let d = new Date(toms(dt));
+        setTimestamp(d);
         setcalc(d);
+      }
+      function setTimestamp(dt) {
+          document.getElementById('timestamp').innerHTML = Math.floor(
+              dt.getTime() / 1000);
+      }
+      function nextOccurrence(day) {
+          let now = new Date();
+          let diff = now.getTime() - countfrom.getTime();
+          let dt = splitdiff(diff);
+          let year = dt.year;
+          console.log(dt);
+          console.log(day);
+          if (dt.day >= day) year++;
+          console.log(year);
+          document.getElementById('year').value = year;
+          document.getElementById('month').value = day % rolesfactor;
+          document.getElementById('monthday').value = day % monthsfactor;
+          document.getElementById('cycle').value = (day - (day % cyclesfactor)) / cyclesfactor;
+          document.getElementById('cycleday').value = day % cyclesfactor;
+          document.getElementById('day').value = day;
+          document.getElementById('hour').value = 0
+          document.getElementById('minute').value = 0
+          document.getElementById('millisecond').value = 0
+          toGreg();
       }
     </script>
   </body>
