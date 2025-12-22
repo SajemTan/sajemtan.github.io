@@ -1,3 +1,4 @@
+<!doctype html>
 <html>
   <head>
     <title>Sajem Tan Lexicon</title>
@@ -5,8 +6,8 @@
     <meta charset="UTF-8" />
     <link rel="shortcut icon" type="image/png" href="flag.png">
   </head>
-  <body onload="doSearch();">
-    <div style="width: 100%; background-color: rgba(255, 255, 255, 0.9); position: fixed; left: 0px; top: 0px; padding: 15px;">
+  <body onload="adjustHeight(); doSearch();">
+    <div style="width: 100%; background-color: rgba(255, 255, 255, 0.9); position: fixed; left: 0px; top: 0px; padding: 15px;" id="searchbar">
       <span>Search</span>
       <select id="searchwhat" onchange="doSearch();">
         <option value="all">Everything</option>
@@ -27,11 +28,7 @@
       <br>
       <span>Please keep in mind that the listed parts of speech are merely how the word was first used. You can change them!</span>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <table border="1">
+    <table border="1" id="table">
       <thead>
         <tr>
           <th>Root</th>
@@ -42,6 +39,12 @@
     </table>
     <p id="matches"></p>
     <script>
+      function adjustHeight() {
+          let bar = document.getElementById('searchbar');
+          let table = document.getElementById('table');
+          let h = bar.getBoundingClientRect().height + 10;
+          table.style['margin-top'] = h + 'px';
+      }
       var search_all = [];
       var search_root = [];
       var search_defs = [];
